@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BPO Services | VV Travco</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#080c10;
+      --bg2:#0d1219;
+      --bg3:#111820;
+      --accent:#00aaff;
+      --accent2:#0077cc;
+      --accent3:#00d4ff;
+      --text:#e8f0fe;
+      --muted:#8899aa;
+      --card:#0f1823;
+      --card2:#142130;
+      --border:rgba(0,170,255,0.15);
+      --glow:0 0 40px rgba(0,170,255,0.18);
+      --shadow:0 18px 50px rgba(0,0,0,0.28);
+      --radius:20px;
+      --container:1240px;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:linear-gradient(180deg,#080c10 0%,#0b1117 50%,#080c10 100%);
+      color:var(--text);
+      font-family:'Roboto',sans-serif;
+      overflow-x:hidden;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(var(--container), calc(100% - 48px));
+      margin:0 auto;
+    }
+
+    .section-tag{
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:2px;
+      color:var(--accent);
+      font-weight:700;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .section-title{
+      font-family:'Roboto',sans-serif;
+      font-size:clamp(2rem,3.5vw,3.2rem);
+      font-weight:900;
+      margin-bottom:16px;
+      line-height:1.1;
+    }
+
+    .section-title span{
+      background:linear-gradient(135deg,var(--accent),var(--accent3));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    .section-desc{
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.8;
+      max-width:760px;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),var(--accent3));
+      color:#00131d;
+      padding:14px 28px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:15px;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      transition:all 0.3s;
+      box-shadow:0 12px 32px rgba(0,170,255,0.25);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-secondary{
+      border:1px solid var(--border);
+      color:var(--text);
+      padding:14px 28px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:15px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      transition:all 0.3s;
+      background:rgba(255,255,255,0.02);
+    }
+
+    .btn-secondary:hover{
+      border-color:var(--accent);
+      background:rgba(0,170,255,0.06);
+    }
+
+    /* NAV */
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:1000;
+      background:rgba(8,12,16,0.86);
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav-wrap{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .nav-logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+    }
+
+    .nav-logo-icon{
+      width:42px;
+      height:42px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:'Roboto',sans-serif;
+      font-weight:900;
+      font-size:16px;
+      color:#fff;
+      flex-shrink:0;
+    }
+
+    .nav-brand{
+      font-family:'Roboto',sans-serif;
+      font-weight:900;
+      font-size:20px;
+      color:var(--text);
+    }
+
+    .nav-brand span{
+      color:var(--accent);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:500;
+      transition:color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active{
+      color:var(--accent);
+    }
+
+    .nav-cta{
+      background:linear-gradient(135deg,var(--accent),var(--accent3));
+      color:#00131d !important;
+      padding:11px 22px;
+      border-radius:999px;
+      font-weight:700 !important;
+      font-size:13px;
+    }
+
+    /* HERO */
+    .bpo-hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:140px 0 90px;
+      background:
+        radial-gradient(ellipse 60% 45% at 20% 0%, rgba(0,100,180,0.20), transparent),
+        radial-gradient(ellipse 45% 35% at 85% 10%, rgba(0,170,255,0.08), transparent);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .bpo-hero-bg{
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(0,170,255,0.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,170,255,0.03) 1px,transparent 1px);
+      background-size:60px 60px;
+      pointer-events:none;
+    }
+
+    .bpo-hero-content{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:1.02fr 0.98fr;
+      gap:44px;
+      align-items:center;
+      width:100%;
+      padding: 0px 80px;
+    }
+
+    .bpo-hero h1{
+      font-family:'Roboto',sans-serif;
+      font-size:clamp(2.8rem,5vw,4.8rem);
+      font-weight:900;
+      line-height:1.04;
+      margin-bottom:22px;
+    }
+
+    .bpo-hero h1 span{
+      background:linear-gradient(135deg,var(--accent),var(--accent3));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    .bpo-hero p{
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.85;
+      margin-bottom:28px;
+      max-width:640px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:20px;
+    }
+
+    .bpo-hero-visual{
+      position:relative;
+      min-height:600px;
+    }
+
+    .hero-image-card{
+      min-height:600px;
+      height:100%;
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      position:relative;
+    }
+
+    .hero-image-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .hero-image-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.40));
+    }
+
+    .availability-badge{
+      position:absolute;
+      right:18px;
+      bottom:18px;
+      background:rgba(9,15,22,0.86);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:18px;
+      padding:24px;
+      text-align:center;
+      box-shadow:var(--glow);
+      backdrop-filter:blur(14px);
+      z-index:2;
+      width:min(260px, calc(100% - 36px));
+    }
+
+    .availability-badge .pulse-ring{
+      width:78px;
+      height:78px;
+      margin:0 auto 14px;
+      position:relative;
+    }
+
+    .pulse-ring::before,
+    .pulse-ring::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      border-radius:50%;
+      border:2px solid var(--accent);
+      animation:ripple 2s ease-out infinite;
+    }
+
+    .pulse-ring::after{
+      animation-delay:1s;
+    }
+
+    .pulse-ring .inner{
+      position:absolute;
+      inset:15px;
+      background:var(--accent);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      color:#00131d;
+    }
+
+    @keyframes ripple{
+      0%{transform:scale(1);opacity:1;}
+      100%{transform:scale(2.5);opacity:0;}
+    }
+
+    .availability-badge h3{
+      font-family:'Roboto',sans-serif;
+      font-size:30px;
+      font-weight:900;
+      color:var(--accent);
+      margin-bottom:8px;
+    }
+
+    .availability-badge p{
+      color:#d7e7f3;
+      font-size:14px;
+      line-height:1.7;
+      margin:0;
+    }
+
+    /* OVERVIEW IMAGE SECTION */
+    .bpo-overview{
+      padding:100px 0;
+      background:var(--bg2);
+    }
+
+    .overview-grid{
+      display:grid;
+      grid-template-columns:0.95fr 1.05fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .overview-image{
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .overview-image img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+    }
+
+    .overview-points{
+      display:grid;
+      gap:14px;
+      margin-top:24px;
+    }
+
+    .overview-point{
+      display:flex;
+      gap:12px;
+      padding:16px 18px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:rgba(255,255,255,0.02);
+    }
+
+    .overview-point-icon{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,170,255,0.12);
+      color:var(--accent2);
+      font-weight:900;
+      flex-shrink:0;
+    }
+
+    .overview-point strong{
+      display:block;
+      font-size:15px;
+      margin-bottom:4px;
+    }
+
+    .overview-point span{
+      display:block;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    /* CAPABILITIES */
+    .capabilities{
+      padding:100px 0;
+    }
+
+    .cap-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+      margin-top:52px;
+    }
+
+    .cap-item{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:20px;
+      overflow:hidden;
+      transition:all 0.35s;
+      box-shadow:0 10px 30px rgba(0,0,0,0.12);
+    }
+
+    .cap-item:hover{
+      transform:translateY(-4px);
+      border-color:var(--accent);
+      box-shadow:var(--glow);
+    }
+
+    .cap-item img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .cap-body{
+      padding:26px 24px 24px;
+    }
+
+    .cap-num{
+      font-family:'Roboto',sans-serif;
+      font-size:40px;
+      font-weight:900;
+      color:rgba(0,170,255,0.14);
+      margin-bottom:12px;
+      line-height:1;
+    }
+
+    .cap-title{
+      font-family:'Roboto',sans-serif;
+      font-size:22px;
+      font-weight:900;
+      color:whitesmoke;
+      margin-bottom:12px;
+      line-height:1.3;
+    }
+
+    .cap-desc{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .cap-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:18px;
+    }
+
+    .cap-tag{
+      background:rgba(0,170,255,0.08);
+      border:1px solid rgba(0,170,255,0.2);
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:11px;
+      color:var(--accent);
+      letter-spacing:0.4px;
+    }
+
+    /* WHY BPO */
+    .why-bpo{
+      padding:100px 0;
+      background:var(--bg2);
+    }
+
+    .why-top{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
+      margin-bottom:46px;
+    }
+
+    .why-image{
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .why-image img{
+      width:100%;
+      height:380px;
+      object-fit:cover;
+    }
+
+    .why-bpo-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .why-bpo-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:30px 24px;
+      text-align:center;
+      transition:all 0.35s;
+      box-shadow:0 10px 30px rgba(0,0,0,0.10);
+    }
+
+    .why-bpo-card:hover{
+      border-color:var(--accent);
+      transform:translateY(-6px);
+      box-shadow:var(--glow);
+    }
+
+    .why-bpo-icon{
+      font-size:44px;
+      margin-bottom:16px;
+      display:block;
+    }
+
+    .why-bpo-card h3{
+      font-family:'Roboto',sans-serif;
+      font-size:20px;
+      font-weight:900;
+      margin-bottom:12px;
+    }
+
+    .why-bpo-card p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .big-stat{
+      font-family:'Roboto',sans-serif;
+      font-size:2.8rem;
+      font-weight:900;
+      background:linear-gradient(135deg,var(--accent),var(--accent3));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      display:block;
+      margin-top:14px;
+      line-height:1;
+    }
+
+    .why-bpo-card small{
+      color:var(--muted);
+      font-size:12px;
+      display:block;
+      margin-top:8px;
+    }
+
+    /* INDUSTRIES */
+    .industries{
+      padding:100px 0;
+    }
+
+    .industries-grid{
+      display:grid;
+      grid-template-columns:0.95fr 1.05fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .industries-image{
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .industries-image img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+    }
+
+    .industry-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:28px;
+    }
+
+    .industry-tag{
+      background:var(--card);
+      border:1px solid var(--border);
+      padding:12px 18px;
+      border-radius:12px;
+      font-size:14px;
+      font-weight:500;
+      transition:all 0.3s;
+      cursor:default;
+      color:var(--text);
+    }
+
+    .industry-tag:hover{
+      border-color:var(--accent);
+      color:var(--accent);
+      background:rgba(0,170,255,0.05);
+    }
+
+    /* CTA */
+    .cta-band{
+      padding:90px 0;
+      position:relative;
+    }
+
+    .cta-wrap{
+      position:relative;
+      border-radius:26px;
+      overflow:hidden;
+      min-height:360px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .cta-wrap img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .cta-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(8,12,16,0.92) 0%, rgba(8,12,16,0.78) 45%, rgba(8,12,16,0.55) 100%);
+    }
+
+    .cta-content{
+      position:relative;
+      z-index:2;
+      padding:60px;
+      max-width:720px;
+    }
+
+    .cta-content h2{
+      font-family:'Roboto',sans-serif;
+      font-size:clamp(2rem,4vw,3.2rem);
+      font-weight:900;
+      line-height:1.12;
+      margin-bottom:12px;
+    }
+
+    .cta-content h2 span{
+      color:var(--accent);
+    }
+
+    .cta-content p{
+      color:#d7e7f3;
+      margin-top:8px;
+      font-size:16px;
+      line-height:1.85;
+      margin-bottom:24px;
+    }
+
+    .cta-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    /* FOOTER */
+    footer{
+      background:var(--bg2);
+      border-top:1px solid var(--border);
+      padding:60px 0 30px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.5fr 1fr 1fr 1fr;
+      gap:38px;
+      margin-bottom:40px;
+    }
+
+    .footer-brand .logo-name{
+      font-family:'Roboto',sans-serif;
+      font-size:24px;
+      font-weight:900;
+      color:var(--text);
+      margin-bottom:12px;
+    }
+
+    .footer-brand .logo-name span{
+      color:var(--accent);
+    }
+
+    .footer-brand p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+      margin-bottom:18px;
+      max-width:360px;
+    }
+
+    .footer-brand-image{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      margin-top:18px;
+      max-width:360px;
+    }
+
+    .footer-brand-image img{
+      width:100%;
+      height:170px;
+      object-fit:cover;
+    }
+
+    .footer-contact a{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:var(--muted);
+      text-decoration:none;
+      font-size:14px;
+      margin-bottom:10px;
+      transition:color 0.3s;
+    }
+
+    .footer-contact a:hover{
+      color:var(--accent);
+    }
+
+    .footer-col h5{
+      font-family:'Roboto',sans-serif;
+      font-size:14px;
+      font-weight:900;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:var(--text);
+      margin-bottom:18px;
+    }
+
+    .footer-col a{
+      display:block;
+      color:var(--muted);
+      text-decoration:none;
+      font-size:14px;
+      margin-bottom:10px;
+      transition:color 0.3s;
+      line-height:1.7;
+    }
+
+    .footer-col a:hover{
+      color:var(--accent);
+    }
+
+    .footer-bottom{
+      border-top:1px solid var(--border);
+      padding-top:22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-bottom p{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .social-links{
+      display:flex;
+      gap:10px;
+    }
+
+    .social-links a{
+      width:38px;
+      height:38px;
+      border-radius:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.03);
+      color:var(--text);
+      transition:all 0.3s;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .social-links a:hover{
+      border-color:var(--accent);
+      color:var(--accent);
+      background:rgba(0,170,255,0.08);
+    }
+
+    /* ANIMATION */
+    .reveal{
+      opacity:0;
+      transform:translateY(40px);
+      transition:all 0.7s ease;
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width:1100px){
+      .bpo-hero-content,
+      .overview-grid,
+      .why-top,
+      .industries-grid{
+        grid-template-columns:1fr;
+      }
+
+      .cap-grid{
+        grid-template-columns:1fr;
+      }
+
+      .why-bpo-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .bpo-hero-visual,
+      .hero-image-card{
+        min-height:auto;
+      }
+
+      .hero-image-card{
+        min-height:520px;
+      }
+    }
+
+    @media (max-width:900px){
+      .container{
+        width:min(var(--container), calc(100% - 28px));
+      }
+
+      nav{
+        padding:0;
+      }
+
+      .nav-wrap{
+        min-height:auto;
+        padding:16px 0;
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .nav-links{
+        width:100%;
+        gap:14px;
+      }
+
+      .bpo-hero{
+        padding:130px 0 70px;
+        min-height:auto;
+      }
+
+      .bpo-overview,
+      .capabilities,
+      .why-bpo,
+      .industries,
+      .cta-band{
+        padding:70px 0;
+      }
+
+      .why-bpo-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .cta-content{
+        padding:38px 24px;
+      }
+
+      .overview-image img,
+      .why-image img,
+      .industries-image img{
+        height:300px;
+      }
+    }
+
+    @media (max-width:640px){
+      .nav-links{
+        display:none;
+      }
+
+      .bpo-hero h1{
+        font-size:2.4rem;
+      }
+
+      .hero-actions,
+      .cta-actions{
+        flex-direction:column;
+      }
+
+      .btn-primary,
+      .btn-secondary{
+        width:100%;
+      }
+
+      .hero-image-card{
+        min-height:420px;
+      }
+
+      .availability-badge{
+        position:static;
+        width:100%;
+        margin-top:16px;
+        background:var(--card);
+      }
+
+      .why-bpo-grid,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .cap-item img{
+        height:210px;
+      }
+
+      .overview-image img,
+      .why-image img,
+      .industries-image img{
+        height:240px;
+      }
+
+      .cta-wrap{
+        min-height:430px;
+      }
+
+      .footer-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    .menu-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  transition: 0.3s ease;
+}
+
+.menu-toggle:hover {
+  border-color: rgba(0, 170, 255, 0.35);
+  background: rgba(0, 170, 255, 0.08);
+}
+
+.menu-toggle span {
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  border-radius: 10px;
+  transition: 0.3s ease;
+  display: block;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu {
+  display: none;
+  width: 100%;
+  padding: 0 24px 20px;
+  background: rgba(7, 16, 24, 0.96);
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-menu.active {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-menu a {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 14px;
+  border-radius: 12px;
+  transition: 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.mobile-menu a:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border);
+}
+
+.mobile-menu .mobile-cta {
+  margin-top: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #00131d;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(var(--max-width), calc(100% - 24px));
+  }
+
+  .section-space,
+  .services,
+  .partnership,
+  .group-section,
+  .why,
+  .cta {
+    padding: 75px 0;
+  }
+
+  .nav-wrap {
+    padding: 14px 0;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .hero {
+    padding: 40px 0 50px;
+  }
+
+  .hero-grid {
+    min-height: auto;
+    gap: 28px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-main-image {
+    min-height: auto;
+  }
+
+  .hero-main-image img {
+    height: 360px;
+  }
+
+  .floating-card {
+    position: static;
+    margin-top: 14px;
+    max-width: 100%;
+  }
+
+  .stats-grid,
+  .services-grid,
+  .group-grid,
+  .why-grid,
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-image img,
+  .group-image img,
+  .why-image img {
+    height: 300px;
+  }
+
+  .service-image {
+    height: 210px;
+  }
+
+  .group-card img {
+    height: 200px;
+  }
+
+  .cta-box {
+    min-height: 520px;
+  }
+
+  .cta-content {
+    padding: 40px 24px;
+  }
+
+  .cta-content p {
+    font-size: 15px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-wrap">
+    <a class="nav-logo" href="index.html">
+      <div class="nav-logo-icon">VV</div>
+      <div class="nav-brand">VV <span>Travco</span></div>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-links desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="bpo.html">BPO</a>
+      <a href="digital.html">Digital</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Contact Us</a>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="bpo.html">BPO</a>
+    <a href="digital.html">Digital</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="mobile-cta">Contact Us</a>
+  </div>
+</nav>
+
+  <section class="bpo-hero">
+    <div class="bpo-hero-bg"></div>
+    <div class="container bpo-hero-content">
+      <div class="reveal">
+        <div class="section-tag">BPO EXCELLENCE</div>
+        <h1>Scalable <span>BPO</span><br>Solutions</h1>
+        <p>
+          Flexible, cost-effective Business Process Outsourcing designed to reduce operational costs while boosting productivity and customer experience — available 24/7 with trained teams and reliable delivery.
+        </p>
+
+        <div class="hero-actions">
+          <a href="contact.html" class="btn-primary">Get a Custom Quote</a>
+          <a href="services.html" class="btn-secondary">Explore Services</a>
+        </div>
+      </div>
+
+      <div class="bpo-hero-visual reveal">
+        <div class="hero-image-card">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80" alt="BPO support team">
+        </div>
+
+        <div class="availability-badge">
+          <div class="pulse-ring">
+            <div class="inner">🎧</div>
+          </div>
+          <h3>24/7</h3>
+          <p>Always-on support across calls, emails, live chat, and customer handling operations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bpo-overview">
+    <div class="container overview-grid">
+      <div class="overview-image reveal">
+        <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80" alt="Business operations and support">
+      </div>
+
+      <div class="reveal">
+        <div class="section-tag">WHY OUR BPO WORKS</div>
+        <h2 class="section-title">Operational Support That Drives <span>Better Results</span></h2>
+        <p class="section-desc">
+          Our BPO services are designed to support growing businesses with structured systems, quick response times, skilled people, and measurable performance across customer support, travel processing, backend tasks, and CRM management.
+        </p>
+
+        <div class="overview-points">
+          <div class="overview-point">
+            <div class="overview-point-icon">✓</div>
+            <div>
+              <strong>Dedicated Service Teams</strong>
+              <span>Trained professionals aligned with your process, service flow, and business goals.</span>
+            </div>
+          </div>
+
+          <div class="overview-point">
+            <div class="overview-point-icon">✓</div>
+            <div>
+              <strong>Process Efficiency</strong>
+              <span>Structured workflows that improve accuracy, response time, and daily operations.</span>
+            </div>
+          </div>
+
+          <div class="overview-point">
+            <div class="overview-point-icon">✓</div>
+            <div>
+              <strong>Business Scalability</strong>
+              <span>Flexible support models that expand with your service volume and market demand.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="capabilities">
+    <div class="container">
+      <div class="section-tag reveal">SERVICE CAPABILITIES</div>
+      <h2 class="section-title reveal">Our BPO <span>Capabilities</span></h2>
+
+      <div class="cap-grid">
+        <div class="cap-item reveal">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" alt="24/7 customer support">
+          <div class="cap-body">
+            <div class="cap-num">01</div>
+            <div class="cap-title">24/7 Customer Support</div>
+            <p class="cap-desc">Providing seamless round-the-clock support across calls, emails, and live chat to ensure an excellent customer experience at every touchpoint.</p>
+            <div class="cap-tags">
+              <span class="cap-tag">Phone Support</span>
+              <span class="cap-tag">Email Support</span>
+              <span class="cap-tag">Live Chat</span>
+              <span class="cap-tag">Ticket Management</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cap-item reveal">
+          <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?auto=format&fit=crop&w=1200&q=80" alt="Sales support and lead management">
+          <div class="cap-body">
+            <div class="cap-num">02</div>
+            <div class="cap-title">Sales Support & Lead Management</div>
+            <p class="cap-desc">Handling inquiries, follow-ups, and conversions to boost sales performance and revenue growth through structured lead management pipelines.</p>
+            <div class="cap-tags">
+              <span class="cap-tag">Lead Generation</span>
+              <span class="cap-tag">Follow-ups</span>
+              <span class="cap-tag">CRM Management</span>
+              <span class="cap-tag">Conversion Tracking</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cap-item reveal">
+          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80" alt="Travel operations management">
+          <div class="cap-body">
+            <div class="cap-num">03</div>
+            <div class="cap-title">Travel Operations Management</div>
+            <p class="cap-desc">End-to-end handling of bookings, itineraries, and travel coordination for smooth service delivery. Our team specializes in travel BPO support.</p>
+            <div class="cap-tags">
+              <span class="cap-tag">Booking Management</span>
+              <span class="cap-tag">Itinerary Handling</span>
+              <span class="cap-tag">Vendor Coordination</span>
+              <span class="cap-tag">GDS Systems</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cap-item reveal">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Backend processing and administration">
+          <div class="cap-body">
+            <div class="cap-num">04</div>
+            <div class="cap-title">Backend Processing & Administration</div>
+            <p class="cap-desc">Efficient management of documentation, invoicing, and daily operational workflows to keep your back-office running smoothly.</p>
+            <div class="cap-tags">
+              <span class="cap-tag">Documentation</span>
+              <span class="cap-tag">Invoicing</span>
+              <span class="cap-tag">Data Entry</span>
+              <span class="cap-tag">Admin Tasks</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cap-item reveal">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" alt="Visa and ticketing support">
+          <div class="cap-body">
+            <div class="cap-num">05</div>
+            <div class="cap-title">Visa, Ticketing & Travel Assistance</div>
+            <p class="cap-desc">Expert support in visa processing, flight bookings, and comprehensive travel-related services for individuals and corporate clients.</p>
+            <div class="cap-tags">
+              <span class="cap-tag">Visa Processing</span>
+              <span class="cap-tag">Flight Booking</span>
+              <span class="cap-tag">Travel Support</span>
+              <span class="cap-tag">Documentation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cap-item reveal">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Data management and CRM handling">
+          <div class="cap-body">
+            <div class="cap-num">06</div>
+            <div class="cap-title">Data Management & CRM Handling</div>
+            <p class="cap-desc">Accurate data entry, comprehensive reporting, and CRM management to improve business efficiency and generate actionable insights.</p>
+            <div class="cap-tags">
+              <span class="cap-tag">Data Entry</span>
+              <span class="cap-tag">CRM Management</span>
+              <span class="cap-tag">Reporting</span>
+              <span class="cap-tag">Analytics</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cap-item reveal">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="IT support and digital solutions">
+          <div class="cap-body">
+            <div class="cap-num">07</div>
+            <div class="cap-title">IT Support & Digital Solutions</div>
+            <p class="cap-desc">Technical support, system management, and digital tools implementation to streamline operations and improve business productivity.</p>
+            <div class="cap-tags">
+              <span class="cap-tag">Tech Support</span>
+              <span class="cap-tag">System Admin</span>
+              <span class="cap-tag">Digital Tools</span>
+              <span class="cap-tag">Help Desk</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cap-item reveal">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80" alt="Scalable and cost effective solutions">
+          <div class="cap-body">
+            <div class="cap-num">08</div>
+            <div class="cap-title">Scalable & Cost-Effective Solutions</div>
+            <p class="cap-desc">Flexible BPO services designed to reduce operational costs while improving productivity and enabling sustainable business growth.</p>
+            <div class="cap-tags">
+              <span class="cap-tag">Cost Reduction</span>
+              <span class="cap-tag">Scalable Teams</span>
+              <span class="cap-tag">Flexible SLAs</span>
+              <span class="cap-tag">KPI Tracking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-bpo">
+    <div class="container">
+      <div class="why-top">
+        <div class="reveal">
+          <div class="section-tag">WHY CHOOSE US</div>
+          <h2 class="section-title">The <span>VV Travco</span> BPO Advantage</h2>
+          <p class="section-desc">
+            We combine cost efficiency, structured operations, service quality, and flexible team models to help businesses deliver better support and grow with confidence.
+          </p>
+        </div>
+
+        <div class="why-image reveal">
+          <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80" alt="BPO advantage and operations">
+        </div>
+      </div>
+
+      <div class="why-bpo-grid">
+        <div class="why-bpo-card reveal">
+          <span class="why-bpo-icon">💰</span>
+          <h3>Cost Reduction</h3>
+          <p>Significantly reduce operational costs without compromising on quality or service standards.</p>
+          <span class="big-stat">40%</span>
+          <small>Average cost savings</small>
+        </div>
+
+        <div class="why-bpo-card reveal">
+          <span class="why-bpo-icon">⚡</span>
+          <h3>Speed & Efficiency</h3>
+          <p>Faster turnaround times and streamlined processes that improve your overall business efficiency.</p>
+          <span class="big-stat">3x</span>
+          <small>Faster processing speed</small>
+        </div>
+
+        <div class="why-bpo-card reveal">
+          <span class="why-bpo-icon">📈</span>
+          <h3>Scalable Operations</h3>
+          <p>Scale your operations up or down based on demand with our flexible team structures.</p>
+          <span class="big-stat">100%</span>
+          <small>Scalable on demand</small>
+        </div>
+
+        <div class="why-bpo-card reveal">
+          <span class="why-bpo-icon">🌐</span>
+          <h3>Multi-Channel Support</h3>
+          <p>Seamlessly manage customer interactions across phone, email, chat, and support platforms.</p>
+          <span class="big-stat">5+</span>
+          <small>Support channels</small>
+        </div>
+
+        <div class="why-bpo-card reveal">
+          <span class="why-bpo-icon">🔒</span>
+          <h3>Data Security</h3>
+          <p>Enterprise-grade security protocols ensuring your business and customer data stays protected.</p>
+          <span class="big-stat">ISO</span>
+          <small>Standards compliant</small>
+        </div>
+
+        <div class="why-bpo-card reveal">
+          <span class="why-bpo-icon">🏆</span>
+          <h3>Quality Assurance</h3>
+          <p>Rigorous QA processes and regular audits to maintain the highest service standards consistently.</p>
+          <span class="big-stat">99%</span>
+          <small>Quality SLA maintained</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="industries">
+    <div class="container industries-grid">
+      <div class="industries-image reveal">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80" alt="Industries served by VV Travco">
+      </div>
+
+      <div class="reveal">
+        <div class="section-tag">INDUSTRIES WE SERVE</div>
+        <h2 class="section-title">Across Every <span>Industry</span></h2>
+        <p class="section-desc">
+          Our BPO support model adapts across multiple sectors, helping brands streamline customer interaction, operational handling, sales coordination, and backend support.
+        </p>
+
+        <div class="industry-tags">
+          <span class="industry-tag">✈️ Travel & Tourism</span>
+          <span class="industry-tag">🏨 Hospitality & Hotels</span>
+          <span class="industry-tag">🛒 E-Commerce & Retail</span>
+          <span class="industry-tag">💊 Healthcare & Medical</span>
+          <span class="industry-tag">🏦 Banking & Finance</span>
+          <span class="industry-tag">📡 Telecom & Technology</span>
+          <span class="industry-tag">🎓 Education & E-Learning</span>
+          <span class="industry-tag">🏢 Real Estate</span>
+          <span class="industry-tag">🚚 Logistics & Supply Chain</span>
+          <span class="industry-tag">⚡ Energy & Utilities</span>
+          <span class="industry-tag">🌍 Import & Export</span>
+          <span class="industry-tag">🎯 Marketing & Advertising</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-wrap reveal">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80" alt="Build your BPO team">
+        <div class="cta-overlay"></div>
+
+        <div class="cta-content">
+          <h2>Let's build your <span>BPO team</span></h2>
+          <p>Get a custom quote tailored to your business needs with flexible, scalable, and performance-focused support solutions.</p>
+          <div class="cta-actions">
+            <a href="contact.html" class="btn-primary">Get Free Quote</a>
+            <a href="about.html" class="btn-secondary">Learn About Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-name">VV <span>Travco</span></div>
+          <p>Your partner for growth & global exploration.</p>
+
+          <div class="footer-contact">
+            <a href="tel:+919848774484">📞 +91 9848774484</a>
+            <a href="mailto:vijay@vvtravco.com">✉️ vijay@vvtravco.com</a>
+            <a href="#">🌐 www.vvtravco.com</a>
+          </div>
+
+          <!-- <div class="footer-brand-image">
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80" alt="VV Travco office">
+          </div> -->
+        </div>
+
+        <div class="footer-col">
+          <h5>Services</h5>
+          <a href="digital.html">Digital Marketing</a>
+          <a href="bpo.html">BPO Services</a>
+          <a href="digital.html">Web Development</a>
+          <a href="services.html">HR Consultancy</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="about.html">About Us</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Twitter / X</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 VV Travco. All rights reserved.</p>
+
+        <div class="social-links">
+          <a href="#">IG</a>
+          <a href="#">FB</a>
+          <a href="#">IN</a>
+          <a href="#">X</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+    mobileMenu.classList.toggle("active");
+
+    const expanded = menuToggle.classList.contains("active");
+    menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+  });
+
+  document.querySelectorAll("#mobileMenu a").forEach(link => {
+    link.addEventListener("click", () => {
+      menuToggle.classList.remove("active");
+      mobileMenu.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+  </script>
+</body>
+</html>

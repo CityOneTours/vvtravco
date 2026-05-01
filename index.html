@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VV Travco | Creative Design Horizon</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #071018;
+      --bg2: #0b1621;
+      --bg3: #102030;
+      --card: #0e1c29;
+      --card2: #132536;
+      --accent: #00aaff;
+      --accent2: #00d4ff;
+      --text: #eef6ff;
+      --muted: #9eb0c2;
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 18px;
+      --max-width: 1240px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(180deg, #061018 0%, #09131d 40%, #071018 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .nav-brand,
+    .section-title,
+    .stat-num,
+    .svc-title,
+    .group-card-name,
+    .why-card h4,
+    .partner-logo-name,
+    .footer-logo {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    section {
+      position: relative;
+    }
+
+    .section-space {
+      padding: 100px 0;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--accent2);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(7, 16, 24, 0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrap {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #00131d;
+      font-weight: 900;
+      font-size: 16px;
+      box-shadow: 0 10px 24px rgba(0, 170, 255, 0.28);
+    }
+
+    .nav-brand {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .nav-brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #00131d !important;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 700 !important;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 70px 0 80px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0, 170, 255, 0.14), transparent 35%),
+        radial-gradient(circle at 85% 30%, rgba(0, 212, 255, 0.10), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(0, 140, 255, 0.08), transparent 35%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      min-height: calc(100vh - 120px);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      background: rgba(0, 170, 255, 0.08);
+      color: var(--accent2);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 4vw, 5.6rem);
+      font-weight: 900;
+      line-height: 1.02;
+      margin-bottom: 22px;
+    }
+
+    .hero-title .gradient {
+      display: inline-block;
+      background: linear-gradient(135deg, #8bdfff, #00d4ff, #00aaff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 26px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #00131d;
+      box-shadow: 0 16px 35px rgba(0, 170, 255, 0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(0, 170, 255, 0.35);
+      background: rgba(0, 170, 255, 0.08);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .hero-stat {
+      padding: 18px 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--accent2);
+      margin-bottom: 6px;
+    }
+
+    .hero-stat span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-main-image {
+      border-radius: 26px;
+      overflow: hidden;
+      min-height: 620px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+    }
+
+    .hero-main-image img {
+      width: 100%;
+      height: 620px;
+      object-fit: cover;
+    }
+
+    .hero-main-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.32));
+    }
+
+    .floating-card {
+      position: absolute;
+      background: rgba(10, 22, 33, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      max-width: 240px;
+    }
+
+    .floating-card h4 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .floating-card p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .floating-card.one {
+      top: 20px;
+      right: -20px;
+    }
+
+    .floating-card.two {
+      left: -20px;
+      bottom: 40px;
+    }
+
+    /* STATS SECTION */
+    .stats {
+      padding: 35px 0 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .stat-item {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-num {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      color: var(--accent2);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* SERVICES */
+    .services {
+      padding: 110px 0;
+    }
+
+    .services-grid {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: linear-gradient(180deg, rgba(19, 37, 54, 0.95), rgba(13, 27, 40, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      overflow: hidden;
+      transition: 0.35s ease;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0, 170, 255, 0.25);
+    }
+
+    .service-image {
+      height: 230px;
+      overflow: hidden;
+    }
+
+    .service-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .service-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .svc-num {
+      font-size: 12px;
+      color: var(--accent2);
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .svc-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.25;
+      color: #eaeced;
+    }
+
+    .svc-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .svc-link {
+      color: var(--accent2);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* PARTNERSHIP */
+    .partnership {
+      padding: 110px 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .partner-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .partner-image-wrap {
+      position: relative;
+    }
+
+    .partner-image {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .partner-image img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+    }
+
+    .partner-overlay-card {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      background: rgba(7, 16, 24, 0.88);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 22px;
+      width: min(320px, calc(100% - 48px));
+    }
+
+    .partner-logo-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .partner-logo-name {
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .partner-logo-name span {
+      color: var(--accent);
+    }
+
+    .partner-overlay-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .partner-points {
+      margin-top: 28px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .partner-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .partner-point-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: rgba(0, 170, 255, 0.15);
+      color: var(--accent2);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .partner-point div strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .partner-point div span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* GROUP */
+    .group-section {
+      padding: 110px 0;
+    }
+
+    .group-top {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 34px;
+      align-items: center;
+      margin-bottom: 46px;
+    }
+
+    .group-image {
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .group-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .group-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .group-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: 0.3s;
+    }
+
+    .group-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 170, 255, 0.22);
+    }
+
+    .group-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .group-card-content {
+      padding: 20px;
+    }
+
+    .group-card-name {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .group-card-type {
+      color: var(--accent2);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .group-card-text {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    /* WHY US */
+    .why {
+      padding: 110px 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .why-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: center;
+      margin-bottom: 44px;
+    }
+
+    .why-image {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .why-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .why-card {
+      background: linear-gradient(180deg, rgba(19, 37, 54, 0.95), rgba(11, 23, 34, 0.95));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 22px;
+      box-shadow: var(--shadow);
+      transition: 0.3s;
+    }
+
+    .why-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 170, 255, 0.26);
+    }
+
+    .why-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      background: rgba(0, 170, 255, 0.13);
+      margin-bottom: 16px;
+    }
+
+    .why-card h4 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .why-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 110px 0;
+    }
+
+    .cta-box {
+      position: relative;
+      border-radius: 30px;
+      overflow: hidden;
+      min-height: 460px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cta-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(5, 12, 18, 0.92) 0%, rgba(5, 12, 18, 0.72) 45%, rgba(5, 12, 18, 0.5) 100%);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      padding: 70px;
+      max-width: 720px;
+    }
+
+    .cta-content h2 {
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-weight: 900;
+      margin-bottom: 18px;
+      line-height: 1.1;
+    }
+
+    .cta-content h2 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cta-content p {
+      color: #d9e7f3;
+      font-size: 17px;
+      line-height: 1.9;
+      margin-bottom: 30px;
+      max-width: 580px;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 70px 0 30px;
+      background: #061018;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 34px;
+      margin-bottom: 36px;
+    }
+
+    .footer-logo {
+      font-size: 24px;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .footer-logo span {
+      color: var(--accent);
+    }
+
+    .footer-about p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+      margin-bottom: 20px;
+      max-width: 360px;
+    }
+
+    .footer-about-image {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .footer-about-image img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+    }
+
+    .footer-col h5 {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .footer-col a,
+    .footer-col p {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+      margin-bottom: 8px;
+    }
+
+    .footer-col a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: #fff;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      border-color: rgba(0, 170, 255, 0.25);
+      background: rgba(0, 170, 255, 0.12);
+    }
+
+    /* ANIMATION */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .partner-grid,
+      .group-top,
+      .why-top {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .group-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-top {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-main-image img,
+      .partner-image img,
+      .why-image img {
+        height: 480px;
+      }
+
+      .floating-card.one,
+      .floating-card.two {
+        position: absolute;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: min(var(--max-width), calc(100% - 24px));
+      }
+
+      .section-space,
+      .services,
+      .partnership,
+      .group-section,
+      .why,
+      .cta {
+        padding: 75px 0;
+      }
+
+      .nav-wrap {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero {
+        padding: 40px 0 50px;
+      }
+
+      .hero-grid {
+        min-height: auto;
+        gap: 28px;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-sub {
+        font-size: 16px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main-image {
+        min-height: auto;
+      }
+
+      .hero-main-image img {
+        height: 360px;
+      }
+
+      .floating-card {
+        position: static;
+        margin-top: 14px;
+        max-width: 100%;
+      }
+
+      .stats-grid,
+      .services-grid,
+      .group-grid,
+      .why-grid,
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+
+      .partner-image img,
+      .group-image img,
+      .why-image img {
+        height: 300px;
+      }
+
+      .service-image {
+        height: 210px;
+      }
+
+      .group-card img {
+        height: 200px;
+      }
+
+      .cta-box {
+        min-height: 520px;
+      }
+
+      .cta-content {
+        padding: 40px 24px;
+      }
+
+      .cta-content p {
+        font-size: 15px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.15rem;
+      }
+
+      .section-title {
+        font-size: 1.9rem;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+      }
+
+      .cta-actions,
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .cta-box {
+        min-height: 560px;
+      }
+    }
+
+
+    .menu-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  transition: 0.3s ease;
+}
+
+.menu-toggle:hover {
+  border-color: rgba(0, 170, 255, 0.35);
+  background: rgba(0, 170, 255, 0.08);
+}
+
+.menu-toggle span {
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  border-radius: 10px;
+  transition: 0.3s ease;
+  display: block;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu {
+  display: none;
+  width: 100%;
+  padding: 0 24px 20px;
+  background: rgba(7, 16, 24, 0.96);
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-menu.active {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-menu a {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 14px;
+  border-radius: 12px;
+  transition: 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.mobile-menu a:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border);
+}
+
+.mobile-menu .mobile-cta {
+  margin-top: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #00131d;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(var(--max-width), calc(100% - 24px));
+  }
+
+  .section-space,
+  .services,
+  .partnership,
+  .group-section,
+  .why,
+  .cta {
+    padding: 75px 0;
+  }
+
+  .nav-wrap {
+    padding: 14px 0;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .hero {
+    padding: 40px 0 50px;
+  }
+
+  .hero-grid {
+    min-height: auto;
+    gap: 28px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-main-image {
+    min-height: auto;
+  }
+
+  .hero-main-image img {
+    height: 360px;
+  }
+
+  .floating-card {
+    position: static;
+    margin-top: 14px;
+    max-width: 100%;
+  }
+
+  .stats-grid,
+  .services-grid,
+  .group-grid,
+  .why-grid,
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-image img,
+  .group-image img,
+  .why-image img {
+    height: 300px;
+  }
+
+  .service-image {
+    height: 210px;
+  }
+
+  .group-card img {
+    height: 200px;
+  }
+
+  .cta-box {
+    min-height: 520px;
+  }
+
+  .cta-content {
+    padding: 40px 24px;
+  }
+
+  .cta-content p {
+    font-size: 15px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <div class="container nav-wrap">
+    <a class="nav-logo" href="index.html">
+      <div class="nav-logo-icon">VV</div>
+      <div class="nav-brand">VV <span>Travco</span></div>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-links desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="bpo.html">BPO</a>
+      <a href="digital.html">Digital</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Contact Us</a>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="bpo.html">BPO</a>
+    <a href="digital.html">Digital</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="mobile-cta">Contact Us</a>
+  </div>
+</nav>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content reveal">
+        <div class="hero-badge">✦ CREATIVE DESIGN HORIZON</div>
+        <h1 class="hero-title">
+          Your Partner for <span class="gradient">Growth, Business Solutions</span> & Global Exploration
+        </h1>
+        <p class="hero-sub">
+          VV Travco delivers world-class Digital Services, BPO Solutions, HR Consultancy, Travel Management, and
+          Creative Design — all under one roof with a modern approach, strong execution, and global vision.
+        </p>
+
+        <div class="hero-actions">
+          <a href="services.html" class="btn-primary">Explore Services</a>
+          <a href="contact.html" class="btn-secondary">Get in Touch</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>500+</strong>
+            <span>Projects and campaigns delivered successfully</span>
+          </div>
+          <div class="hero-stat">
+            <strong>10+</strong>
+            <span>Countries served across multiple industries</span>
+          </div>
+          <div class="hero-stat">
+            <strong>24/7</strong>
+            <span>Support-driven BPO and business service network</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="hero-main-image">
+          <img src="images/image-7050.webp"
+            alt="Business and travel services">
+        </div>
+
+        <div class="floating-card one">
+          <h4>Digital Marketing</h4>
+          <p>Performance-driven branding, paid campaigns, social media, SEO, and creative strategy for global growth.</p>
+        </div>
+
+        <div class="floating-card two">
+          <h4>Travel & BPO Network</h4>
+          <p>Reliable support systems, travel operations, backend management, and end-to-end client servicing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num" data-target="9">1</div>
+        <div class="stat-label">Group Companies</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num" data-target="500">1</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num" data-target="10">1</div>
+        <div class="stat-label">Countries Served</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num" data-target="24">1</div>
+        <div class="stat-label">Customer Support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="services">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-tag">WHAT WE DO</div>
+        <h2 class="section-title">Core Services at <span>a Glance</span></h2>
+        <p class="section-desc">
+          From digital transformation to travel solutions, we deliver scalable business services with creativity,
+          precision, and strong operational support.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <a href="digital.html" class="service-card reveal">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+              alt="Digital marketing">
+          </div>
+          <div class="service-content">
+            <div class="svc-num">01</div>
+            <div class="svc-title">Digital Marketing & Branding</div>
+            <p class="svc-desc">
+              Social media management, SEO, paid ads, content planning, branding strategy, and digital presence building
+              for modern businesses.
+            </p>
+            <div class="svc-link">Explore More →</div>
+          </div>
+        </a>
+
+        <a href="bpo.html" class="service-card reveal">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
+              alt="BPO services">
+          </div>
+          <div class="service-content">
+            <div class="svc-num">02</div>
+            <div class="svc-title">BPO Services</div>
+            <p class="svc-desc">
+              24/7 customer support, backend operations, sales support, travel processing, and data management with
+              scalable business systems.
+            </p>
+            <div class="svc-link">Explore More →</div>
+          </div>
+        </a>
+
+        <a href="services.html" class="service-card reveal">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80"
+              alt="Travel solutions">
+          </div>
+          <div class="service-content">
+            <div class="svc-num">03</div>
+            <div class="svc-title">Travel & Tourism Solutions</div>
+            <p class="svc-desc">
+              End-to-end travel planning, visa support, itinerary management, hotel bookings, ticketing, and tourism
+              consultancy services.
+            </p>
+            <div class="svc-link">Explore More →</div>
+          </div>
+        </a>
+
+        <a href="digital.html" class="service-card reveal">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80"
+              alt="Creative design">
+          </div>
+          <div class="service-content">
+            <div class="svc-num">04</div>
+            <div class="svc-title">Creative Design & Video</div>
+            <p class="svc-desc">
+              Graphic design, marketing creatives, promotional visuals, short-form video editing, motion content, and
+              digital storytelling.
+            </p>
+            <div class="svc-link">Explore More →</div>
+          </div>
+        </a>
+
+        <a href="digital.html" class="service-card reveal">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+              alt="Web development">
+          </div>
+          <div class="service-content">
+            <div class="svc-num">05</div>
+            <div class="svc-title">Custom Web Development</div>
+            <p class="svc-desc">
+              Responsive business websites, landing pages, custom portals, admin systems, and digital platforms built
+              for performance and growth.
+            </p>
+            <div class="svc-link">Explore More →</div>
+          </div>
+        </a>
+
+        <a href="services.html" class="service-card reveal">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+              alt="HR consultancy">
+          </div>
+          <div class="service-content">
+            <div class="svc-num">06</div>
+            <div class="svc-title">HR Consultancy Services</div>
+            <p class="svc-desc">
+              Recruitment support, HR operations, compliance guidance, performance systems, team development, and
+              people-focused consulting.
+            </p>
+            <div class="svc-link">Explore More →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="partnership">
+    <div class="container partner-grid">
+      <div class="reveal">
+        <div class="section-tag">STRATEGIC PARTNERSHIP</div>
+        <h2 class="section-title">Cityone Tourism <span>& VV Travco</span></h2>
+        <p class="section-desc">
+          Two strong brands working together to deliver enhanced travel, digital, and operational solutions with better
+          service quality, broader market reach, and stronger execution.
+        </p>
+
+        <div class="partner-points">
+          <div class="partner-point">
+            <div class="partner-point-icon">✓</div>
+            <div>
+              <strong>Combined Expertise</strong>
+              <span>Integrated travel, business, digital, and support solutions for clients across sectors.</span>
+            </div>
+          </div>
+
+          <div class="partner-point">
+            <div class="partner-point-icon">✓</div>
+            <div>
+              <strong>Stronger Reach</strong>
+              <span>Expanded service capabilities across international and regional business markets.</span>
+            </div>
+          </div>
+
+          <div class="partner-point">
+            <div class="partner-point-icon">✓</div>
+            <div>
+              <strong>Operational Excellence</strong>
+              <span>Reliable systems, dedicated teams, and efficient client support from start to finish.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="partner-image-wrap reveal">
+        <div class="partner-image">
+          <img src="images/Gemini_Generated_Image_1nkfy11nkfy11nkf.png"
+            alt="Partnership and travel">
+        </div>
+
+        <div class="partner-overlay-card">
+          <div class="partner-logo-row">
+            <div class="partner-logo-name">VV <span>Travco</span></div>
+            <div style="font-size:20px;color:var(--accent2);font-weight:900;">+</div>
+            <div class="partner-logo-name"><span>CITY</span>ONE</div>
+          </div>
+          <p>
+            A partnership focused on delivering stronger travel support, better client service, and complete business
+            solutions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="group-section">
+    <div class="container">
+      <div class="group-top">
+        <div class="group-image reveal">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
+            alt="Our group companies">
+        </div>
+
+        <div class="reveal">
+          <div class="section-tag">OUR ECOSYSTEM</div>
+          <h2 class="section-title">Our Group of <span>Companies</span></h2>
+          <p class="section-desc">
+            Building long-term business value through trust, innovation, service excellence, and diverse industry
+            experience across multiple brands.
+          </p>
+        </div>
+      </div>
+
+      <div class="group-grid">
+        <div class="group-card reveal">
+          <img src="images/cityone-logo.png"
+            alt="Tourism company">
+          <div class="group-card-content">
+            <div class="group-card-name">Cityone Tourism & Travel</div>
+            <div class="group-card-type">Tourism & Hospitality</div>
+            <div class="group-card-text">Travel experiences, visa support, holiday planning, and destination services.</div>
+          </div>
+        </div>
+
+        <div class="group-card reveal">
+          <img src="images/whiterose.png"
+            alt="Trading company">
+          <div class="group-card-content">
+            <div class="group-card-name">Whiterose General Trading LLC</div>
+            <div class="group-card-type">General Trading</div>
+            <div class="group-card-text">Broad trading support and commercial supply services for growing markets.</div>
+          </div>
+        </div>
+
+        <div class="group-card reveal">
+          <img src="images/ybl.png"
+            alt="Beverage company">
+          <div class="group-card-content">
+            <div class="group-card-name">Yuti Breweries Ltd</div>
+            <div class="group-card-type">Beverages & FMCG</div>
+            <div class="group-card-text">Consumer beverage products with strong brand identity and market reach.</div>
+          </div>
+        </div>
+
+        <div class="group-card reveal">
+          <img src="images/whiterose (1).png"
+            alt="Lifestyle business">
+          <div class="group-card-content">
+            <div class="group-card-name">LumiLife</div>
+            <div class="group-card-type">Lifestyle & Smart Living</div>
+            <div class="group-card-text">Modern lifestyle-focused solutions designed for quality and better living.</div>
+          </div>
+        </div>
+
+        <div class="group-card reveal">
+          <img src="images/khotols-logo.png"
+            alt="Hotel business">
+          <div class="group-card-content">
+            <div class="group-card-name">K Hotels — The Pride of Uganda</div>
+            <div class="group-card-type">Hospitality</div>
+            <div class="group-card-text">Comfort, service excellence, and hospitality experiences built for guests.</div>
+          </div>
+        </div>
+
+        <div class="group-card reveal">
+          <img src="images/whiterose (2).png"
+            alt="Distribution company">
+          <div class="group-card-content">
+            <div class="group-card-name">HNH International Distribution</div>
+            <div class="group-card-type">International Distribution</div>
+            <div class="group-card-text">Efficient product movement, logistics support, and regional distribution systems.</div>
+          </div>
+        </div>
+
+        <div class="group-card reveal">
+          <img src="images/rudra.png"
+            alt="Agriculture company">
+          <div class="group-card-content">
+            <div class="group-card-name">Rudra Agro</div>
+            <div class="group-card-type">Agriculture & Commodities</div>
+            <div class="group-card-text">Agricultural growth, commodity support, and long-term value creation.</div>
+          </div>
+        </div>
+
+        <div class="group-card reveal">
+          <img src="images/emiboozi.png"
+            alt="Food and beverage">
+          <div class="group-card-content">
+            <div class="group-card-name">EmiBoozi Restobar by K Hotels</div>
+            <div class="group-card-type">Food & Beverage</div>
+            <div class="group-card-text">Dining, ambiance, and hospitality-driven food and beverage experiences.</div>
+          </div>
+        </div>
+
+        <div class="group-card reveal">
+          <img src="images/oneworld logo.png"
+            alt="Technology company">
+          <div class="group-card-content">
+            <div class="group-card-name">One World Tech Spares</div>
+            <div class="group-card-type">Technology & Spare Parts</div>
+            <div class="group-card-text">Technical support products, industrial solutions, and parts supply services.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="container">
+      <div class="why-top">
+        <div class="reveal">
+          <div class="section-tag">WHY CHOOSE US</div>
+          <h2 class="section-title">Built for <span>Results</span></h2>
+          <p class="section-desc">
+            We combine creative thinking, operational depth, responsive service, and multi-industry experience to help
+            businesses grow faster and serve better.
+          </p>
+        </div>
+
+        <div class="why-image reveal">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+            alt="Professional team">
+        </div>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon">🌐</div>
+          <h4>Global Network</h4>
+          <p>Strong international approach supported by multi-country experience and a reliable business network.</p>
+        </div>
+
+        <div class="why-card reveal">
+          <div class="why-icon">⚙️</div>
+          <h4>End-to-End Solutions</h4>
+          <p>From planning to execution, we handle digital, travel, BPO, HR, and business support services.</p>
+        </div>
+
+        <div class="why-card reveal">
+          <div class="why-icon">💡</div>
+          <h4>Creative Excellence</h4>
+          <p>Strong design direction, impactful visual communication, and modern digital presentation standards.</p>
+        </div>
+
+        <div class="why-card reveal">
+          <div class="why-icon">🔒</div>
+          <h4>Trusted & Reliable</h4>
+          <p>Committed teams, responsive communication, and a proven record of quality-focused service delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-box reveal">
+        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1400&q=80"
+          alt="Start your project">
+        <div class="cta-overlay"></div>
+
+        <div class="cta-content">
+          <div class="section-tag">GET STARTED</div>
+          <h2>Ready to <span>Grow Together?</span></h2>
+          <p>
+            Let VV Travco support your travel, branding, operations, digital growth, and business expansion with a
+            complete service-driven approach.
+          </p>
+
+          <div class="cta-actions">
+            <a href="contact.html" class="btn-primary">Start a Project</a>
+            <a href="portfolio.html" class="btn-secondary">See Our Work</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <div class="footer-logo">VV <span>Travco</span></div>
+          <p>
+            Your partner for growth and global exploration. Delivering digital services, BPO support, travel solutions,
+            and creative excellence worldwide.
+          </p>
+          <!-- <div class="footer-about-image">
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
+              alt="VV Travco office">
+          </div> -->
+        </div>
+
+        <div class="footer-col">
+          <h5>Services</h5>
+          <a href="digital.html">Digital Marketing</a>
+          <a href="bpo.html">BPO Services</a>
+          <a href="digital.html">Web Development</a>
+          <a href="digital.html">Creative Design</a>
+          <a href="services.html">HR Consultancy</a>
+          <a href="services.html">Travel Solutions</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="about.html">About Us</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">Our Group</a>
+          <a href="about.html">Partnership</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <p>📞 +91 9848774484</p>
+          <p>✉️ vijay@vvtravco.com</p>
+          <p>🌐 www.vvtravco.com</p>
+          <p>Available for travel, business support, and digital growth solutions.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 VV Travco. All rights reserved.</p>
+
+        <div class="social-links">
+          <a href="#">IG</a>
+          <a href="#">FB</a>
+          <a href="#">IN</a>
+          <a href="#">X</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+
+    const counters = document.querySelectorAll('.stat-num');
+
+const speed = 200; // lower = faster
+
+const startCounting = (counter) => {
+  const target = +counter.getAttribute('data-target');
+  let count = 1;
+
+  const updateCount = () => {
+    const increment = Math.ceil(target / speed);
+
+    if (count < target) {
+      count += increment;
+      counter.innerText = count;
+      setTimeout(updateCount, 20);
+    } else {
+      counter.innerText = target;
+
+      // Add + or 24/7 format
+      if (target !== 24) {
+        counter.innerText = target + "+";
+      } else {
+        counter.innerText = "24/7";
+      }
+    }
+  };
+
+  updateCount();
+};
+
+// Trigger on scroll (when visible)
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      startCounting(entry.target);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+counters.forEach(counter => {
+  counterObserver.observe(counter);
+});
+
+
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+    mobileMenu.classList.toggle("active");
+
+    const expanded = menuToggle.classList.contains("active");
+    menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+  });
+
+  document.querySelectorAll("#mobileMenu a").forEach(link => {
+    link.addEventListener("click", () => {
+      menuToggle.classList.remove("active");
+      mobileMenu.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Services | VV Travco</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#080c10;
+      --bg2:#0d1219;
+      --bg3:#111820;
+      --accent:#00aaff;
+      --accent2:#0077cc;
+      --accent3:#00d4ff;
+      --text:#e8f0fe;
+      --muted:#8899aa;
+      --card:#0f1823;
+      --card2:#142130;
+      --border:rgba(0,170,255,0.15);
+      --glow:0 0 40px rgba(0,170,255,0.18);
+      --shadow:0 18px 50px rgba(0,0,0,0.28);
+      --container:1240px;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:linear-gradient(180deg,#080c10 0%,#0b1117 50%,#080c10 100%);
+      color:var(--text);
+      font-family:'Roboto',sans-serif;
+      overflow-x:hidden;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(var(--container), calc(100% - 48px));
+      margin:0 auto;
+    }
+
+    .section-tag{
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:2px;
+      color:var(--accent);
+      font-weight:700;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .section-title{
+      font-family:'Roboto',sans-serif;
+      font-size:clamp(2rem,3.5vw,3.2rem);
+      font-weight:900;
+      margin-bottom:16px;
+      line-height:1.1;
+    }
+
+    .section-title span{
+      background:linear-gradient(135deg,var(--accent),var(--accent3));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    .section-desc{
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.8;
+      max-width:760px;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),var(--accent3));
+      color:#00131d;
+      padding:14px 28px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:15px;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      transition:all 0.3s;
+      box-shadow:0 12px 32px rgba(0,170,255,0.25);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-secondary{
+      border:1px solid var(--border);
+      color:var(--text);
+      padding:14px 28px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:15px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      transition:all 0.3s;
+      background:rgba(255,255,255,0.02);
+    }
+
+    .btn-secondary:hover{
+      border-color:var(--accent);
+      background:rgba(0,170,255,0.06);
+    }
+
+    /* NAV */
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:1000;
+      background:rgba(8,12,16,0.86);
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav-wrap{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .nav-logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+    }
+
+    .nav-logo-icon{
+      width:42px;
+      height:42px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:'Roboto',sans-serif;
+      font-weight:900;
+      font-size:16px;
+      color:#fff;
+      flex-shrink:0;
+    }
+
+    .nav-brand{
+      font-family:'Roboto',sans-serif;
+      font-weight:900;
+      font-size:20px;
+      color:var(--text);
+    }
+
+    .nav-brand span{
+      color:var(--accent);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:500;
+      transition:color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active{
+      color:var(--accent);
+    }
+
+    .nav-cta{
+      background:linear-gradient(135deg,var(--accent),var(--accent3));
+      color:#00131d !important;
+      padding:11px 22px;
+      border-radius:999px;
+      font-weight:700 !important;
+      font-size:13px;
+    }
+
+    /* HERO */
+    .page-hero{
+      padding:145px 0 90px;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(ellipse 60% 45% at 20% 0%, rgba(0,100,180,0.20), transparent),
+        radial-gradient(ellipse 45% 35% at 85% 10%, rgba(0,170,255,0.08), transparent);
+    }
+
+    .page-hero-bg{
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(0,170,255,0.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,170,255,0.03) 1px,transparent 1px);
+      background-size:60px 60px;
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:1.02fr 0.98fr;
+      gap:44px;
+      align-items:center;
+    }
+
+    .page-hero h1{
+      font-family:'Roboto',sans-serif;
+      font-size:clamp(2.8rem,6vw,5rem);
+      font-weight:900;
+      line-height:1.04;
+      margin-bottom:22px;
+    }
+
+    .page-hero h1 span{
+      background:linear-gradient(135deg,var(--accent),var(--accent3));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    .page-hero p{
+      color:var(--muted);
+      font-size:18px;
+      max-width:620px;
+      margin:0 0 30px;
+      line-height:1.8;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:18px;
+      margin-bottom:28px;
+    }
+
+    .services-tabs{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .tab{
+      padding:10px 18px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      font-size:13px;
+      font-weight:600;
+      color:var(--muted);
+      transition:all 0.3s;
+      background:transparent;
+    }
+
+    .tab.active,
+    .tab:hover{
+      background:rgba(0,170,255,0.1);
+      border-color:var(--accent);
+      color:var(--accent);
+    }
+
+    .hero-image-card{
+      position:relative;
+      min-height:560px;
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-image-card img{
+      width:100%;
+      height:560px;
+      object-fit:cover;
+    }
+
+    .hero-image-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.42));
+    }
+
+    .hero-overlay-box{
+      position:absolute;
+      left:18px;
+      right:18px;
+      bottom:18px;
+      z-index:2;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .hero-mini{
+      background:rgba(9,15,22,0.85);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:16px;
+      padding:16px;
+      backdrop-filter:blur(12px);
+    }
+
+    .hero-mini strong{
+      display:block;
+      font-size:24px;
+      font-weight:900;
+      color:var(--accent);
+      margin-bottom:4px;
+    }
+
+    .hero-mini span{
+      display:block;
+      color:#d7e7f3;
+      font-size:12px;
+      line-height:1.6;
+    }
+
+    /* SOCIAL MEDIA */
+    .social-section{
+      padding:100px 0;
+      background:var(--bg2);
+    }
+
+    .social-top{
+      display:grid;
+      grid-template-columns:0.95fr 1.05fr;
+      gap:40px;
+      align-items:center;
+      margin-bottom:50px;
+    }
+
+    .social-top-image{
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .social-top-image img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+    }
+
+    .social-layout{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:start;
+    }
+
+    .social-features{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .social-feature{
+      display:flex;
+      gap:18px;
+      padding:22px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      transition:all 0.3s;
+    }
+
+    .social-feature:hover{
+      border-color:var(--accent);
+      transform:translateX(8px);
+      box-shadow:var(--glow);
+    }
+
+    .sf-icon{
+      font-size:28px;
+      flex-shrink:0;
+    }
+
+    .sf-content h4{
+      font-family:'Roboto',sans-serif;
+      font-size:17px;
+      font-weight:900;
+      margin-bottom:6px;
+      line-height:1.35;
+    }
+
+    .sf-content p{
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .social-platforms{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:28px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .social-platforms img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      border-radius:14px;
+      margin-bottom:24px;
+    }
+
+    .sp-title{
+      font-family:'Roboto',sans-serif;
+      font-weight:900;
+      font-size:18px;
+      margin-bottom:20px;
+    }
+
+    .platforms-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+    }
+
+    .platform-item{
+      background:rgba(0,170,255,0.05);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:16px;
+      text-align:center;
+      transition:all 0.3s;
+    }
+
+    .platform-item:hover{
+      border-color:var(--accent);
+      background:rgba(0,170,255,0.1);
+    }
+
+    .platform-item .p-icon{
+      font-size:28px;
+      margin-bottom:8px;
+      display:block;
+    }
+
+    .platform-item .p-name{
+      font-family:'Roboto',sans-serif;
+      font-size:14px;
+      font-weight:900;
+    }
+
+    .platform-item .p-desc{
+      font-size:11px;
+      color:var(--muted);
+      margin-top:4px;
+    }
+
+    .what-included{
+      margin-top:20px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .what-included img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      border-radius:12px;
+      margin-bottom:18px;
+    }
+
+    .wi-title{
+      font-size:12px;
+      letter-spacing:1px;
+      color:var(--accent);
+      font-weight:700;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .wi-list{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .wi-item{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .wi-item::before{
+      content:'✓';
+      color:var(--accent);
+      font-weight:700;
+      flex-shrink:0;
+    }
+
+    /* STRATEGY */
+    .strategy-section{
+      padding:100px 0;
+    }
+
+    .strategy-top{
+      display:grid;
+      grid-template-columns:0.95fr 1.05fr;
+      gap:40px;
+      align-items:center;
+      margin-bottom:50px;
+    }
+
+    .strategy-image{
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .strategy-image img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+    }
+
+    .strategy-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+      margin-top:20px;
+    }
+
+    .strategy-item{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      overflow:hidden;
+      transition:all 0.3s;
+      box-shadow:0 10px 30px rgba(0,0,0,0.10);
+    }
+
+    .strategy-item:hover{
+      background:var(--card2);
+      border-color:var(--accent);
+      box-shadow:var(--glow);
+    }
+
+    .strategy-item img{
+      width:100%;
+      height:210px;
+      object-fit:cover;
+    }
+
+    .strategy-body{
+      padding:24px;
+    }
+
+    .si-bar{
+      width:60px;
+      height:4px;
+      background:linear-gradient(90deg,var(--accent),var(--accent3));
+      margin-bottom:18px;
+      transition:width 0.3s;
+    }
+
+    .strategy-item:hover .si-bar{
+      width:100px;
+    }
+
+    .si-title{
+      font-family:'Roboto',sans-serif;
+      font-size:21px;
+      font-weight:900;
+      margin-bottom:12px;
+      line-height:1.35;
+    }
+
+    .si-desc{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    /* WEB DEV */
+    .webdev-section{
+      padding:100px 0;
+      background:var(--bg2);
+    }
+
+    .webdev-top{
+      display:grid;
+      grid-template-columns:0.95fr 1.05fr;
+      gap:40px;
+      align-items:center;
+      margin-bottom:50px;
+    }
+
+    .webdev-image{
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .webdev-image img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+    }
+
+    .webdev-layout{
+      display:grid;
+      grid-template-columns:1fr 1.1fr;
+      gap:40px;
+      align-items:start;
+      margin-top:20px;
+    }
+
+    .webdev-features-list{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:8px 24px;
+      box-shadow:var(--shadow);
+    }
+
+    .wf-item{
+      display:flex;
+      gap:20px;
+      padding:24px 0;
+      border-bottom:1px solid var(--border);
+      align-items:flex-start;
+      transition:all 0.3s;
+    }
+
+    .wf-item:last-child{
+      border-bottom:none;
+    }
+
+    .wf-item:hover .wf-icon{
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#000;
+    }
+
+    .wf-icon{
+      width:48px;
+      height:48px;
+      background:var(--card2);
+      border:1px solid var(--border);
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      flex-shrink:0;
+      transition:all 0.3s;
+    }
+
+    .wf-content h4{
+      font-family:'Roboto',sans-serif;
+      font-size:17px;
+      font-weight:900;
+      margin-bottom:8px;
+      line-height:1.35;
+    }
+
+    .wf-content p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .tech-stack{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .tech-stack img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      border-radius:14px;
+      margin-bottom:22px;
+    }
+
+    .ts-title{
+      font-family:'Roboto',sans-serif;
+      font-weight:900;
+      font-size:18px;
+      margin-bottom:20px;
+    }
+
+    .tech-items{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .tech-item{
+      background:rgba(0,170,255,0.05);
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:12px 8px;
+      text-align:center;
+      font-size:12px;
+      font-weight:700;
+      color:var(--muted);
+      transition:all 0.3s;
+    }
+
+    .tech-item:hover{
+      border-color:var(--accent);
+      color:var(--accent);
+    }
+
+    /* DESIGN */
+    .design-section{
+      padding:100px 0;
+    }
+
+    .design-top{
+      display:grid;
+      grid-template-columns:0.95fr 1.05fr;
+      gap:40px;
+      align-items:center;
+      margin-bottom:50px;
+    }
+
+    .design-top-image{
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .design-top-image img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+    }
+
+    .design-carousel{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:22px;
+      margin-top:20px;
+    }
+
+    .design-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      overflow:hidden;
+      transition:all 0.35s;
+      box-shadow:0 10px 30px rgba(0,0,0,0.10);
+    }
+
+    .design-card:hover{
+      transform:translateY(-8px);
+      box-shadow:var(--glow);
+      border-color:var(--accent);
+    }
+
+    .design-card img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+    }
+
+    .design-preview{
+      height:120px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:52px;
+    }
+
+    .design-preview.g1{background:linear-gradient(135deg,rgba(0,100,180,0.3),rgba(0,170,255,0.1));}
+    .design-preview.g2{background:linear-gradient(135deg,rgba(0,60,120,0.4),rgba(0,200,255,0.1));}
+    .design-preview.g3{background:linear-gradient(135deg,rgba(0,80,160,0.3),rgba(0,150,200,0.15));}
+    .design-preview.g4{background:linear-gradient(135deg,rgba(0,120,200,0.2),rgba(0,180,255,0.1));}
+
+    .design-info{
+      padding:20px;
+    }
+
+    .design-info h4{
+      font-family:'Roboto',sans-serif;
+      font-size:16px;
+      font-weight:900;
+      margin-bottom:8px;
+      line-height:1.35;
+    }
+
+    .design-info p{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    /* CTA */
+    .cta-band{
+      padding:90px 0;
+      position:relative;
+    }
+
+    .cta-wrap{
+      position:relative;
+      border-radius:26px;
+      overflow:hidden;
+      min-height:360px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .cta-wrap img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .cta-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(8,12,16,0.92) 0%, rgba(8,12,16,0.78) 45%, rgba(8,12,16,0.55) 100%);
+    }
+
+    .cta-content{
+      position:relative;
+      z-index:2;
+      padding:60px;
+      max-width:720px;
+    }
+
+    .cta-content h2{
+      font-family:'Roboto',sans-serif;
+      font-size:clamp(2rem,4vw,3.2rem);
+      font-weight:900;
+      line-height:1.12;
+      margin-bottom:12px;
+    }
+
+    .cta-content h2 span{
+      color:var(--accent);
+    }
+
+    .cta-content p{
+      color:#d7e7f3;
+      margin-top:8px;
+      font-size:16px;
+      line-height:1.85;
+      margin-bottom:24px;
+    }
+
+    .cta-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    /* FOOTER */
+    footer{
+      background:var(--bg2);
+      border-top:1px solid var(--border);
+      padding:60px 0 30px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.5fr 1fr 1fr 1fr;
+      gap:38px;
+      margin-bottom:40px;
+    }
+
+    .footer-brand .logo-name{
+      font-family:'Roboto',sans-serif;
+      font-size:24px;
+      font-weight:900;
+      color:var(--text);
+      margin-bottom:12px;
+    }
+
+    .footer-brand .logo-name span{
+      color:var(--accent);
+    }
+
+    .footer-brand p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+      margin-bottom:18px;
+      max-width:360px;
+    }
+
+    .footer-brand-image{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      margin-top:18px;
+      max-width:360px;
+    }
+
+    .footer-brand-image img{
+      width:100%;
+      height:170px;
+      object-fit:cover;
+    }
+
+    .footer-contact a{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:var(--muted);
+      text-decoration:none;
+      font-size:14px;
+      margin-bottom:10px;
+      transition:color 0.3s;
+    }
+
+    .footer-contact a:hover{
+      color:var(--accent);
+    }
+
+    .footer-col h5{
+      font-family:'Roboto',sans-serif;
+      font-size:14px;
+      font-weight:900;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:var(--text);
+      margin-bottom:18px;
+    }
+
+    .footer-col a{
+      display:block;
+      color:var(--muted);
+      text-decoration:none;
+      font-size:14px;
+      margin-bottom:10px;
+      transition:color 0.3s;
+      line-height:1.7;
+    }
+
+    .footer-col a:hover{
+      color:var(--accent);
+    }
+
+    .footer-bottom{
+      border-top:1px solid var(--border);
+      padding-top:22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-bottom p{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .social-links{
+      display:flex;
+      gap:10px;
+    }
+
+    .social-links a{
+      width:38px;
+      height:38px;
+      border-radius:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.03);
+      color:var(--text);
+      transition:all 0.3s;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .social-links a:hover{
+      border-color:var(--accent);
+      color:var(--accent);
+      background:rgba(0,170,255,0.08);
+    }
+
+    /* ANIMATION */
+    .reveal{
+      opacity:0;
+      transform:translateY(40px);
+      transition:all 0.7s ease;
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width:1100px){
+      .hero-grid,
+      .social-top,
+      .social-layout,
+      .strategy-top,
+      .webdev-top,
+      .webdev-layout,
+      .design-top{
+        grid-template-columns:1fr;
+      }
+
+      .strategy-grid{
+        grid-template-columns:1fr;
+      }
+
+      .design-carousel{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .hero-overlay-box{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:900px){
+      .container{
+        width:min(var(--container), calc(100% - 28px));
+      }
+
+      nav{
+        padding:0;
+      }
+
+      .nav-wrap{
+        min-height:auto;
+        padding:16px 0;
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .nav-links{
+        width:100%;
+        gap:14px;
+      }
+
+      .page-hero{
+        padding:130px 0 70px;
+      }
+
+      .social-section,
+      .strategy-section,
+      .webdev-section,
+      .design-section,
+      .cta-band{
+        padding:70px 0;
+      }
+
+      .tech-items{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .cta-content{
+        padding:38px 24px;
+      }
+
+      .social-top-image img,
+      .strategy-image img,
+      .webdev-image img,
+      .design-top-image img{
+        height:300px;
+      }
+    }
+
+    @media (max-width:640px){
+      .nav-links{
+        display:none;
+      }
+
+      .page-hero h1{
+        font-size:2.4rem;
+      }
+
+      .hero-actions,
+      .cta-actions{
+        flex-direction:column;
+      }
+
+      .btn-primary,
+      .btn-secondary{
+        width:100%;
+      }
+
+      .hero-image-card img{
+        height:420px;
+      }
+
+      .hero-overlay-box{
+        position:static;
+        padding:16px;
+        background:var(--card);
+        border-top:1px solid var(--border);
+      }
+
+      .platforms-grid,
+      .design-carousel,
+      .footer-grid,
+      .tech-items{
+        grid-template-columns:1fr;
+      }
+
+      .strategy-item img,
+      .design-card img{
+        height:210px;
+      }
+
+      .cta-wrap{
+        min-height:430px;
+      }
+
+      .footer-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    .menu-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  transition: 0.3s ease;
+}
+
+.menu-toggle:hover {
+  border-color: rgba(0, 170, 255, 0.35);
+  background: rgba(0, 170, 255, 0.08);
+}
+
+.menu-toggle span {
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  border-radius: 10px;
+  transition: 0.3s ease;
+  display: block;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu {
+  display: none;
+  width: 100%;
+  padding: 0 24px 20px;
+  background: rgba(7, 16, 24, 0.96);
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-menu.active {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-menu a {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 14px;
+  border-radius: 12px;
+  transition: 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.mobile-menu a:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border);
+}
+
+.mobile-menu .mobile-cta {
+  margin-top: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #00131d;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(var(--max-width), calc(100% - 24px));
+  }
+
+  .section-space,
+  .services,
+  .partnership,
+  .group-section,
+  .why,
+  .cta {
+    padding: 75px 0;
+  }
+
+  .nav-wrap {
+    padding: 14px 0;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .hero {
+    padding: 40px 0 50px;
+  }
+
+  .hero-grid {
+    min-height: auto;
+    gap: 28px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-main-image {
+    min-height: auto;
+  }
+
+  .hero-main-image img {
+    height: 360px;
+  }
+
+  .floating-card {
+    position: static;
+    margin-top: 14px;
+    max-width: 100%;
+  }
+
+  .stats-grid,
+  .services-grid,
+  .group-grid,
+  .why-grid,
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-image img,
+  .group-image img,
+  .why-image img {
+    height: 300px;
+  }
+
+  .service-image {
+    height: 210px;
+  }
+
+  .group-card img {
+    height: 200px;
+  }
+
+  .cta-box {
+    min-height: 520px;
+  }
+
+  .cta-content {
+    padding: 40px 24px;
+  }
+
+  .cta-content p {
+    font-size: 15px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-wrap">
+    <a class="nav-logo" href="index.html">
+      <div class="nav-logo-icon">VV</div>
+      <div class="nav-brand">VV <span>Travco</span></div>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-links desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="bpo.html">BPO</a>
+      <a href="digital.html">Digital</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Contact Us</a>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="bpo.html">BPO</a>
+    <a href="digital.html">Digital</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="mobile-cta">Contact Us</a>
+  </div>
+</nav>
+
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="section-tag">DIGITAL SERVICES</div>
+        <h1>Transform Your Brand <br><span>Digitally</span></h1>
+        <p>Marketing, Design, Web Development, and Video Production — everything your brand needs to dominate the digital landscape with clarity, creativity, and results.</p>
+
+        <div class="hero-actions">
+          <a href="contact.html" class="btn-primary">Get a Free Proposal</a>
+          <a href="portfolio.html" class="btn-secondary">See Portfolio</a>
+        </div>
+
+        <div class="services-tabs">
+          <div class="tab active">Social Media</div>
+          <div class="tab">Digital Strategy</div>
+          <div class="tab">Web Development</div>
+          <div class="tab">Creative Design</div>
+          <div class="tab">Video Editing</div>
+        </div>
+      </div>
+
+      <div class="hero-image-card reveal">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80" alt="Digital marketing and brand growth">
+        <div class="hero-overlay-box">
+          <div class="hero-mini">
+            <strong>360°</strong>
+            <span>Complete digital solutions for growing brands</span>
+          </div>
+          <div class="hero-mini">
+            <strong>24/7</strong>
+            <span>Creative and strategic support when you need it</span>
+          </div>
+          <div class="hero-mini">
+            <strong>ROI</strong>
+            <span>Performance-focused campaigns and content delivery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL MEDIA -->
+  <section class="social-section">
+    <div class="container">
+      <div class="social-top">
+        <div class="social-top-image reveal">
+          <img src="images/digital-transformation-insights.jpg" alt="Social media management">
+        </div>
+
+        <div class="reveal">
+          <div class="section-tag">SOCIAL MEDIA MANAGEMENT</div>
+          <h2 class="section-title">Engage Your Audience <br><span>Where They Are</span></h2>
+          <p class="section-desc">We manage your brand presence across major social media platforms with strong planning, custom content, short videos, and reporting that helps you grow consistently.</p>
+        </div>
+      </div>
+
+      <div class="social-layout">
+        <div class="social-features reveal">
+          <div class="social-feature">
+            <div class="sf-icon">📱</div>
+            <div class="sf-content">
+              <h4>Expert Platform Management</h4>
+              <p>Professional management of Instagram, Facebook, LinkedIn, Twitter/X, and more with strategic posting schedules.</p>
+            </div>
+          </div>
+
+          <div class="social-feature">
+            <div class="sf-icon">📅</div>
+            <div class="sf-content">
+              <h4>Content Planning & Strategy</h4>
+              <p>Monthly content calendars with creative strategies, trending topics, and brand-aligned messaging.</p>
+            </div>
+          </div>
+
+          <div class="social-feature">
+            <div class="sf-icon">🎨</div>
+            <div class="sf-content">
+              <h4>Custom Graphic Design</h4>
+              <p>Stunning custom visuals for posts, stories, highlights, carousels, and profile branding that captures attention.</p>
+            </div>
+          </div>
+
+          <div class="social-feature">
+            <div class="sf-icon">🎬</div>
+            <div class="sf-content">
+              <h4>Short-Form Videos & Reels</h4>
+              <p>Professional video editing for Instagram Reels, YouTube Shorts, and TikToks that drive engagement and views.</p>
+            </div>
+          </div>
+
+          <div class="social-feature">
+            <div class="sf-icon">📊</div>
+            <div class="sf-content">
+              <h4>Analytics & Performance Reports</h4>
+              <p>Monthly detailed reports on engagement, reach, follower growth, and ROI with actionable insights.</p>
+            </div>
+          </div>
+
+          <div class="social-feature">
+            <div class="sf-icon">💬</div>
+            <div class="sf-content">
+              <h4>Community Engagement</h4>
+              <p>Active community management, responding to comments, DMs, and building organic audience growth.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="social-platforms">
+            <img src="images/Gemini_Generated_Image_ey46oqey46oqey46.png" alt="Platforms we manage">
+            <div class="sp-title">Platforms We Manage</div>
+
+            <div class="platforms-grid">
+              <div class="platform-item"><span class="p-icon">📸</span><div class="p-name">Instagram</div><div class="p-desc">Feed, Stories, Reels</div></div>
+              <div class="platform-item"><span class="p-icon">👥</span><div class="p-name">Facebook</div><div class="p-desc">Pages, Groups, Ads</div></div>
+              <div class="platform-item"><span class="p-icon">💼</span><div class="p-name">LinkedIn</div><div class="p-desc">Company, Personal</div></div>
+              <div class="platform-item"><span class="p-icon">🐦</span><div class="p-name">Twitter / X</div><div class="p-desc">Threads, Spaces</div></div>
+              <div class="platform-item"><span class="p-icon">▶️</span><div class="p-name">YouTube</div><div class="p-desc">Shorts, Full Videos</div></div>
+              <div class="platform-item"><span class="p-icon">🎵</span><div class="p-name">TikTok</div><div class="p-desc">Viral Short Videos</div></div>
+            </div>
+          </div>
+
+          <div class="what-included">
+            <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1400&q=80" alt="Social media content planning">
+            <div class="wi-title">What's Included</div>
+            <div class="wi-list">
+              <div class="wi-item">Daily posting across platforms</div>
+              <div class="wi-item">Monthly content calendar</div>
+              <div class="wi-item">Custom graphic design for all posts</div>
+              <div class="wi-item">3–5 Reels/videos per month</div>
+              <div class="wi-item">Hashtag & SEO research</div>
+              <div class="wi-item">Monthly performance report</div>
+              <div class="wi-item">Community management</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRATEGY -->
+  <section class="strategy-section">
+    <div class="container">
+      <div class="strategy-top">
+        <div class="strategy-image reveal">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80" alt="Digital strategy planning">
+        </div>
+
+        <div class="reveal">
+          <div class="section-tag">DIGITAL STRATEGY</div>
+          <h2 class="section-title">Custom Digital Strategies <br><span>for Your Brand</span></h2>
+          <p class="section-desc">We build focused digital strategies based on brand goals, audience behavior, competitive positioning, and channel performance so your business grows in the right direction.</p>
+        </div>
+      </div>
+
+      <div class="strategy-grid">
+        <div class="strategy-item reveal">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80" alt="Brand and audience analysis">
+          <div class="strategy-body">
+            <div class="si-bar"></div>
+            <div class="si-title">In-Depth Brand & Audience Analysis</div>
+            <p class="si-desc">We study your brand, competitors, and target audience to uncover insights that drive smarter marketing decisions and differentiated positioning.</p>
+          </div>
+        </div>
+
+        <div class="strategy-item reveal">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Goal aligned digital strategy">
+          <div class="strategy-body">
+            <div class="si-bar"></div>
+            <div class="si-title">Goal-Aligned Digital Strategy</div>
+            <p class="si-desc">Every strategy we craft is tailored directly to your business goals — whether it is lead generation, brand awareness, sales, or community growth.</p>
+          </div>
+        </div>
+
+        <div class="strategy-item reveal">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80" alt="Integrated multichannel approach">
+          <div class="strategy-body">
+            <div class="si-bar"></div>
+            <div class="si-title">Integrated Multi-Channel Approach</div>
+            <p class="si-desc">We connect all your digital touchpoints — social, email, SEO, paid ads, and content — into one cohesive strategy that amplifies results.</p>
+          </div>
+        </div>
+
+        <div class="strategy-item reveal">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="Performance optimization">
+          <div class="strategy-body">
+            <div class="si-bar"></div>
+            <div class="si-title">Ongoing Performance Optimization</div>
+            <p class="si-desc">Regular performance reviews, A/B testing, and data-driven adjustments to ensure your campaigns continuously improve and deliver maximum ROI.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEB DEV -->
+  <section class="webdev-section">
+    <div class="container">
+      <div class="webdev-top">
+        <div class="webdev-image reveal">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80" alt="Web development solutions">
+        </div>
+
+        <div class="reveal">
+          <div class="section-tag">WEB DEVELOPMENT</div>
+          <h2 class="section-title">Transform Your Business <br><span>Digitally</span></h2>
+          <p class="section-desc">Empower your business with innovative web solutions designed for growth, performance, user engagement, and seamless digital operations.</p>
+        </div>
+      </div>
+
+      <div class="webdev-layout">
+        <div class="reveal">
+          <div class="webdev-features-list">
+            <div class="wf-item">
+              <div class="wf-icon">🏬</div>
+              <div class="wf-content">
+                <h4>Business Websites & E-Commerce</h4>
+                <p>Building robust online storefronts and corporate websites that convert visitors into customers with compelling UX.</p>
+              </div>
+            </div>
+
+            <div class="wf-item">
+              <div class="wf-icon">⚙️</div>
+              <div class="wf-content">
+                <h4>Custom Portals & Admin Panels</h4>
+                <p>Tailored web applications and admin dashboards for streamlined internal operations and data management.</p>
+              </div>
+            </div>
+
+            <div class="wf-item">
+              <div class="wf-icon">🔗</div>
+              <div class="wf-content">
+                <h4>Seamless API Integration</h4>
+                <p>Connecting CRM systems, payment gateways, chatbots, and third-party tools effortlessly into your platform.</p>
+              </div>
+            </div>
+
+            <div class="wf-item">
+              <div class="wf-icon">📱</div>
+              <div class="wf-content">
+                <h4>Mobile-Friendly & Fast-Loading</h4>
+                <p>Fully responsive, optimized-for-speed websites that deliver a flawless experience across all devices and browsers.</p>
+              </div>
+            </div>
+
+            <div class="wf-item">
+              <div class="wf-icon">🔍</div>
+              <div class="wf-content">
+                <h4>SEO-Ready Architecture</h4>
+                <p>Every website is built with clean code, fast loading, and SEO best practices for maximum search engine visibility.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="tech-stack">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80" alt="Web development tech stack">
+            <div class="ts-title">Our Tech Stack</div>
+            <div class="tech-items">
+              <div class="tech-item">React</div>
+              <div class="tech-item">Next.js</div>
+              <div class="tech-item">Node.js</div>
+              <div class="tech-item">WordPress</div>
+              <div class="tech-item">Shopify</div>
+              <div class="tech-item">PHP</div>
+              <div class="tech-item">MySQL</div>
+              <div class="tech-item">MongoDB</div>
+              <div class="tech-item">AWS</div>
+              <div class="tech-item">Figma</div>
+              <div class="tech-item">Webflow</div>
+              <div class="tech-item">Wix</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGN & VIDEO -->
+  <section class="design-section">
+    <div class="container">
+      <div class="design-top">
+        <div class="design-top-image reveal">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80" alt="Creative design and video production">
+        </div>
+
+        <div class="reveal">
+          <div class="section-tag">CREATIVE DESIGN & VIDEO</div>
+          <h2 class="section-title">Visually Compelling <br><span>Content</span></h2>
+          <p class="section-desc">From brand identity to motion graphics and video content, we create visuals that build trust, attract attention, and strengthen your digital presence.</p>
+        </div>
+      </div>
+
+      <div class="design-carousel">
+        <div class="design-card reveal">
+          <img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?auto=format&fit=crop&w=1200&q=80" alt="Brand identity design">
+          <div class="design-info">
+            <h4>Brand Identity Design</h4>
+            <p>Logos, color palettes, typography, and brand guidelines that shape a strong visual presence.</p>
+          </div>
+        </div>
+
+        <div class="design-card reveal">
+          <img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?auto=format&fit=crop&w=1200&q=80" alt="Social media creatives">
+          <div class="design-info">
+            <h4>Social Media Creatives</h4>
+            <p>Posts, stories, carousels, cover designs, and visual content optimized for online engagement.</p>
+          </div>
+        </div>
+
+        <div class="design-card reveal">
+          <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80" alt="Video production and editing">
+          <div class="design-info">
+            <h4>Video Production & Editing</h4>
+            <p>Reels, shorts, brand videos, ad edits, and visual storytelling for modern digital campaigns.</p>
+          </div>
+        </div>
+
+        <div class="design-card reveal">
+          <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=80" alt="Motion graphics and animation">
+          <div class="design-info">
+            <h4>Motion Graphics & Animation</h4>
+            <p>Logo animations, intros, explainer videos, and dynamic content that adds movement and impact.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-wrap reveal">
+        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80" alt="Grow your brand digitally">
+        <div class="cta-overlay"></div>
+
+        <div class="cta-content">
+          <h2>Let's grow your brand <span>digitally</span></h2>
+          <p>Get a custom digital strategy proposal tailored to your business goals, audience, and online growth plan.</p>
+
+          <div class="cta-actions">
+            <a href="contact.html" class="btn-primary">Get a Free Proposal</a>
+            <a href="portfolio.html" class="btn-secondary">View Portfolio</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-name">VV <span>Travco</span></div>
+          <p>Your partner for growth & global exploration.</p>
+
+          <div class="footer-contact">
+            <a href="tel:+919848774484">📞 +91 9848774484</a>
+            <a href="mailto:vijay@vvtravco.com">✉️ vijay@vvtravco.com</a>
+            <a href="#">🌐 www.vvtravco.com</a>
+          </div>
+
+          <!-- <div class="footer-brand-image">
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80" alt="VV Travco office">
+          </div> -->
+        </div>
+
+        <div class="footer-col">
+          <h5>Services</h5>
+          <a href="digital.html">Digital Marketing</a>
+          <a href="bpo.html">BPO Services</a>
+          <a href="digital.html">Web Development</a>
+          <a href="services.html">HR Consultancy</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="about.html">About Us</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Twitter / X</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 VV Travco. All rights reserved.</p>
+
+        <div class="social-links">
+          <a href="#">IG</a>
+          <a href="#">FB</a>
+          <a href="#">IN</a>
+          <a href="#">X</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+    mobileMenu.classList.toggle("active");
+
+    const expanded = menuToggle.classList.contains("active");
+    menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+  });
+
+  document.querySelectorAll("#mobileMenu a").forEach(link => {
+    link.addEventListener("click", () => {
+      menuToggle.classList.remove("active");
+      mobileMenu.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+  </script>
+</body>
+</html>

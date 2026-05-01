@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | VV Travco</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#080c10;
+      --bg2:#0d1219;
+      --bg3:#111820;
+      --accent:#00aaff;
+      --accent2:#0077cc;
+      --accent3:#00d4ff;
+      --text:#e8f0fe;
+      --muted:#8899aa;
+      --card:#0f1823;
+      --card2:#142130;
+      --border:rgba(0,170,255,0.15);
+      --glow:0 0 40px rgba(0,170,255,0.18);
+      --shadow:0 18px 50px rgba(0,0,0,0.28);
+      --container:1240px;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:linear-gradient(180deg,#080c10 0%,#0b1117 50%,#080c10 100%);
+      color:var(--text);
+      font-family:'Roboto',sans-serif;
+      overflow-x:hidden;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(var(--container), calc(100% - 48px));
+      margin:0 auto;
+    }
+
+    .section-tag{
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:2px;
+      color:var(--accent);
+      font-weight:700;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .section-title{
+      font-family:'Roboto',sans-serif;
+      font-size:clamp(2rem,3.5vw,3.2rem);
+      font-weight:900;
+      margin-bottom:16px;
+      line-height:1.1;
+    }
+
+    .section-title span{
+      background:linear-gradient(135deg,var(--accent),var(--accent3));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    .section-desc{
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.8;
+      max-width:760px;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),var(--accent3));
+      color:#00131d;
+      padding:14px 28px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:15px;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      transition:all 0.3s;
+      box-shadow:0 12px 32px rgba(0,170,255,0.25);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-secondary{
+      border:1px solid var(--border);
+      color:var(--text);
+      padding:14px 28px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:15px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      transition:all 0.3s;
+      background:rgba(255,255,255,0.02);
+    }
+
+    .btn-secondary:hover{
+      border-color:var(--accent);
+      background:rgba(0,170,255,0.06);
+    }
+
+    /* NAV */
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:1000;
+      background:rgba(8,12,16,0.86);
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav-wrap{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .nav-logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+    }
+
+    .nav-logo-icon{
+      width:42px;
+      height:42px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:'Roboto',sans-serif;
+      font-weight:900;
+      font-size:16px;
+      color:#fff;
+      flex-shrink:0;
+    }
+
+    .nav-brand{
+      font-family:'Roboto',sans-serif;
+      font-weight:900;
+      font-size:20px;
+      color:var(--text);
+    }
+
+    .nav-brand span{
+      color:var(--accent);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:500;
+      letter-spacing:0.4px;
+      transition:color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active{
+      color:var(--accent);
+    }
+
+    .nav-cta{
+      background:linear-gradient(135deg,var(--accent),var(--accent3));
+      color:#00131d !important;
+      padding:11px 22px;
+      border-radius:999px;
+      font-weight:700 !important;
+      font-size:13px;
+    }
+
+    /* HERO */
+    .page-hero{
+      padding:145px 0 90px;
+      background:
+        radial-gradient(ellipse 60% 45% at 20% 0%, rgba(0,100,180,0.18), transparent),
+        radial-gradient(ellipse 45% 35% at 85% 10%, rgba(0,170,255,0.08), transparent);
+    }
+
+    .page-hero-grid{
+      display:grid;
+      grid-template-columns:1.02fr 0.98fr;
+      gap:44px;
+      align-items:center;
+    }
+
+    .page-hero h1{
+      font-family:'Roboto',sans-serif;
+      font-size:clamp(2.8rem,5vw,4.8rem);
+      font-weight:900;
+      line-height:1.04;
+      margin-bottom:22px;
+    }
+
+    .page-hero h1 span{
+      background:linear-gradient(135deg,var(--accent),var(--accent3));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    .page-hero p{
+      font-size:17px;
+      color:var(--muted);
+      line-height:1.85;
+      max-width:620px;
+      margin-bottom:28px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:20px;
+    }
+
+    .hero-image-card{
+      position:relative;
+      min-height:560px;
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-image-card img{
+      width:100%;
+      height:560px;
+      object-fit:cover;
+    }
+
+    .hero-image-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.40));
+    }
+
+    .hero-overlay-stats{
+      position:absolute;
+      left:18px;
+      right:18px;
+      bottom:18px;
+      z-index:2;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .hero-stat{
+      background:rgba(9,15,22,0.85);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:16px;
+      padding:16px;
+      backdrop-filter:blur(12px);
+    }
+
+    .hero-stat strong{
+      display:block;
+      font-size:26px;
+      font-weight:900;
+      color:var(--accent);
+      margin-bottom:4px;
+    }
+
+    .hero-stat span{
+      display:block;
+      color:#d7e7f3;
+      font-size:12px;
+      line-height:1.6;
+    }
+
+    /* HR SECTION */
+    .hr-section{
+      padding:100px 0;
+    }
+
+    .hr-top{
+      display:grid;
+      grid-template-columns:0.95fr 1.05fr;
+      gap:40px;
+      align-items:center;
+      margin-bottom:50px;
+    }
+
+    .hr-image{
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .hr-image img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+    }
+
+    .hr-intro{
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.8;
+      margin-top:10px;
+      max-width:700px;
+    }
+
+    .hr-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .hr-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      overflow:hidden;
+      transition:all 0.35s;
+      box-shadow:0 10px 30px rgba(0,0,0,0.12);
+    }
+
+    .hr-card:hover{
+      border-color:rgba(0,170,255,0.3);
+      transform:translateY(-6px);
+      box-shadow:var(--glow);
+    }
+
+    .hr-card img{
+      width:100%;
+      height:210px;
+      object-fit:cover;
+    }
+
+    .hr-card-body{
+      padding:24px;
+    }
+
+    .hr-card-icon{
+      width:54px;
+      height:54px;
+      background:linear-gradient(135deg,rgba(0,170,255,0.15),rgba(0,100,180,0.1));
+      border:1px solid var(--border);
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      margin-bottom:18px;
+    }
+
+    .hr-card h3{
+      font-family:'Roboto',sans-serif;
+      font-size:20px;
+      font-weight:900;
+      margin-bottom:12px;
+      line-height:1.35;
+    }
+
+    .hr-card p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.75;
+    }
+
+    .hr-card ul{
+      margin-top:16px;
+      padding-left:0;
+      list-style:none;
+    }
+
+    .hr-card ul li{
+      font-size:13px;
+      color:var(--muted);
+      padding:7px 0;
+      border-bottom:1px solid rgba(255,255,255,0.04);
+      display:flex;
+      align-items:center;
+      gap:8px;
+      line-height:1.6;
+    }
+
+    .hr-card ul li::before{
+      content:'→';
+      color:var(--accent);
+      font-size:12px;
+    }
+
+    /* TRAVEL */
+    .travel-section{
+      padding:100px 0;
+      background:var(--bg2);
+    }
+
+    .travel-hero-band{
+      background:linear-gradient(135deg,var(--card),rgba(0,60,120,0.3));
+      border:1px solid var(--border);
+      border-radius:24px;
+      overflow:hidden;
+      margin-bottom:54px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0;
+      align-items:stretch;
+      box-shadow:var(--shadow);
+    }
+
+    .travel-band-content{
+      padding:46px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .travel-hero-band h2{
+      font-family:'Roboto',sans-serif;
+      font-size:clamp(2rem,3vw,2.9rem);
+      font-weight:900;
+      margin-bottom:16px;
+      line-height:1.15;
+    }
+
+    .travel-hero-band h2 span{
+      color:var(--accent);
+    }
+
+    .travel-hero-band p{
+      color:var(--muted);
+      line-height:1.8;
+      font-size:15px;
+      margin-bottom:26px;
+    }
+
+    .travel-stats{
+      display:flex;
+      gap:28px;
+      flex-wrap:wrap;
+    }
+
+    .t-stat .num{
+      font-family:'Roboto',sans-serif;
+      font-size:2.3rem;
+      font-weight:900;
+      color:var(--accent);
+      line-height:1;
+    }
+
+    .t-stat .lbl{
+      font-size:12px;
+      color:var(--muted);
+      letter-spacing:0.5px;
+      margin-top:6px;
+    }
+
+    .travel-band-image{
+      min-height:100%;
+    }
+
+    .travel-band-image img{
+      width:100%;
+      height:100%;
+      min-height:380px;
+      object-fit:cover;
+    }
+
+    .travel-services-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+    }
+
+    .travel-service-item{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      overflow:hidden;
+      transition:all 0.3s;
+      box-shadow:0 10px 30px rgba(0,0,0,0.10);
+    }
+
+    .travel-service-item:hover{
+      border-color:var(--accent);
+      transform:translateY(-4px);
+      box-shadow:var(--glow);
+    }
+
+    .travel-service-item img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+    }
+
+    .travel-service-body{
+      padding:22px;
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+    }
+
+    .ts-icon{
+      font-size:28px;
+      flex-shrink:0;
+    }
+
+    .ts-content h4{
+      font-family:'Roboto',sans-serif;
+      font-size:18px;
+      font-weight:900;
+      margin-bottom:8px;
+      line-height:1.35;
+    }
+
+    .ts-content p{
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    /* PROCESS */
+    .process-section{
+      padding:100px 0;
+    }
+
+    .process-top{
+      display:grid;
+      grid-template-columns:0.95fr 1.05fr;
+      gap:40px;
+      align-items:center;
+      margin-bottom:48px;
+    }
+
+    .process-image{
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .process-image img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+    }
+
+    .process-steps{
+      display:flex;
+      gap:0;
+      margin-top:26px;
+      position:relative;
+      flex-wrap:wrap;
+    }
+
+    .process-steps::before{
+      content:'';
+      position:absolute;
+      top:40px;
+      left:40px;
+      right:40px;
+      height:2px;
+      background:linear-gradient(90deg,var(--accent),var(--accent3));
+      z-index:0;
+    }
+
+    .process-step{
+      flex:1;
+      min-width:220px;
+      text-align:center;
+      position:relative;
+      z-index:1;
+      padding:0 18px;
+    }
+
+    .step-num{
+      width:80px;
+      height:80px;
+      background:var(--card);
+      border:2px solid var(--accent);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:'Roboto',sans-serif;
+      font-size:22px;
+      font-weight:900;
+      color:var(--accent);
+      margin:0 auto 18px;
+    }
+
+    .step-title{
+      font-family:'Roboto',sans-serif;
+      font-weight:900;
+      font-size:16px;
+      margin-bottom:8px;
+    }
+
+    .step-desc{
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    /* CTA */
+    .cta-band{
+      padding:90px 0;
+      position:relative;
+    }
+
+    .cta-wrap{
+      position:relative;
+      border-radius:26px;
+      overflow:hidden;
+      min-height:360px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .cta-wrap img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .cta-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(8,12,16,0.92) 0%, rgba(8,12,16,0.78) 45%, rgba(8,12,16,0.55) 100%);
+    }
+
+    .cta-content{
+      position:relative;
+      z-index:2;
+      padding:60px;
+      max-width:720px;
+    }
+
+    .cta-content h2{
+      font-family:'Roboto',sans-serif;
+      font-size:clamp(2rem,4vw,3.2rem);
+      font-weight:900;
+      line-height:1.12;
+      margin-bottom:12px;
+    }
+
+    .cta-content h2 span{
+      color:var(--accent);
+    }
+
+    .cta-content p{
+      color:#d7e7f3;
+      margin-top:8px;
+      font-size:16px;
+      line-height:1.85;
+      margin-bottom:24px;
+    }
+
+    .cta-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    /* FOOTER */
+    footer{
+      background:var(--bg2);
+      border-top:1px solid var(--border);
+      padding:60px 0 30px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.5fr 1fr 1fr 1fr;
+      gap:38px;
+      margin-bottom:40px;
+    }
+
+    .footer-brand .logo-name{
+      font-family:'Roboto',sans-serif;
+      font-size:24px;
+      font-weight:900;
+      color:var(--text);
+      margin-bottom:12px;
+    }
+
+    .footer-brand .logo-name span{
+      color:var(--accent);
+    }
+
+    .footer-brand p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
+      margin-bottom:18px;
+      max-width:360px;
+    }
+
+    .footer-brand-image{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      margin-top:18px;
+      max-width:360px;
+    }
+
+    .footer-brand-image img{
+      width:100%;
+      height:170px;
+      object-fit:cover;
+    }
+
+    .footer-contact a{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:var(--muted);
+      text-decoration:none;
+      font-size:14px;
+      margin-bottom:10px;
+      transition:color 0.3s;
+    }
+
+    .footer-contact a:hover{
+      color:var(--accent);
+    }
+
+    .footer-col h5{
+      font-family:'Roboto',sans-serif;
+      font-size:14px;
+      font-weight:900;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:var(--text);
+      margin-bottom:18px;
+    }
+
+    .footer-col a{
+      display:block;
+      color:var(--muted);
+      text-decoration:none;
+      font-size:14px;
+      margin-bottom:10px;
+      transition:color 0.3s;
+      line-height:1.7;
+    }
+
+    .footer-col a:hover{
+      color:var(--accent);
+    }
+
+    .footer-bottom{
+      border-top:1px solid var(--border);
+      padding-top:22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer-bottom p{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .social-links{
+      display:flex;
+      gap:10px;
+    }
+
+    .social-links a{
+      width:38px;
+      height:38px;
+      border-radius:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.03);
+      color:var(--text);
+      transition:all 0.3s;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .social-links a:hover{
+      border-color:var(--accent);
+      color:var(--accent);
+      background:rgba(0,170,255,0.08);
+    }
+
+    /* ANIMATION */
+    .reveal{
+      opacity:0;
+      transform:translateY(40px);
+      transition:all 0.7s ease;
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width:1100px){
+      .page-hero-grid,
+      .hr-top,
+      .process-top{
+        grid-template-columns:1fr;
+      }
+
+      .travel-hero-band{
+        grid-template-columns:1fr;
+      }
+
+      .hr-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .travel-services-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .hero-overlay-stats{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:900px){
+      .container{
+        width:min(var(--container), calc(100% - 28px));
+      }
+
+      nav{
+        padding:0;
+      }
+
+      .nav-wrap{
+        min-height:auto;
+        padding:16px 0;
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .nav-links{
+        width:100%;
+        gap:14px;
+      }
+
+      .page-hero{
+        padding:130px 0 70px;
+      }
+
+      .hr-section,
+      .travel-section,
+      .process-section,
+      .cta-band{
+        padding:70px 0;
+      }
+
+      .hr-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .process-steps{
+        gap:28px;
+      }
+
+      .process-steps::before{
+        display:none;
+      }
+
+      .travel-band-content{
+        padding:32px 24px;
+      }
+
+      .cta-content{
+        padding:38px 24px;
+      }
+
+      .hr-image img,
+      .process-image img{
+        height:300px;
+      }
+    }
+
+    @media (max-width:640px){
+      .nav-links{
+        display:none;
+      }
+
+      .page-hero h1{
+        font-size:2.4rem;
+      }
+
+      .hero-actions,
+      .cta-actions{
+        flex-direction:column;
+      }
+
+      .btn-primary,
+      .btn-secondary{
+        width:100%;
+      }
+
+      .hero-image-card img{
+        height:420px;
+      }
+
+      .hero-overlay-stats{
+        position:static;
+        padding:16px;
+        background:var(--card);
+        border-top:1px solid var(--border);
+      }
+
+      .hr-grid,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .travel-service-item img,
+      .hr-card img{
+        height:210px;
+      }
+
+      .travel-band-image img{
+        min-height:240px;
+      }
+
+      .process-step{
+        min-width:100%;
+      }
+
+      .cta-wrap{
+        min-height:430px;
+      }
+
+      .footer-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    @media (max-width: 768px) {
+  .container {
+    width: min(var(--max-width), calc(100% - 24px));
+  }
+
+  .section-space,
+  .services,
+  .partnership,
+  .group-section,
+  .why,
+  .cta {
+    padding: 75px 0;
+  }
+
+  .nav-wrap {
+    padding: 14px 0;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .hero {
+    padding: 40px 0 50px;
+  }
+
+  .hero-grid {
+    min-height: auto;
+    gap: 28px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-main-image {
+    min-height: auto;
+  }
+
+  .hero-main-image img {
+    height: 360px;
+  }
+
+  .floating-card {
+    position: static;
+    margin-top: 14px;
+    max-width: 100%;
+  }
+
+  .stats-grid,
+  .services-grid,
+  .group-grid,
+  .why-grid,
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-image img,
+  .group-image img,
+  .why-image img {
+    height: 300px;
+  }
+
+  .service-image {
+    height: 210px;
+  }
+
+  .group-card img {
+    height: 200px;
+  }
+
+  .cta-box {
+    min-height: 520px;
+  }
+
+  .cta-content {
+    padding: 40px 24px;
+  }
+
+  .cta-content p {
+    font-size: 15px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.menu-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  transition: 0.3s ease;
+}
+
+.menu-toggle:hover {
+  border-color: rgba(0, 170, 255, 0.35);
+  background: rgba(0, 170, 255, 0.08);
+}
+
+.menu-toggle span {
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  border-radius: 10px;
+  transition: 0.3s ease;
+  display: block;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu {
+  display: none;
+  width: 100%;
+  padding: 0 24px 20px;
+  background: rgba(7, 16, 24, 0.96);
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-menu.active {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-menu a {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 14px;
+  border-radius: 12px;
+  transition: 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.mobile-menu a:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border);
+}
+
+.mobile-menu .mobile-cta {
+  margin-top: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #00131d;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(var(--max-width), calc(100% - 24px));
+  }
+
+  .section-space,
+  .services,
+  .partnership,
+  .group-section,
+  .why,
+  .cta {
+    padding: 75px 0;
+  }
+
+  .nav-wrap {
+    padding: 14px 0;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .hero {
+    padding: 40px 0 50px;
+  }
+
+  .hero-grid {
+    min-height: auto;
+    gap: 28px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-main-image {
+    min-height: auto;
+  }
+
+  .hero-main-image img {
+    height: 360px;
+  }
+
+  .floating-card {
+    position: static;
+    margin-top: 14px;
+    max-width: 100%;
+  }
+
+  .stats-grid,
+  .services-grid,
+  .group-grid,
+  .why-grid,
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-image img,
+  .group-image img,
+  .why-image img {
+    height: 300px;
+  }
+
+  .service-image {
+    height: 210px;
+  }
+
+  .group-card img {
+    height: 200px;
+  }
+
+  .cta-box {
+    min-height: 520px;
+  }
+
+  .cta-content {
+    padding: 40px 24px;
+  }
+
+  .cta-content p {
+    font-size: 15px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-wrap">
+    <a class="nav-logo" href="index.html">
+      <div class="nav-logo-icon">VV</div>
+      <div class="nav-brand">VV <span>Travco</span></div>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-links desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="bpo.html">BPO</a>
+      <a href="digital.html">Digital</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Contact Us</a>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="bpo.html">BPO</a>
+    <a href="digital.html">Digital</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="mobile-cta">Contact Us</a>
+  </div>
+</nav>
+
+  <section class="page-hero">
+    <div class="container page-hero-grid">
+      <div class="reveal">
+        <div class="section-tag">ALL SERVICES</div>
+        <h1>HR & Travel <br><span>Solutions</span></h1>
+        <p>
+          Comprehensive HR consultancy and travel management services designed to empower your workforce, improve operations, and expand your global footprint with confidence.
+        </p>
+
+        <div class="hero-actions">
+          <a href="contact.html" class="btn-primary">Book a Consultation</a>
+          <a href="about.html" class="btn-secondary">Know More</a>
+        </div>
+      </div>
+
+      <div class="hero-image-card reveal">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80" alt="HR and travel solutions">
+        <div class="hero-overlay-stats">
+          <div class="hero-stat">
+            <strong>50+</strong>
+            <span>Destinations supported with travel planning</span>
+          </div>
+          <div class="hero-stat">
+            <strong>24/7</strong>
+            <span>Dedicated support for service assistance</span>
+          </div>
+          <div class="hero-stat">
+            <strong>1000+</strong>
+            <span>Happy travelers and business clients served</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HR SECTION -->
+  <section class="hr-section">
+    <div class="container">
+      <div class="hr-top">
+        <div class="hr-image reveal">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80" alt="HR consultancy services">
+        </div>
+
+        <div class="reveal">
+          <div class="section-tag">HR CONSULTANCY</div>
+          <h2 class="section-title">Empowering Your Workforce, <span>Elevating Your Business</span></h2>
+          <p class="hr-intro">
+            From talent acquisition to culture building, we offer end-to-end HR solutions tailored to your industry, team size, and growth stage so your business can scale with the right people and systems.
+          </p>
+        </div>
+      </div>
+
+      <div class="hr-grid">
+        <div class="hr-card reveal">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80" alt="Talent acquisition and recruitment">
+          <div class="hr-card-body">
+            <div class="hr-card-icon">🎯</div>
+            <h3>Talent Acquisition & Recruitment</h3>
+            <p>End-to-end hiring solutions tailored to your industry, including executive search and volume hiring to find the best fit for your team.</p>
+            <ul>
+              <li>Executive Search</li>
+              <li>Volume & Bulk Hiring</li>
+              <li>Candidate Screening & Assessment</li>
+              <li>Onboarding Support</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hr-card reveal">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80" alt="HR strategy and compliance">
+          <div class="hr-card-body">
+            <div class="hr-card-icon">📋</div>
+            <h3>HR Strategy & Compliance</h3>
+            <p>Expert guidance on policy design and implementation, labor law advisory, and audit readiness to ensure your business stays compliant.</p>
+            <ul>
+              <li>Policy Design & Implementation</li>
+              <li>Labor Law Advisory</li>
+              <li>HR Audit Readiness</li>
+              <li>Compliance Framework</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hr-card reveal">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80" alt="Performance and workforce management">
+          <div class="hr-card-body">
+            <div class="hr-card-icon">📊</div>
+            <h3>Performance & Workforce Management</h3>
+            <p>Develop KPI-driven appraisal systems and optimize organizational structures to enhance productivity and achieve business goals.</p>
+            <ul>
+              <li>KPI-Driven Appraisals</li>
+              <li>Organizational Design</li>
+              <li>Succession Planning</li>
+              <li>Productivity Optimization</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hr-card reveal">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="Training and development">
+          <div class="hr-card-body">
+            <div class="hr-card-icon">🏆</div>
+            <h3>Training & Development</h3>
+            <p>Identify skill gaps and implement targeted programs for leadership development and soft skills training to empower your employees.</p>
+            <ul>
+              <li>Leadership Development Programs</li>
+              <li>Soft Skills Training</li>
+              <li>Skill Gap Analysis</li>
+              <li>E-Learning Solutions</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hr-card reveal">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Employee engagement and culture">
+          <div class="hr-card-body">
+            <div class="hr-card-icon">🤝</div>
+            <h3>Employee Engagement & Culture</h3>
+            <p>Design effective retention strategies, conduct employee surveys, facilitate feedback loops, and lead culture-building workshops.</p>
+            <ul>
+              <li>Retention Strategies</li>
+              <li>Employee Surveys & NPS</li>
+              <li>Feedback Loop Systems</li>
+              <li>Culture Workshops</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hr-card reveal">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80" alt="HR operations and payroll">
+          <div class="hr-card-body">
+            <div class="hr-card-icon">💼</div>
+            <h3>HR Operations & Payroll</h3>
+            <p>Streamline day-to-day HR operations including payroll management, employee records, and HR technology implementation.</p>
+            <ul>
+              <li>Payroll Processing</li>
+              <li>HRMS Implementation</li>
+              <li>Employee Records Management</li>
+              <li>HR Reporting & Analytics</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAVEL SECTION -->
+  <section class="travel-section">
+    <div class="container">
+      <div class="travel-hero-band reveal">
+        <div class="travel-band-content">
+          <div class="section-tag">TRAVEL & TOURISM</div>
+          <h2>Global Travel <span>Solutions</span></h2>
+          <p>In partnership with Cityone Tourism & Travel, we deliver seamless travel experiences — from corporate trips to leisure packages and full destination management.</p>
+
+          <div class="travel-stats">
+            <div class="t-stat">
+              <div class="num">50+</div>
+              <div class="lbl">Destinations</div>
+            </div>
+            <div class="t-stat">
+              <div class="num">24/7</div>
+              <div class="lbl">Support</div>
+            </div>
+            <div class="t-stat">
+              <div class="num">1000+</div>
+              <div class="lbl">Happy Travelers</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="travel-band-image">
+          <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1400&q=80" alt="Travel solutions">
+        </div>
+      </div>
+
+      <div class="travel-services-grid">
+        <div class="travel-service-item reveal">
+          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80" alt="Flight ticketing and booking">
+          <div class="travel-service-body">
+            <div class="ts-icon">✈️</div>
+            <div class="ts-content">
+              <h4>Flight Ticketing & Booking</h4>
+              <p>Domestic and international flight bookings at the best rates with instant confirmation and 24/7 support for changes and cancellations.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="travel-service-item reveal">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" alt="Visa processing and assistance">
+          <div class="travel-service-body">
+            <div class="ts-icon">🛂</div>
+            <div class="ts-content">
+              <h4>Visa Processing & Assistance</h4>
+              <p>Expert guidance and end-to-end support for tourist, business, and transit visas across all major destinations worldwide.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="travel-service-item reveal">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" alt="Hotel and accommodation booking">
+          <div class="travel-service-body">
+            <div class="ts-icon">🏨</div>
+            <div class="ts-content">
+              <h4>Hotel & Accommodation Booking</h4>
+              <p>Curated hotel selections from budget-friendly stays to luxury resorts, with negotiated rates and flexible booking options.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="travel-service-item reveal">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Itinerary planning and tour packages">
+          <div class="travel-service-body">
+            <div class="ts-icon">🗺️</div>
+            <div class="ts-content">
+              <h4>Itinerary Planning & Tour Packages</h4>
+              <p>Custom itinerary creation and curated tour packages tailored to your preferences, schedule, and budget.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="travel-service-item reveal">
+          <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80" alt="Corporate travel management">
+          <div class="travel-service-body">
+            <div class="ts-icon">🏢</div>
+            <div class="ts-content">
+              <h4>Corporate Travel Management</h4>
+              <p>End-to-end corporate travel programs including policy management, expense control, and dedicated account managers.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="travel-service-item reveal">
+          <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1200&q=80" alt="Ground transport and transfers">
+          <div class="travel-service-body">
+            <div class="ts-icon">🚌</div>
+            <div class="ts-content">
+              <h4>Ground Transport & Transfers</h4>
+              <p>Airport transfers, city tours, bus charters, and private vehicle rentals coordinated for seamless travel experiences.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="travel-service-item reveal">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Holiday and leisure packages">
+          <div class="travel-service-body">
+            <div class="ts-icon">🌴</div>
+            <div class="ts-content">
+              <h4>Holiday & Leisure Packages</h4>
+              <p>Premium leisure travel packages to top global destinations with fully guided tours and immersive cultural experiences.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="travel-service-item reveal">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80" alt="Travel insurance">
+          <div class="travel-service-body">
+            <div class="ts-icon">🛡️</div>
+            <div class="ts-content">
+              <h4>Travel Insurance</h4>
+              <p>Comprehensive travel insurance covering medical emergencies, trip cancellations, baggage loss, and more.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process-section">
+    <div class="container">
+      <div class="process-top">
+        <div class="process-image reveal">
+          <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80" alt="Our process">
+        </div>
+
+        <div class="reveal">
+          <div class="section-tag">HOW WE WORK</div>
+          <h2 class="section-title">Our Simple <span>Process</span></h2>
+          <p class="section-desc">We follow a structured and transparent process to understand your needs, build the right solution, and ensure smooth execution with measurable long-term value.</p>
+        </div>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-num">01</div>
+          <div class="step-title">Consultation</div>
+          <p class="step-desc">We understand your specific needs, goals, and challenges through an in-depth consultation.</p>
+        </div>
+
+        <div class="process-step reveal">
+          <div class="step-num">02</div>
+          <div class="step-title">Strategy</div>
+          <p class="step-desc">We craft a tailored strategy aligned with your business objectives and budget.</p>
+        </div>
+
+        <div class="process-step reveal">
+          <div class="step-num">03</div>
+          <div class="step-title">Execution</div>
+          <p class="step-desc">Our expert team executes the plan with precision, quality, and on-time delivery.</p>
+        </div>
+
+        <div class="process-step reveal">
+          <div class="step-num">04</div>
+          <div class="step-title">Review & Grow</div>
+          <p class="step-desc">Ongoing performance reviews and continuous optimization for lasting results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-wrap reveal">
+        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80" alt="Ready to get started">
+        <div class="cta-overlay"></div>
+
+        <div class="cta-content">
+          <h2>Ready to get <span>started?</span></h2>
+          <p>Talk to our specialists today and find the right HR, travel, and business solution for your company.</p>
+
+          <div class="cta-actions">
+            <a href="contact.html" class="btn-primary">Book a Free Consultation</a>
+            <a href="portfolio.html" class="btn-secondary">See Our Work</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-name">VV <span>Travco</span></div>
+          <p>Your partner for growth & global exploration.</p>
+
+          <div class="footer-contact">
+            <a href="tel:+919848774484">📞 +91 9848774484</a>
+            <a href="mailto:vijay@vvtravco.com">✉️ vijay@vvtravco.com</a>
+            <a href="#">🌐 www.vvtravco.com</a>
+          </div>
+<!-- 
+          <div class="footer-brand-image">
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80" alt="VV Travco office">
+          </div> -->
+        </div>
+
+        <div class="footer-col">
+          <h5>Services</h5>
+          <a href="digital.html">Digital Marketing</a>
+          <a href="bpo.html">BPO Services</a>
+          <a href="digital.html">Web Development</a>
+          <a href="services.html">HR Consultancy</a>
+          <a href="services.html">Travel Solutions</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="about.html">About Us</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Twitter / X</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 VV Travco. All rights reserved.</p>
+
+        <div class="social-links">
+          <a href="#">IG</a>
+          <a href="#">FB</a>
+          <a href="#">IN</a>
+          <a href="#">X</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+    mobileMenu.classList.toggle("active");
+
+    const expanded = menuToggle.classList.contains("active");
+    menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+  });
+
+  document.querySelectorAll("#mobileMenu a").forEach(link => {
+    link.addEventListener("click", () => {
+      menuToggle.classList.remove("active");
+      mobileMenu.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+  </script>
+</body>
+</html>
