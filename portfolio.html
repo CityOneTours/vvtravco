@@ -1007,7 +1007,7 @@
 .mobile-menu.active {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  /* gap: 8px; */
 }
 
 .mobile-menu a {
@@ -1135,44 +1135,118 @@
     align-items: flex-start;
   }
 }
+
+    /* Dropdown */
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .dropbtn:hover {
+      color: var(--accent);
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 300px;
+      background: #0f1823;
+      border: 1px solid rgba(0, 170, 255, 0.15);
+      border-radius: 16px;
+      padding: 12px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+      transition: all .3s ease;
+      z-index: 999;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, .3);
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 14px 20px;
+      color: #d8e4f0;
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(0, 170, 255, 0.08);
+      color: #00aaff;
+      padding-left: 28px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
-
 <nav>
-  <div class="container nav-wrap">
-    <a class="nav-logo" href="index.html">
-      <div class="nav-logo-icon">VV</div>
-      <div class="nav-brand">VV <span>Travco</span></div>
-    </a>
+    <div class="container nav-wrap">
+      <a class="nav-logo" href="index.html">
+        <div class="nav-logo-icon">VV</div>
+        <div class="nav-brand">VV <span>Travco</span></div>
+      </a>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"
+        aria-controls="mobileMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-    <div class="nav-links desktop-nav">
+      <div class="nav-links desktop-nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="bpo.html">BPO</a>
+        <div class="dropdown">
+          <a href="digital.html" class="dropbtn">
+            Digital
+            <span>▾</span>
+          </a>
+
+          <div class="dropdown-content">
+            <a href="video-editing-services.html">Video Editing Services</a>
+            <a href="web-design-development-services.html">Web Design & Development</a>
+            <a href="search-engine-optimization-services.html">SEO Services</a>
+            <a href="offline-marketing-promotions.html">Offline Marketing & Promotions</a>
+            <a href="content-marketing-services.html">Content Marketing Services</a>
+          </div>
+        </div> <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="nav-cta">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="bpo.html">BPO</a>
       <a href="digital.html">Digital</a>
+      <a href="video-editing-services.html">Video Editing Services</a>
+      <a href="web-design-development-services.html">Web Design & Development</a>
+      <a href="search-engine-optimization-services.html">SEO Services</a>
+      <a href="offline-marketing-promotions.html">Offline Marketing & Promotions</a>
+      <a href="content-marketing-services.html">Content Marketing Services</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="about.html">About</a>
-      <a href="contact.html" class="nav-cta">Contact Us</a>
+      <a href="contact.html" class="mobile-cta">Contact Us</a>
     </div>
-  </div>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="bpo.html">BPO</a>
-    <a href="digital.html">Digital</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" class="mobile-cta">Contact Us</a>
-  </div>
-</nav>
+  </nav>
 
   <section class="page-hero">
     <div class="container hero-grid">

@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VV Travco | Creative Design Horizon</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -388,7 +387,7 @@
     }
 
     .stat-item {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 30px 20px;
@@ -490,7 +489,7 @@
     /* PARTNERSHIP */
     .partnership {
       padding: 110px 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
@@ -627,7 +626,7 @@
     }
 
     .group-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
       border: 1px solid var(--border);
       border-radius: 20px;
       overflow: hidden;
@@ -675,7 +674,7 @@
     /* WHY US */
     .why {
       padding: 110px 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
@@ -922,6 +921,7 @@
 
     /* RESPONSIVE */
     @media (max-width: 1100px) {
+
       .hero-grid,
       .partner-grid,
       .group-top,
@@ -1082,225 +1082,301 @@
 
 
     .menu-toggle {
-  display: none;
-  width: 46px;
-  height: 46px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 5px;
-  transition: 0.3s ease;
-}
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      transition: 0.3s ease;
+    }
 
-.menu-toggle:hover {
-  border-color: rgba(0, 170, 255, 0.35);
-  background: rgba(0, 170, 255, 0.08);
-}
+    .menu-toggle:hover {
+      border-color: rgba(0, 170, 255, 0.35);
+      background: rgba(0, 170, 255, 0.08);
+    }
 
-.menu-toggle span {
-  width: 20px;
-  height: 2px;
-  background: #fff;
-  border-radius: 10px;
-  transition: 0.3s ease;
-  display: block;
-}
+    .menu-toggle span {
+      width: 20px;
+      height: 2px;
+      background: #fff;
+      border-radius: 10px;
+      transition: 0.3s ease;
+      display: block;
+    }
 
-.menu-toggle.active span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
 
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
 
-.menu-toggle.active span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
 
-.mobile-menu {
-  display: none;
-  width: 100%;
-  padding: 0 24px 20px;
-  background: rgba(7, 16, 24, 0.96);
-  border-bottom: 1px solid var(--border);
-}
+    .mobile-menu {
+      display: none;
+      width: 100%;
+      padding: 0 24px 20px;
+      background: rgba(7, 16, 24, 0.96);
+      border-bottom: 1px solid var(--border);
+    }
 
-.mobile-menu.active {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+    .mobile-menu.active {
+      display: flex;
+      flex-direction: column;
+      /* gap: 8px; */
+    }
 
-.mobile-menu a {
-  color: var(--text);
-  font-size: 15px;
-  font-weight: 500;
-  padding: 12px 14px;
-  border-radius: 12px;
-  transition: 0.3s ease;
-  border: 1px solid transparent;
-}
+    .mobile-menu a {
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 12px 14px;
+      border-radius: 12px;
+      transition: 0.3s ease;
+      border: 1px solid transparent;
+    }
 
-.mobile-menu a:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: var(--border);
-}
+    .mobile-menu a:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--border);
+    }
 
-.mobile-menu .mobile-cta {
-  margin-top: 8px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  color: #00131d;
-  font-weight: 700;
-  text-align: center;
-}
+    .mobile-menu .mobile-cta {
+      margin-top: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #00131d;
+      font-weight: 700;
+      text-align: center;
+    }
 
-@media (max-width: 768px) {
-  .container {
-    width: min(var(--max-width), calc(100% - 24px));
-  }
+    @media (max-width: 768px) {
+      .container {
+        width: min(var(--max-width), calc(100% - 24px));
+      }
 
-  .section-space,
-  .services,
-  .partnership,
-  .group-section,
-  .why,
-  .cta {
-    padding: 75px 0;
-  }
+      .section-space,
+      .services,
+      .partnership,
+      .group-section,
+      .why,
+      .cta {
+        padding: 75px 0;
+      }
 
-  .nav-wrap {
-    padding: 14px 0;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-  }
+      .nav-wrap {
+        padding: 14px 0;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+      }
 
-  .desktop-nav {
-    display: none;
-  }
+      .desktop-nav {
+        display: none;
+      }
 
-  .menu-toggle {
-    display: flex;
-  }
+      .menu-toggle {
+        display: flex;
+      }
 
-  .hero {
-    padding: 40px 0 50px;
-  }
+      .hero {
+        padding: 40px 0 50px;
+      }
 
-  .hero-grid {
-    min-height: auto;
-    gap: 28px;
-  }
+      .hero-grid {
+        min-height: auto;
+        gap: 28px;
+      }
 
-  .hero-title {
-    font-size: 2.5rem;
-  }
+      .hero-title {
+        font-size: 2.5rem;
+      }
 
-  .hero-sub {
-    font-size: 16px;
-  }
+      .hero-sub {
+        font-size: 16px;
+      }
 
-  .hero-stats {
-    grid-template-columns: 1fr;
-  }
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
 
-  .hero-main-image {
-    min-height: auto;
-  }
+      .hero-main-image {
+        min-height: auto;
+      }
 
-  .hero-main-image img {
-    height: 360px;
-  }
+      .hero-main-image img {
+        height: 360px;
+      }
 
-  .floating-card {
-    position: static;
-    margin-top: 14px;
-    max-width: 100%;
-  }
+      .floating-card {
+        position: static;
+        margin-top: 14px;
+        max-width: 100%;
+      }
 
-  .stats-grid,
-  .services-grid,
-  .group-grid,
-  .why-grid,
-  .footer-top {
-    grid-template-columns: 1fr;
-  }
+      .stats-grid,
+      .services-grid,
+      .group-grid,
+      .why-grid,
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
 
-  .partner-image img,
-  .group-image img,
-  .why-image img {
-    height: 300px;
-  }
+      .partner-image img,
+      .group-image img,
+      .why-image img {
+        height: 300px;
+      }
 
-  .service-image {
-    height: 210px;
-  }
+      .service-image {
+        height: 210px;
+      }
 
-  .group-card img {
-    height: 200px;
-  }
+      .group-card img {
+        height: 200px;
+      }
 
-  .cta-box {
-    min-height: 520px;
-  }
+      .cta-box {
+        min-height: 520px;
+      }
 
-  .cta-content {
-    padding: 40px 24px;
-  }
+      .cta-content {
+        padding: 40px 24px;
+      }
 
-  .cta-content p {
-    font-size: 15px;
-  }
+      .cta-content p {
+        font-size: 15px;
+      }
 
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* Dropdown */
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .dropbtn:hover {
+      color: var(--accent);
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 300px;
+      background: #0f1823;
+      border: 1px solid rgba(0, 170, 255, 0.15);
+      border-radius: 16px;
+      padding: 12px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+      transition: all .3s ease;
+      z-index: 999;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, .3);
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 14px 20px;
+      color: #d8e4f0;
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(0, 170, 255, 0.08);
+      color: #00aaff;
+      padding-left: 28px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
   </style>
+
 </head>
 
 <body>
 
-<nav>
-  <div class="container nav-wrap">
-    <a class="nav-logo" href="index.html">
-      <div class="nav-logo-icon">VV</div>
-      <div class="nav-brand">VV <span>Travco</span></div>
-    </a>
+  <nav>
+    <div class="container nav-wrap">
+      <a class="nav-logo" href="index.html">
+        <div class="nav-logo-icon">VV</div>
+        <div class="nav-brand">VV <span>Travco</span></div>
+      </a>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"
+        aria-controls="mobileMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-    <div class="nav-links desktop-nav">
+      <div class="nav-links desktop-nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="bpo.html">BPO</a>
+        <div class="dropdown">
+          <a href="digital.html" class="dropbtn">
+            Digital
+            <span>▾</span>
+          </a>
+
+          <div class="dropdown-content">
+            <a href="video-editing-services.html">Video Editing Services</a>
+            <a href="web-design-development-services.html">Web Design & Development</a>
+            <a href="search-engine-optimization-services.html">SEO Services</a>
+            <a href="offline-marketing-promotions.html">Offline Marketing & Promotions</a>
+            <a href="content-marketing-services.html">Content Marketing Services</a>
+          </div>
+        </div> <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="nav-cta">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="bpo.html">BPO</a>
       <a href="digital.html">Digital</a>
+      <a href="video-editing-services.html">Video Editing Services</a>
+      <a href="web-design-development-services.html">Web Design & Development</a>
+      <a href="search-engine-optimization-services.html">SEO Services</a>
+      <a href="offline-marketing-promotions.html">Offline Marketing & Promotions</a>
+      <a href="content-marketing-services.html">Content Marketing Services</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="about.html">About</a>
-      <a href="contact.html" class="nav-cta">Contact Us</a>
+      <a href="contact.html" class="mobile-cta">Contact Us</a>
     </div>
-  </div>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="bpo.html">BPO</a>
-    <a href="digital.html">Digital</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" class="mobile-cta">Contact Us</a>
-  </div>
-</nav>
+  </nav>
 
   <section class="hero">
     <div class="container hero-grid">
@@ -1337,13 +1413,13 @@
 
       <div class="hero-visual reveal">
         <div class="hero-main-image">
-          <img src="images/image-7050.webp"
-            alt="Business and travel services">
+          <img src="images/image-7050.webp" alt="Business and travel services">
         </div>
 
         <div class="floating-card one">
           <h4>Digital Marketing</h4>
-          <p>Performance-driven branding, paid campaigns, social media, SEO, and creative strategy for global growth.</p>
+          <p>Performance-driven branding, paid campaigns, social media, SEO, and creative strategy for global growth.
+          </p>
         </div>
 
         <div class="floating-card two">
@@ -1355,27 +1431,27 @@
   </section>
 
   <section class="stats">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item reveal">
-        <div class="stat-num" data-target="9">1</div>
-        <div class="stat-label">Group Companies</div>
-      </div>
-      <div class="stat-item reveal">
-        <div class="stat-num" data-target="500">1</div>
-        <div class="stat-label">Projects Delivered</div>
-      </div>
-      <div class="stat-item reveal">
-        <div class="stat-num" data-target="10">1</div>
-        <div class="stat-label">Countries Served</div>
-      </div>
-      <div class="stat-item reveal">
-        <div class="stat-num" data-target="24">1</div>
-        <div class="stat-label">Customer Support</div>
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-num" data-target="9">1</div>
+          <div class="stat-label">Group Companies</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-num" data-target="500">1</div>
+          <div class="stat-label">Projects Delivered</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-num" data-target="10">1</div>
+          <div class="stat-label">Countries Served</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-num" data-target="24">1</div>
+          <div class="stat-label">Customer Support</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section class="services">
     <div class="container">
@@ -1527,8 +1603,7 @@
 
       <div class="partner-image-wrap reveal">
         <div class="partner-image">
-          <img src="images/Gemini_Generated_Image_1nkfy11nkfy11nkf.png"
-            alt="Partnership and travel">
+          <img src="images/Gemini_Generated_Image_1nkfy11nkfy11nkf.png" alt="Partnership and travel">
         </div>
 
         <div class="partner-overlay-card">
@@ -1566,18 +1641,17 @@
 
       <div class="group-grid">
         <div class="group-card reveal">
-          <img src="images/cityone-logo.png"
-            alt="Tourism company">
+          <img src="images/cityone-logo.png" alt="Tourism company">
           <div class="group-card-content">
             <div class="group-card-name">Cityone Tourism & Travel</div>
             <div class="group-card-type">Tourism & Hospitality</div>
-            <div class="group-card-text">Travel experiences, visa support, holiday planning, and destination services.</div>
+            <div class="group-card-text">Travel experiences, visa support, holiday planning, and destination services.
+            </div>
           </div>
         </div>
 
         <div class="group-card reveal">
-          <img src="images/whiterose.png"
-            alt="Trading company">
+          <img src="images/whiterose.png" alt="Trading company">
           <div class="group-card-content">
             <div class="group-card-name">Whiterose General Trading LLC</div>
             <div class="group-card-type">General Trading</div>
@@ -1586,8 +1660,7 @@
         </div>
 
         <div class="group-card reveal">
-          <img src="images/ybl.png"
-            alt="Beverage company">
+          <img src="images/ybl.png" alt="Beverage company">
           <div class="group-card-content">
             <div class="group-card-name">Yuti Breweries Ltd</div>
             <div class="group-card-type">Beverages & FMCG</div>
@@ -1596,38 +1669,37 @@
         </div>
 
         <div class="group-card reveal">
-          <img src="images/whiterose (1).png"
-            alt="Lifestyle business">
+          <img src="images/whiterose (1).png" alt="Lifestyle business">
           <div class="group-card-content">
             <div class="group-card-name">LumiLife</div>
             <div class="group-card-type">Lifestyle & Smart Living</div>
-            <div class="group-card-text">Modern lifestyle-focused solutions designed for quality and better living.</div>
+            <div class="group-card-text">Modern lifestyle-focused solutions designed for quality and better living.
+            </div>
           </div>
         </div>
 
         <div class="group-card reveal">
-          <img src="images/khotols-logo.png"
-            alt="Hotel business">
+          <img src="images/khotols-logo.png" alt="Hotel business">
           <div class="group-card-content">
             <div class="group-card-name">K Hotels — The Pride of Uganda</div>
             <div class="group-card-type">Hospitality</div>
-            <div class="group-card-text">Comfort, service excellence, and hospitality experiences built for guests.</div>
+            <div class="group-card-text">Comfort, service excellence, and hospitality experiences built for guests.
+            </div>
           </div>
         </div>
 
         <div class="group-card reveal">
-          <img src="images/whiterose (2).png"
-            alt="Distribution company">
+          <img src="images/whiterose (2).png" alt="Distribution company">
           <div class="group-card-content">
             <div class="group-card-name">HNH International Distribution</div>
             <div class="group-card-type">International Distribution</div>
-            <div class="group-card-text">Efficient product movement, logistics support, and regional distribution systems.</div>
+            <div class="group-card-text">Efficient product movement, logistics support, and regional distribution
+              systems.</div>
           </div>
         </div>
 
         <div class="group-card reveal">
-          <img src="images/rudra.png"
-            alt="Agriculture company">
+          <img src="images/rudra.png" alt="Agriculture company">
           <div class="group-card-content">
             <div class="group-card-name">Rudra Agro</div>
             <div class="group-card-type">Agriculture & Commodities</div>
@@ -1636,8 +1708,7 @@
         </div>
 
         <div class="group-card reveal">
-          <img src="images/emiboozi.png"
-            alt="Food and beverage">
+          <img src="images/emiboozi.png" alt="Food and beverage">
           <div class="group-card-content">
             <div class="group-card-name">EmiBoozi Restobar by K Hotels</div>
             <div class="group-card-type">Food & Beverage</div>
@@ -1646,12 +1717,12 @@
         </div>
 
         <div class="group-card reveal">
-          <img src="images/oneworld logo.png"
-            alt="Technology company">
+          <img src="images/oneworld logo.png" alt="Technology company">
           <div class="group-card-content">
             <div class="group-card-name">One World Tech Spares</div>
             <div class="group-card-type">Technology & Spare Parts</div>
-            <div class="group-card-text">Technical support products, industrial solutions, and parts supply services.</div>
+            <div class="group-card-text">Technical support products, industrial solutions, and parts supply services.
+            </div>
           </div>
         </div>
       </div>
@@ -1798,67 +1869,67 @@
 
     const counters = document.querySelectorAll('.stat-num');
 
-const speed = 200; // lower = faster
+    const speed = 200; // lower = faster
 
-const startCounting = (counter) => {
-  const target = +counter.getAttribute('data-target');
-  let count = 1;
+    const startCounting = (counter) => {
+      const target = +counter.getAttribute('data-target');
+      let count = 1;
 
-  const updateCount = () => {
-    const increment = Math.ceil(target / speed);
+      const updateCount = () => {
+        const increment = Math.ceil(target / speed);
 
-    if (count < target) {
-      count += increment;
-      counter.innerText = count;
-      setTimeout(updateCount, 20);
-    } else {
-      counter.innerText = target;
+        if (count < target) {
+          count += increment;
+          counter.innerText = count;
+          setTimeout(updateCount, 20);
+        } else {
+          counter.innerText = target;
 
-      // Add + or 24/7 format
-      if (target !== 24) {
-        counter.innerText = target + "+";
-      } else {
-        counter.innerText = "24/7";
-      }
-    }
-  };
+          // Add + or 24/7 format
+          if (target !== 24) {
+            counter.innerText = target + "+";
+          } else {
+            counter.innerText = "24/7";
+          }
+        }
+      };
 
-  updateCount();
-};
+      updateCount();
+    };
 
-// Trigger on scroll (when visible)
-const counterObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      startCounting(entry.target);
-      counterObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.5 });
+    // Trigger on scroll (when visible)
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startCounting(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
 
-counters.forEach(counter => {
-  counterObserver.observe(counter);
-});
-
-
-  const menuToggle = document.getElementById("menuToggle");
-  const mobileMenu = document.getElementById("mobileMenu");
-
-  menuToggle.addEventListener("click", () => {
-    menuToggle.classList.toggle("active");
-    mobileMenu.classList.toggle("active");
-
-    const expanded = menuToggle.classList.contains("active");
-    menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
-  });
-
-  document.querySelectorAll("#mobileMenu a").forEach(link => {
-    link.addEventListener("click", () => {
-      menuToggle.classList.remove("active");
-      mobileMenu.classList.remove("active");
-      menuToggle.setAttribute("aria-expanded", "false");
+    counters.forEach(counter => {
+      counterObserver.observe(counter);
     });
-  });
+
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      mobileMenu.classList.toggle("active");
+
+      const expanded = menuToggle.classList.contains("active");
+      menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+    });
+
+    document.querySelectorAll("#mobileMenu a").forEach(link => {
+      link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
   </script>
 
 </body>

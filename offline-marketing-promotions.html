@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline Marketing & Promotions | VV Travco Solutions</title>
+  <meta name="description"
+    content="Boost local visibility with VV Travco offline marketing services. Events, print ads, activations & integrated promotional campaigns that deliver results." />
+  <link rel="canonical" href="https://www.vvtravco.com/offline-marketing-promotions" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080c10;
+      --bg2: #0d1219;
+      --card: #0f1823;
+      --card2: #142130;
+      --accent: #00aaff;
+      --accent2: #0077cc;
+      --accent3: #00d4ff;
+      --text: #e8f0fe;
+      --muted: #8ea0b2;
+      --border: rgba(0, 170, 255, .16);
+      --shadow: 0 18px 50px rgba(0, 0, 0, .28);
+      --glow: 0 0 40px rgba(0, 170, 255, .18);
+      --container: 1240px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: Roboto, sans-serif;
+      background: linear-gradient(180deg, #080c10, #0b1117 50%, #080c10);
+      color: var(--text);
+      overflow-x: hidden
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 48px));
+      margin: auto
+    }
+
+    .section {
+      padding: 95px 0
+    }
+
+    .section.alt {
+      background: var(--bg2)
+    }
+
+    .tag {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-weight: 900;
+      line-height: 1.15
+    }
+
+    .grad {
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text
+    }
+
+    .title {
+      font-size: clamp(2rem, 3.8vw, 3.4rem);
+      margin-bottom: 16px
+    }
+
+    .desc {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.85;
+      max-width: 820px
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 15px;
+      transition: .3s
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      color: #00131d;
+      box-shadow: 0 12px 32px rgba(0, 170, 255, .25)
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, .03);
+      color: var(--text)
+    }
+
+    .btn:hover {
+      transform: translateY(-2px)
+    }
+
+    nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1000;
+      background: rgba(8, 12, 16, .88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border)
+    }
+
+    .nav-wrap {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+      display: grid;
+      place-items: center;
+      font-weight: 900
+    }
+
+    .brand {
+      font-size: 20px;
+      font-weight: 900
+    }
+
+    .brand span {
+      color: var(--accent)
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 600
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent)
+    }
+
+    .nav-cta {
+      padding: 11px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      color: #00131d !important;
+      font-weight: 900 !important
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, .03);
+      border-radius: 12px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px
+    }
+
+    .menu-toggle span {
+      width: 21px;
+      height: 2px;
+      background: #fff;
+      border-radius: 10px;
+      transition: .3s
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg)
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg)
+    }
+
+    .mobile-menu {
+      display: none;
+      width: 100%;
+      padding: 0 24px 20px;
+      background: rgba(7, 16, 24, .97);
+      border-bottom: 1px solid var(--border)
+    }
+
+    .mobile-menu.active {
+      display: flex;
+      flex-direction: column;
+      /* gap: 8px */
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 15px
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(255, 255, 255, .05)
+    }
+
+    .mobile-cta {
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      color: #00131d !important;
+      text-align: center;
+      font-weight: 900
+    }
+
+    .hero {
+      padding: 150px 0 90px;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse 60% 45% at 15% 0, rgba(0, 100, 180, .22), transparent), radial-gradient(ellipse 45% 35% at 90% 10%, rgba(0, 170, 255, .10), transparent)
+    }
+
+    .hero:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(0, 170, 255, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 170, 255, .035) 1px, transparent 1px);
+      background-size: 62px 62px
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 44px;
+      align-items: center
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      margin-bottom: 22px
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 650px
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px
+    }
+
+    .hero-card {
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--card)
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 16px
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(0, 170, 255, .06);
+      border: 1px solid var(--border)
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--accent);
+      font-size: 25px;
+      margin-bottom: 5px
+    }
+
+    .stat span {
+      font-size: 12px;
+      line-height: 1.6;
+      color: #d8e7f1
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px
+    }
+
+    .pill {
+      padding: 10px 15px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, .02)
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 42px;
+      align-items: center
+    }
+
+    .image-box {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow)
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 42px
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px;
+      transition: .3s;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .12)
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: var(--accent);
+      box-shadow: var(--glow);
+      background: var(--card2)
+    }
+
+    .icon {
+      font-size: 34px;
+      margin-bottom: 18px
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 10px
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-top: 42px
+    }
+
+    .step {
+      padding: 24px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 18px
+    }
+
+    .step-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      color: #00131d;
+      font-weight: 900;
+      margin-bottom: 16px
+    }
+
+    .step h3 {
+      font-size: 17px;
+      margin-bottom: 8px
+    }
+
+    .step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7
+    }
+
+    .list-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 30px
+    }
+
+    .check {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 18px;
+      background: rgba(0, 170, 255, .045);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--muted);
+      line-height: 1.7
+    }
+
+    .check:before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 900
+    }
+
+    .cta {
+      padding: 90px 0
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: linear-gradient(135deg, rgba(0, 170, 255, .12), rgba(0, 0, 0, .25)), url('https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=1500&q=80') center/cover
+    }
+
+    .cta-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(8, 12, 16, .94), rgba(8, 12, 16, .72), rgba(8, 12, 16, .45))
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      padding: 60px
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 14px
+    }
+
+    .cta p {
+      color: #d7e7f3;
+      line-height: 1.85;
+      margin-bottom: 24px
+    }
+
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 58px 0 26px
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 36px;
+      margin-bottom: 36px
+    }
+
+    .footer-brand {
+      font-size: 24px;
+      font-weight: 900;
+      margin-bottom: 12px
+    }
+
+    .footer-brand span {
+      color: var(--accent)
+    }
+
+    .footer p,
+    .footer a {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8
+    }
+
+    .footer-col h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px
+    }
+
+    .footer-col a {
+      display: block;
+      margin-bottom: 9px
+    }
+
+    .footer a:hover {
+      color: var(--accent)
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: .7s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    @media(max-width:1100px) {
+
+      .hero-grid,
+      .split {
+        grid-template-columns: 1fr
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .process {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .hero-card img {
+        height: 420px
+      }
+    }
+
+    @media(max-width:768px) {
+      .container {
+        width: min(var(--container), calc(100% - 28px))
+      }
+
+      .nav-wrap {
+        min-height: auto;
+        padding: 14px 0
+      }
+
+      .desktop-nav {
+        display: none
+      }
+
+      .menu-toggle {
+        display: flex
+      }
+
+      .hero {
+        padding: 122px 0 65px
+      }
+
+      .section,
+      .section.alt,
+      .cta {
+        padding: 70px 0
+      }
+
+      .hero h1 {
+        font-size: 2.45rem
+      }
+
+      .hero p {
+        font-size: 16px
+      }
+
+      .hero-actions {
+        flex-direction: column
+      }
+
+      .btn {
+        width: 100%
+      }
+
+      .hero-stats,
+      .cards,
+      .process,
+      .list-grid,
+      .footer-grid {
+        grid-template-columns: 1fr
+      }
+
+      .image-box img {
+        height: 290px
+      }
+
+      .hero-card img {
+        height: 330px
+      }
+
+      .cta-content {
+        padding: 42px 24px
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start
+      }
+    }
+    
+    /* Dropdown */
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .dropbtn:hover {
+      color: var(--accent);
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 300px;
+      background: #0f1823;
+      border: 1px solid rgba(0, 170, 255, 0.15);
+      border-radius: 16px;
+      padding: 12px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+      transition: all .3s ease;
+      z-index: 999;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, .3);
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 14px 20px;
+      color: #d8e4f0;
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(0, 170, 255, 0.08);
+      color: #00aaff;
+      padding-left: 28px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="container nav-wrap">
+      <a class="nav-logo" href="index.html">
+        <div class="nav-logo-icon">VV</div>
+        <div class="nav-brand">VV <span>Travco</span></div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"
+        aria-controls="mobileMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links desktop-nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="bpo.html">BPO</a>
+        <div class="dropdown">
+          <a href="digital.html" class="dropbtn">
+            Digital
+            <span>▾</span>
+          </a>
+
+          <div class="dropdown-content">
+            <a href="video-editing-services.html">Video Editing Services</a>
+            <a href="web-design-development-services.html">Web Design & Development</a>
+            <a href="search-engine-optimization-services.html">SEO Services</a>
+            <a href="offline-marketing-promotions.html">Offline Marketing & Promotions</a>
+            <a href="content-marketing-services.html">Content Marketing Services</a>
+          </div>
+        </div> <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="nav-cta">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="bpo.html">BPO</a>
+      <a href="digital.html">Digital</a>
+      <a href="video-editing-services.html">Video Editing Services</a>
+      <a href="web-design-development-services.html">Web Design & Development</a>
+      <a href="search-engine-optimization-services.html">SEO Services</a>
+      <a href="offline-marketing-promotions.html">Offline Marketing & Promotions</a>
+      <a href="content-marketing-services.html">Content Marketing Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="mobile-cta">Contact Us</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="tag">Offline Marketing & Promotional Services</span>
+        <h1>Integrated Marketing Solutions That Connect Brands with <span class="grad">Real Audiences</span></h1>
+        <p>VV Travco helps businesses build trust, strengthen local visibility, and create memorable customer
+          experiences through events, print advertising, outdoor promotions, activations, and integrated online-offline
+          campaigns.</p>
+        <div class="hero-actions"><a href="contact.html" class="btn btn-primary">Get Free Marketing Consultation</a><a
+            href="contact.html" class="btn btn-secondary">Plan Your Promotional Campaign</a></div>
+        <div class="pill-row"><span class="pill">Events</span><span class="pill">Print Ads</span><span
+            class="pill">Outdoor Branding</span><span class="pill">Exhibitions</span><span
+            class="pill">Promotions</span></div>
+      </div>
+      <div class="hero-card reveal">
+        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1400&q=80"
+          alt="Offline marketing event activation">
+        <div class="hero-stats">
+          <div class="stat"><strong>500+</strong><span>Successful marketing projects</span></div>
+          <div class="stat"><strong>360°</strong><span>Online & offline campaign support</span></div>
+          <div class="stat"><strong>24/7</strong><span>Client assistance and support</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container split">
+      <div class="image-box reveal"><img
+          src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=80"
+          alt="Brand activation and promotional event"></div>
+      <div class="reveal"><span class="tag">Why Offline Marketing Matters</span>
+        <h2 class="title">Create Tangible Brand Experiences That People Remember</h2>
+        <p class="desc">Offline marketing remains powerful because it creates direct audience interaction, emotional
+          engagement, and strong local visibility. When combined with digital platforms, it builds a complete
+          omnichannel experience that improves brand recall, trust, and conversions.</p>
+        <div class="list-grid">
+          <div class="check">Tangible customer experiences</div>
+          <div class="check">Higher local visibility</div>
+          <div class="check">Stronger emotional engagement</div>
+          <div class="check">Better brand recall and trust</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="tag">Our Services</span>
+      <h2 class="title">Offline Marketing & Promotional Services</h2>
+      <p class="desc">From event activations to billboard campaigns and local promotions, we plan and execute marketing
+        activities that connect your brand with the right audience.</p>
+      <div class="cards">
+        <div class="card reveal">
+          <div class="icon">🎪</div>
+          <h3>Event Marketing & Activations</h3>
+          <p>Brand activations, product launches, roadshows, corporate promotions, and experiential campaigns.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">📰</div>
+          <h3>Print Advertising Design</h3>
+          <p>Brochures, flyers, posters, banners, newspaper ads, magazine layouts, and marketing materials.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🏙️</div>
+          <h3>Outdoor Advertising</h3>
+          <p>Billboards, hoardings, transit ads, location-based targeting, and outdoor branding strategy.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">📬</div>
+          <h3>Direct Mail Campaigns</h3>
+          <p>Promotional mailers, invitations, newsletters, catalogs, and personalized printed communication.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🏢</div>
+          <h3>Trade Show & Exhibition Support</h3>
+          <p>Stall branding, promotional materials, event coordination, lead capture, and on-ground support.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🛍️</div>
+          <h3>In-Store Promotions</h3>
+          <p>Product displays, sampling campaigns, counters, retail branding, and customer engagement activities.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🤝</div>
+          <h3>Sponsorship Management</h3>
+          <p>Sponsorship planning, event partnerships, brand visibility management, and promotional integration.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">⚡</div>
+          <h3>Guerrilla Marketing</h3>
+          <p>Creative street campaigns, flash activations, interactive concepts, and high-impact brand ideas.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🎁</div>
+          <h3>Promotional Merchandise</h3>
+          <p>Corporate gifts, branded apparel, giveaways, accessories, and product packaging support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container split">
+      <div class="reveal"><span class="tag">Integrated Strategy</span>
+        <h2 class="title">Connect Offline Campaigns with Digital Platforms</h2>
+        <p class="desc">We combine traditional marketing with modern digital tracking through QR codes, landing pages,
+          online registrations, social media amplification, and campaign-specific lead capture methods.</p>
+        <div class="list-grid">
+          <div class="check">QR code integrations</div>
+          <div class="check">Social media amplification</div>
+          <div class="check">Landing page campaigns</div>
+          <div class="check">Digital lead capture</div>
+          <div class="check">Geo-targeted monitoring</div>
+          <div class="check">Cross-channel coordination</div>
+        </div>
+      </div>
+      <div class="image-box reveal"><img
+          src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1400&q=80"
+          alt="Integrated campaign planning"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="tag">Our Process</span>
+      <h2 class="title">Campaign Planning Process</h2>
+      <p class="desc">Every campaign follows a structured process to deliver clear messaging, strong execution, and
+        measurable marketing value.</p>
+      <div class="process">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <h3>Research</h3>
+          <p>We understand your goals, audience, market, and promotional objectives.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <h3>Strategy</h3>
+          <p>We develop a customized campaign plan based on budget and positioning.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <h3>Creative</h3>
+          <p>We prepare event concepts, print designs, outdoor visuals, and campaign assets.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">4</div>
+          <h3>Execution</h3>
+          <p>We manage on-ground campaign delivery, coordination, and promotions.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">5</div>
+          <h3>Reporting</h3>
+          <p>We provide transparent insights to improve campaign ROI and future performance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <span class="tag">Industries We Serve</span>
+      <h2 class="title">Promotional Campaigns for Multiple Industries</h2>
+      <div class="cards">
+        <div class="card reveal">
+          <div class="icon">✈️</div>
+          <h3>Travel & Tourism</h3>
+          <p>Destination promotions, tourism exhibitions, roadshows, and experiential travel campaigns.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🛒</div>
+          <h3>Retail & FMCG</h3>
+          <p>Sampling campaigns, in-store promotions, outdoor branding, and customer engagement.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🏨</div>
+          <h3>Hospitality</h3>
+          <p>Hotel launches, restaurant promotions, events, and local visibility campaigns.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">💼</div>
+          <h3>Corporate & B2B</h3>
+          <p>Trade show participation, conference branding, corporate events, and lead generation.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🏠</div>
+          <h3>Real Estate</h3>
+          <p>Property exhibitions, local advertising, community campaigns, and buyer engagement.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🎓</div>
+          <h3>Education</h3>
+          <p>Education fairs, campus promotions, local campaigns, and awareness initiatives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-box reveal">
+        <div class="cta-overlay"></div>
+        <div class="cta-content"><span class="tag">Start Your Promotional Campaign Today</span>
+          <h2>Ready to Build Powerful <span class="grad">Integrated Marketing Campaigns?</span></h2>
+          <p>Get free marketing consultation, campaign strategy, event planning, local promotion support, and
+            cross-channel marketing execution with VV Travco.</p>
+          <div class="hero-actions"><a href="contact.html" class="btn btn-primary">Get Free Marketing Consultation</a><a
+              href="contact.html" class="btn btn-secondary">Plan Your Promotional Campaign</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">VV <span>Travco</span></div>
+          <p>Your trusted partner for integrated offline and digital marketing solutions.</p>
+          <p><a href="tel:+919848774484">📞 +91 9848774484</a><br><a href="mailto:vijay@vvtravco.com">✉️
+              vijay@vvtravco.com</a><br><a href="https://www.vvtravco.com">🌐 www.vvtravco.com</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4><a href="digital.html">Digital Marketing</a><a
+            href="web-design-development-services.html">Web Development</a><a href="video-editing-services.html">Video
+            Editing</a><a href="offline-marketing-promotions.html">Offline Marketing</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4><a href="about.html">About Us</a><a href="portfolio.html">Portfolio</a><a
+            href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">LinkedIn</a><a href="#">Twitter /
+            X</a>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© 2025 VV Travco. All rights reserved.</span><span>Offline Marketing &
+          Promotional Services</span></div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle'); const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('active'); mobileMenu.classList.toggle('active'); menuToggle.setAttribute('aria-expanded', menuToggle.classList.contains('active') ? 'true' : 'false') });
+    document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => { menuToggle.classList.remove('active'); mobileMenu.classList.remove('active'); menuToggle.setAttribute('aria-expanded', 'false') }));
+    const observer = new IntersectionObserver(entries => { entries.forEach((entry, i) => { if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 70) } }) }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+
+</html>
