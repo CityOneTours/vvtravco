@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moharram Umrah Package | Paradise World Travels</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto:wght@400;500;700;900&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#b77b16;
+  --gold-light:#f6d36a;
+  --gold-dark:#8b5a0a;
+  --blue:#0066b3;
+  --blue-dark:#003b78;
+  --brown:#7a4b1d;
+  --white:#fff;
+  --black:#111;
+  --light:#f8f3e7;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Roboto',Arial,sans-serif;
+  background:#fff;
+  color:#222;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+#navbar{
+  position:fixed;
+  top:0;left:0;width:100%;
+  height:72px;
+  background:#000000;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 5%;
+  box-shadow:0 5px 25px rgba(0,0,0,.12);
+}
+.logo-img{height:60px}
+.nav-links{display:flex;align-items:center;gap:5px}
+.nav-link{
+  color:#ffffff!important;
+  font-weight:800;
+  font-size:14px;
+  padding:9px 14px!important;
+  border-radius:8px;
+}
+.nav-link:hover,.nav-link.active{
+  background:#fff3d1;
+  color:var(--gold-dark)!important;
+}
+.nav-cta{
+  background:linear-gradient(135deg,var(--gold-light),var(--gold))!important;
+  color:#111!important;
+  border-radius:30px!important;
+}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{width:26px;height:3px;background:var(--gold)}
+.mobile-menu{
+  display:none;
+  position:fixed;
+  top:72px;left:0;width:100%;
+  background:#fff;
+  z-index:998;
+  padding:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+.mobile-menu.open{display:block}
+.mobile-menu a{
+  display:block;
+  padding:13px;
+  color:#00468a;
+  font-weight:800;
+  border-bottom:1px solid #eee;
+}
+
+.hero{
+  margin-top:72px;
+  min-height:100vh;
+  background:
+  linear-gradient(90deg,rgba(0,102,179,.15),rgba(255,255,255,.05)),
+  url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=1800&q=80');
+  background-size:cover;
+  background-position:center;
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,145,220,.12),rgba(255,255,255,.12));
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:1200px;
+  width:100%;
+  margin:auto;
+  padding:70px 20px;
+  text-align:center;
+}
+.hero-logo{
+  max-width:330px;
+  margin:0 auto 20px;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(46px,7vw,92px);
+  font-weight:900;
+  color:#fff;
+  text-shadow:0 8px 18px rgba(0,0,0,.55);
+  line-height:1.05;
+}
+.hero h1 span{color:#fff}
+.hero-sub{
+  display:inline-block;
+  background:#ffcc31;
+  color:#111;
+  padding:8px 28px;
+  border-radius:30px;
+  font-weight:900;
+  font-size:20px;
+  margin:20px 0 12px;
+}
+.departure{
+  color:#fff;
+  font-size:30px;
+  font-weight:900;
+  text-shadow:0 4px 12px rgba(0,0,0,.65);
+}
+.after-hajj{
+  display:inline-block;
+  margin-top:16px;
+  background:linear-gradient(135deg,#f9db82,#af7a20);
+  color:#111;
+  border:3px solid #8b5a0a;
+  border-radius:18px;
+  padding:10px 30px;
+  font-size:22px;
+  font-weight:900;
+  box-shadow:0 5px 15px rgba(0,0,0,.3);
+}
+.price-box{
+  position:absolute;
+  right:7%;
+  bottom:145px;
+  background:#fff;
+  border:4px solid var(--gold);
+  border-radius:24px;
+  padding:24px 30px;
+  width:310px;
+  text-align:center;
+  z-index:3;
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+.price-box .package-type{
+  background:var(--gold);
+  color:#fff;
+  display:inline-block;
+  padding:7px 18px;
+  border-radius:20px;
+  font-weight:900;
+}
+.price-box h2{
+  font-family:'Playfair Display',serif;
+  font-size:44px;
+  color:var(--gold-dark);
+  margin:10px 0 5px;
+  font-weight:900;
+}
+.price-box p{
+  margin:4px 0;
+  font-size:20px;
+  font-weight:900;
+}
+.limited{
+  position:absolute;
+  right:27%;
+  bottom:360px;
+  background:red;
+  color:#fff;
+  font-size:24px;
+  font-weight:900;
+  padding:12px 20px;
+  transform:rotate(-18deg);
+  z-index:4;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+.hero-actions{
+  margin-top:30px;
+}
+.btn-main,.btn-whatsapp{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  border:0;
+  padding:14px 30px;
+  border-radius:40px;
+  font-weight:900;
+  margin:6px;
+  transition:.3s;
+}
+.btn-main{
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  color:#111;
+}
+.btn-whatsapp{
+  background:#25D366;
+  color:#fff;
+}
+.btn-main:hover,.btn-whatsapp:hover{
+  transform:translateY(-4px);
+  color:#fff;
+}
+
+.bottom-inclusions{
+  position:absolute;
+  left:50%;
+  bottom:25px;
+  transform:translateX(-50%);
+  width:88%;
+  background:#fff;
+  border:4px solid var(--gold);
+  border-radius:22px;
+  z-index:5;
+  display:grid;
+  grid-template-columns:repeat(9,1fr);
+  overflow:hidden;
+  box-shadow:0 12px 35px rgba(0,0,0,.25);
+}
+.inc-mini{
+  padding:18px 8px;
+  text-align:center;
+  border-right:1px solid #d9b158;
+}
+.inc-mini:last-child{border-right:0}
+.inc-mini i{
+  font-size:30px;
+  color:var(--gold);
+  margin-bottom:8px;
+}
+.inc-mini h5{
+  font-size:12px;
+  color:#222;
+  font-weight:900;
+  margin:0;
+  line-height:1.3;
+}
+
+.contact-strip{
+  background:var(--brown);
+  color:#fff;
+  padding:16px 0;
+}
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  align-items:center;
+  font-weight:800;
+}
+.contact-grid i{
+  font-size:28px;
+  margin-right:10px;
+}
+
+.section{
+  padding:80px 0;
+}
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
+}
+.section-title small{
+  color:var(--gold);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-weight:900;
+}
+.section-title h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(32px,4vw,52px);
+  color:var(--blue-dark);
+  font-weight:900;
+}
+.section-title span{color:var(--gold)}
+
+.summary-card{
+  max-width:1120px;
+  margin:auto;
+  background:#fff;
+  border-radius:28px;
+  display:grid;
+  grid-template-columns:45% 55%;
+  overflow:hidden;
+  box-shadow:0 24px 70px rgba(0,0,0,.14);
+  border:2px solid rgba(183,123,22,.25);
+}
+.summary-img{
+  min-height:450px;
+  background:url('https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=900&q=80');
+  background-size:cover;
+  background-position:center;
+}
+.summary-content{
+  padding:45px;
+}
+.summary-content h3{
+  font-family:'Playfair Display',serif;
+  font-size:38px;
+  color:var(--blue-dark);
+  font-weight:900;
+}
+.summary-content p{
+  color:#555;
+  line-height:1.8;
+}
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:22px 0;
+}
+.badges span{
+  background:#fff1c7;
+  color:#7a4b1d;
+  padding:9px 15px;
+  border-radius:25px;
+  font-weight:900;
+}
+.price-summary{
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  color:#fff;
+  padding:24px;
+  border-radius:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+.price-summary strong{
+  font-size:34px;
+  color:var(--gold-light);
+}
+
+.light-bg{background:var(--light)}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+}
+.feature-card{
+  background:#fff;
+  border:1px solid #ead5a3;
+  border-radius:20px;
+  padding:26px;
+  transition:.3s;
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+.feature-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 45px rgba(0,0,0,.12);
+}
+.icon-box{
+  width:58px;
+  height:58px;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#111;
+  font-size:24px;
+  margin-bottom:16px;
+}
+.feature-card h4{
+  color:var(--blue-dark);
+  font-weight:900;
+  font-size:19px;
+}
+.feature-card p{
+  color:#555;
+  font-size:14px;
+  margin:0;
+}
+
+.timeline{
+  max-width:950px;
+  margin:auto;
+}
+.day-card{
+  background:#fff;
+  border-left:7px solid var(--gold);
+  border-radius:18px;
+  padding:25px;
+  margin-bottom:22px;
+  box-shadow:0 8px 28px rgba(0,0,0,.08);
+}
+.day-card span{
+  background:var(--gold);
+  color:#fff;
+  padding:6px 15px;
+  border-radius:20px;
+  font-weight:900;
+  font-size:13px;
+}
+.day-card h4{
+  color:var(--blue-dark);
+  font-weight:900;
+  margin-top:12px;
+}
+
+.hotel-card{
+  background:#fff;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 12px 35px rgba(0,0,0,.1);
+}
+.hotel-img{
+  height:270px;
+  background-size:cover;
+  background-position:center;
+}
+.hotel-content{padding:25px}
+.hotel-content h4{
+  color:var(--blue-dark);
+  font-weight:900;
+}
+.distance{
+  color:var(--gold);
+  font-size:22px;
+  font-weight:900;
+}
+
+.accordion-button{
+  font-weight:900;
+  color:var(--blue-dark);
+}
+.accordion-button:not(.collapsed){
+  background:#fff1c7;
+  color:var(--gold-dark);
+}
+
+.cta{
+  background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--blue));
+  color:#fff;
+  text-align:center;
+  padding:80px 20px;
+}
+.cta h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(34px,4vw,54px);
+  font-weight:900;
+}
+
+.form-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
+.form-overlay.active{display:flex}
+.form-box{
+  background:#fff;
+  width:100%;
+  max-width:560px;
+  border-radius:22px;
+  overflow:hidden;
+  max-height:92vh;
+}
+.form-head{
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  color:#fff;
+  padding:25px;
+  position:relative;
+}
+.close-btn{
+  position:absolute;
+  right:18px;
+  top:18px;
+  width:34px;
+  height:34px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.2);
+  color:#fff;
+}
+.form-body{
+  padding:25px;
+  max-height:70vh;
+  overflow:auto;
+}
+.form-control,.form-select{
+  margin-bottom:14px;
+  padding:12px;
+  border-radius:12px;
+}
+.submit-btn{
+  width:100%;
+  border:0;
+  border-radius:14px;
+  padding:14px;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  font-weight:900;
+}
+
+.float-btns{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:900;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.float-btns a,.float-btns button{
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  border:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:22px;
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+.float-whatsapp{background:#25D366}
+.float-call{background:#00468a}
+.float-enquiry{background:var(--gold)}
+
+.footer{
+  background:var(--brown);
+  color:#fff;
+  padding:35px 0;
+  text-align:center;
+}
+.footer strong{color:var(--gold-light)}
+
+@media(max-width:992px){
+  .bottom-inclusions{grid-template-columns:repeat(3,1fr);position:relative;bottom:auto;left:auto;transform:none;width:94%;margin:-60px auto 0}
+  .price-box,.limited{position:relative;right:auto;bottom:auto;margin:20px auto}
+  .hero{display:block;padding-bottom:30px}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero h1{font-size:48px}
+  .departure{font-size:22px}
+  .after-hajj{font-size:18px}
+  .price-box{width:90%}
+  .bottom-inclusions{grid-template-columns:repeat(2,1fr)}
+  .summary-card{grid-template-columns:1fr}
+  .summary-img{min-height:300px}
+  .summary-content{padding:28px}
+}
+</style>
+</head>
+
+<body>
+
+<nav id="navbar">
+  <a href="../index.html">
+    <img src="../../images/logo-final.png" class="logo-img" alt="Paradise World Travels">
+  </a>
+
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">Home</a>
+    <a class="nav-link" href="../umrah.html">Umrah</a>
+    <a class="nav-link" href="../hajj.html">Hajj</a>
+    <a class="nav-link active" href="../packages.html">Packages</a>
+    <a class="nav-link" href="../offers.html">Offers</a>
+<a class="nav-link" href="../visa.html">Visa & Flights</a>
+    <a class="nav-link" href="../about.html">About Us</a>
+    <a class="nav-link" href="../contact.html">Contact</a>
+    <a class="nav-link nav-cta" onclick="openForm()">Book Now</a>
+  </div>
+
+  <div class="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">Home</a>
+  <a href="../umrah.html">Umrah</a>
+  <a href="../hajj.html">Hajj</a>
+  <a href="../packages.html">Packages</a>
+  <a href="../offers.html">Offers</a>
+<a href="../visa.html">Visa & Flights</a>
+  <a href="../about.html">About Us</a>
+  <a href="../contact.html">Contact</a>
+  <a onclick="openForm()">Book Now</a>
+</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <img src="../../images/logo-final.png" class="hero-logo" alt="Paradise World Travels">
+
+    <h1>Moharram<br><span>Umrah Package</span></h1>
+
+    <div class="hero-sub">Ahmedabad to Ahmedabad Flight</div>
+    <div class="departure">Departure: June – July</div>
+    <div class="after-hajj">Special Package After Hajj</div>
+
+    <div class="hero-actions">
+      <button class="btn-main" onclick="openForm()">Enquire Now <i class="fa-solid fa-arrow-right"></i></button>
+      <a class="btn-whatsapp" href="https://wa.me/919848774484?text=I%20want%20Moharram%20Umrah%20Package%20details" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="limited">LIMITED<br>SEATS</div>
+
+  <div class="price-box">
+    <div class="package-type">Economy Package</div>
+    <h2>INR 94,999</h2>
+    <p>Per Person</p>
+    <p>19–20 Days</p>
+    <hr>
+    <p><i class="fa-solid fa-kaaba"></i> Makkah Hotel Bus Service</p>
+    <p><i class="fa-solid fa-mosque"></i> Madinah 700–800 Meter</p>
+  </div>
+
+  <div class="bottom-inclusions">
+    <div class="inc-mini"><i class="fa-solid fa-plane"></i><h5>Ahmedabad Return Flight</h5></div>
+    <div class="inc-mini"><i class="fa-solid fa-passport"></i><h5>Umrah Visa</h5></div>
+    <div class="inc-mini"><i class="fa-solid fa-utensils"></i><h5>3 Meals Daily</h5></div>
+    <div class="inc-mini"><i class="fa-solid fa-bus"></i><h5>AC Bus Transport</h5></div>
+    <div class="inc-mini"><i class="fa-solid fa-mosque"></i><h5>Makkah & Madinah Ziyarat</h5></div>
+    <div class="inc-mini"><i class="fa-solid fa-shirt"></i><h5>Laundry Service</h5></div>
+    <div class="inc-mini"><i class="fa-solid fa-suitcase"></i><h5>Welcome Kit & Passport Bag</h5></div>
+    <div class="inc-mini"><i class="fa-solid fa-bottle-water"></i><h5>5L Zamzam Water</h5></div>
+    <div class="inc-mini"><i class="fa-solid fa-user-tie"></i><h5>Experienced Umrah Rehbar</h5></div>
+  </div>
+</section>
+
+<section class="contact-strip">
+  <div class="container">
+    <div class="contact-grid">
+      <div><i class="fa-solid fa-phone-volume"></i> +91 81287 86123<br>+91 84693 53585</div>
+      <div><i class="fa-solid fa-globe"></i> www.pwtravco.com</div>
+      <div><i class="fa-solid fa-location-dot"></i> FF-5 Paradise Complex, Near Police Station, Panpur Patiya, Himmatnagar - 383001</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <small>Package Overview</small>
+      <h2>Economy <span>Umrah Package</span></h2>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-img"></div>
+      <div class="summary-content">
+        <h3>Moharram Umrah Package</h3>
+        <p>
+          Experience a peaceful and well-organized Umrah journey from Ahmedabad to Ahmedabad with complete travel support, Umrah visa, meals, transport, Ziyarat and experienced Umrah Rehbar guidance.
+        </p>
+
+        <div class="badges">
+          <span>19–20 Days</span>
+          <span>Ahmedabad Flight</span>
+          <span>Umrah Visa</span>
+          <span>3 Meals Daily</span>
+          <span>Limited Seats</span>
+        </div>
+
+        <div class="price-summary">
+          <div>
+            <small>Package Price</small>
+            <strong>INR 94,999</strong>
+            <small>Per Person</small>
+          </div>
+          <button class="btn-main" onclick="openForm()">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section light-bg">
+  <div class="container">
+    <div class="section-title">
+      <small>Package Includes</small>
+      <h2>What’s <span>Included</span></h2>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-plane"></i></div><h4>Ahmedabad Return Flight</h4><p>Ahmedabad to Ahmedabad flight ticket included.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-passport"></i></div><h4>Umrah Visa</h4><p>Complete Umrah visa assistance included.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-utensils"></i></div><h4>3 Meals Daily</h4><p>Breakfast, lunch and dinner included during the journey.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-bus"></i></div><h4>AC Bus Transport</h4><p>Comfortable AC bus transport services.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-mosque"></i></div><h4>Makkah & Madinah Ziyarat</h4><p>Local Ziyarat in Makkah and Madinah Sharif.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-shirt"></i></div><h4>Laundry Service</h4><p>Laundry service included in the package.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-suitcase"></i></div><h4>Welcome Kit</h4><p>Travelling bag and passport bag included.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-bottle-water"></i></div><h4>5L Zamzam Water</h4><p>5 liter Zamzam water included as per airline rules.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-user-tie"></i></div><h4>Umrah Rehbar</h4><p>Experienced Umrah Rehbar support throughout the journey.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <small>Travel Plan</small>
+      <h2>19–20 Days <span>Itinerary</span></h2>
+    </div>
+
+    <div class="timeline">
+      <div class="day-card"><span>Day 1</span><h4>Departure from Ahmedabad</h4><p>Group departure from Ahmedabad airport and arrival in Saudi Arabia. Transfer to hotel.</p></div>
+      <div class="day-card"><span>Day 2</span><h4>Perform Umrah</h4><p>Perform Umrah with guidance from experienced Rehbar.</p></div>
+      <div class="day-card"><span>Day 3–9</span><h4>Makkah Sharif Stay</h4><p>Stay in Makkah Sharif with daily prayers, meals and group support.</p></div>
+      <div class="day-card"><span>Day 10</span><h4>Makkah Local Ziyarat</h4><p>Visit important holy places around Makkah as per schedule.</p></div>
+      <div class="day-card"><span>Day 11</span><h4>Transfer to Madinah Sharif</h4><p>Travel to Madinah by AC bus and check in at hotel.</p></div>
+      <div class="day-card"><span>Day 12–18</span><h4>Madinah Sharif Stay</h4><p>Stay near Masjid Nabawi with meals and religious guidance.</p></div>
+      <div class="day-card"><span>Day 19</span><h4>Madinah Local Ziyarat</h4><p>Visit important Islamic sites in Madinah Sharif.</p></div>
+      <div class="day-card"><span>Day 20</span><h4>Return to Ahmedabad</h4><p>Airport transfer and return flight to Ahmedabad.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section light-bg">
+  <div class="container">
+    <div class="section-title">
+      <small>Hotel Distance</small>
+      <h2>Makkah & <span>Madinah Stay</span></h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="hotel-card">
+          <div class="hotel-img" style="background-image:url('https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="hotel-content">
+            <h4>Makkah Sharif</h4>
+            <div class="distance">Hotel Bus Service</div>
+            <p>Comfortable hotel stay with transport service for Haram Sharif.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="hotel-card">
+          <div class="hotel-img" style="background-image:url('https://images.unsplash.com/photo-1603201236596-eb1a63eb0ede?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="hotel-content">
+            <h4>Madinah Sharif</h4>
+            <div class="distance">700–800 Meter</div>
+            <p>Stay near Masjid Nabawi with convenient access and group support.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <small>Important Information</small>
+      <h2>Good To <span>Know</span></h2>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-id-card"></i></div><h4>Documents Required</h4><p>Passport, photo and required travel documents.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-person-praying"></i></div><h4>Ihram Guidance</h4><p>Rehbar will guide the group for Ihram and Umrah process.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-suitcase-rolling"></i></div><h4>Luggage Rules</h4><p>Airline baggage rules will apply as per final ticket.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-bottle-water"></i></div><h4>Zamzam Water</h4><p>5 liter Zamzam water included as per airline regulations.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section light-bg" id="terms">
+  <div class="container">
+    <div class="section-title">
+      <small>Package Policy</small>
+      <h2>Terms & <span>Conditions</span></h2>
+    </div>
+
+    <div class="accordion" id="termsAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#t1">Payment Policy</button></h2>
+        <div id="t1" class="accordion-collapse collapse show" data-bs-parent="#termsAccordion"><div class="accordion-body">Booking will be confirmed only after advance payment and document submission.</div></div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#t2">Visa Policy</button></h2>
+        <div id="t2" class="accordion-collapse collapse" data-bs-parent="#termsAccordion"><div class="accordion-body">Visa approval is subject to Saudi authority rules and document clearance.</div></div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#t3">Cancellation Policy</button></h2>
+        <div id="t3" class="accordion-collapse collapse" data-bs-parent="#termsAccordion"><div class="accordion-body">Cancellation charges will apply as per airline, hotel and supplier policy.</div></div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#t4">Price Policy</button></h2>
+        <div id="t4" class="accordion-collapse collapse" data-bs-parent="#termsAccordion"><div class="accordion-body">Package price is subject to availability, airfare, visa rules and exchange rate.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Book Your Umrah Journey Today</h2>
+  <p>Limited seats available for June – July departure.</p>
+  <button class="btn-main" onclick="openForm()">Send Enquiry</button>
+  <a class="btn-whatsapp" href="https://wa.me/919848774484?text=I%20want%20Umrah%20Package%20details" target="_blank">
+    <i class="fab fa-whatsapp"></i> WhatsApp Now
+  </a>
+</section>
+
+<div class="form-overlay" id="formOverlay">
+  <div class="form-box">
+    <div class="form-head">
+      <button class="close-btn" onclick="closeForm()"><i class="fa-solid fa-xmark"></i></button>
+      <h3>Umrah Package Enquiry</h3>
+      <p>Fill details and our team will contact you.</p>
+    </div>
+
+    <div class="form-body">
+      <form onsubmit="submitForm(event)">
+        <input class="form-control" type="text" placeholder="Full Name" required>
+        <input class="form-control" type="tel" placeholder="Mobile Number" required>
+        <input class="form-control" type="email" placeholder="Email Address">
+        <select class="form-select" required>
+          <option value="">Select Departure Month</option>
+          <option>June</option>
+          <option>July</option>
+        </select>
+        <input class="form-control" type="number" placeholder="Number of Persons" required>
+        <textarea class="form-control" rows="3" placeholder="Message">I want details for Moharram Umrah Package.</textarea>
+        <button class="submit-btn" type="submit">Submit Enquiry</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="float-btns">
+  <a class="float-whatsapp" href="https://wa.me/919848774484" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a class="float-call" href="tel:+919848774484"><i class="fa-solid fa-phone"></i></a>
+  <button class="float-enquiry" onclick="openForm()"><i class="fa-solid fa-envelope"></i></button>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p><strong>Paradise World Travels</strong></p>
+    <p>FF-5 Paradise Complex, Near Police Station, Panpur Patiya, Himmatnagar - 383001</p>
+    <p>+91 81287 86123 | +91 84693 53585 | www.pwtravco.com</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+function toggleMobile(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function openForm(){
+  document.getElementById('formOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeForm(){
+  document.getElementById('formOverlay').classList.remove('active');
+  document.body.style.overflow='';
+}
+document.getElementById('formOverlay').addEventListener('click',function(e){
+  if(e.target===this) closeForm();
+});
+function submitForm(e){
+  e.preventDefault();
+  alert('Thank you! Your Umrah package enquiry has been submitted.');
+  closeForm();
+  e.target.reset();
+}
+</script>
+
+</body>
+</html>

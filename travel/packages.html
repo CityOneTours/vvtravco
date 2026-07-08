@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paradise Wide Package | Packages</title>
+  <link rel="stylesheet" href="home.css" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Playfair+Display:wght@400;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  style>
+
+  <style>
+    :root {
+      --gold: #c69f4a;
+      --gold-light: #e2c47a;
+      --gold-dark: #9a7a30;
+      --blue: #00468a;
+      --blue-dark: #002d5c;
+      --black: #111;
+      --white: #fff;
+      --gray-light: #f5f5f5;
+      --gray: #e0e0e0;
+      --text-dark: #222;
+      --text-mid: #555;
+      --shadow: 0 8px 40px rgba(0, 0, 0, .15);
+      --radius: 12px;
+      --transition: .35s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: Roboto, sans-serif;
+      color: var(--text-dark);
+      background: black;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+      background: none;
+      font-family: inherit
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    /* NAVBAR */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      z-index: 1000;
+      background: var(--black);
+      padding: 0 4%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, .5);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--black);
+      font-size: 1.3rem;
+      font-weight: 900;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .logo-text span:last-child {
+      color: #aaa;
+      font-size: .68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    .nav-links a {
+      color: #ddd;
+      font-size: .88rem;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--black) !important;
+      font-weight: 700 !important;
+      padding: 9px 20px !important;
+      border-radius: 25px !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background: var(--black);
+      z-index: 999;
+      padding: 18px;
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mobile-menu.open {
+      display: flex
+    }
+
+    .mobile-menu a {
+      color: #ccc;
+      padding: 12px 16px;
+      border-radius: 8px;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--gold);
+      background: rgba(198, 159, 74, .1)
+    }
+
+    /* HERO */
+    .pkg-search-hero {
+      margin-top: 70px;
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 55%, var(--blue-dark) 100%);
+      padding: 60px 6% 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pkg-search-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1600&q=60');
+      background-size: cover;
+      background-position: center;
+      opacity: .12;
+    }
+
+    .pkg-search-hero-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding-bottom: 80px;
+    }
+
+    .pkg-search-hero-inner h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .pkg-search-hero-inner h1 span {
+      color: var(--gold)
+    }
+
+    .pkg-search-hero-inner p {
+      color: rgba(255, 255, 255, .75);
+      font-size: 1rem;
+      margin-bottom: 34px;
+    }
+
+    .pkg-searchbox {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: flex-end;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .search-field {
+      flex: 1;
+      min-width: 160px;
+      text-align: left
+    }
+
+    .search-field label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--text-mid);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .search-field-inner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid var(--gray);
+      border-radius: 10px;
+      padding: 10px 14px;
+      transition: var(--transition);
+    }
+
+    .search-field-inner:focus-within {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(198, 159, 74, .15);
+    }
+
+    .search-field-inner i {
+      color: var(--gold)
+    }
+
+    .search-field-inner input,
+    .search-field-inner select {
+      border: 0;
+      outline: 0;
+      font-size: .9rem;
+      font-family: Roboto, sans-serif;
+      color: var(--text-dark);
+      background: transparent;
+      width: 100%;
+    }
+
+    .search-btn {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--black);
+      font-weight: 700;
+      font-size: .95rem;
+      padding: 13px 28px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      white-space: nowrap;
+      box-shadow: 0 6px 20px rgba(198, 159, 74, .4);
+    }
+
+    .search-btn:hover {
+      transform: translateY(-2px)
+    }
+
+    .quick-tags {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      padding-bottom: 30px;
+    }
+
+    .quick-tag {
+      padding: 6px 16px;
+      border-radius: 25px;
+      font-size: .78rem;
+      font-weight: 500;
+      background: rgba(255, 255, 255, .15);
+      border: 1px solid rgba(255, 255, 255, .3);
+      color: var(--white);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .quick-tag:hover,
+    .quick-tag.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--black);
+      font-weight: 700;
+    }
+
+    /* MAIN */
+    .pkg-main {
+      background: var(--gray-light);
+      padding: 40px 6% 80px
+    }
+
+    .continent-tabs-wrap {
+      overflow-x: auto;
+      padding-bottom: 4px
+    }
+
+    .continent-tabs {
+      display: flex;
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, .08);
+      overflow: hidden;
+      width: max-content;
+      min-width: 100%;
+    }
+
+    .ctab {
+      flex: 1;
+      min-width: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 18px 16px;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .ctab:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 20%;
+      bottom: 20%;
+      width: 1px;
+      background: var(--gray);
+    }
+
+    .ctab:hover {
+      background: rgba(198, 159, 74, .07)
+    }
+
+    .ctab.active {
+      background: linear-gradient(135deg, rgba(198, 159, 74, .12), rgba(0, 70, 138, .08));
+      border-bottom-color: var(--gold);
+    }
+
+    .ctab-icon {
+      font-size: 1.6rem
+    }
+
+    .ctab-name {
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--text-mid);
+      letter-spacing: .5px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .ctab.active .ctab-name {
+      color: var(--blue)
+    }
+
+    .ctab-count {
+      font-size: .68rem;
+      color: var(--gold);
+      font-weight: 600
+    }
+
+    .continent-banner {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      height: 160px;
+      margin: 28px 0 22px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .continent-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, .7) 0%, transparent 60%);
+    }
+
+    .continent-banner-text {
+      position: absolute;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--white);
+    }
+
+    .continent-banner-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+    }
+
+    .continent-banner-text p {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .75);
+      margin-top: 4px;
+    }
+
+    .pkg-count-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-top: 8px;
+    }
+
+    .pkg-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .pkg-sidebar {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .07);
+      position: sticky;
+      top: 90px;
+    }
+
+    .sidebar-title {
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .sidebar-title button {
+      font-size: .75rem;
+      color: var(--gold);
+      font-weight: 600;
+      text-decoration: underline
+    }
+
+    .sidebar-section {
+      margin-bottom: 26px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--gray);
+    }
+
+    .sidebar-section:last-child {
+      border-bottom: 0;
+      margin-bottom: 0;
+      padding-bottom: 0
+    }
+
+    .sidebar-section h4 {
+      font-size: .82rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .price-range-input {
+      width: 100%;
+      accent-color: var(--gold);
+      cursor: pointer;
+      margin: 10px 0 6px
+    }
+
+    .price-range-vals {
+      display: flex;
+      justify-content: space-between;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text-mid)
+    }
+
+    .dur-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .dur-chip {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: .78rem;
+      font-weight: 600;
+      border: 2px solid var(--gray);
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .dur-chip.active,
+    .dur-chip:hover {
+      border-color: var(--gold);
+      background: rgba(198, 159, 74, .1);
+      color: var(--gold-dark);
+    }
+
+    .sidebar-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .sidebar-opt {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .sidebar-opt input {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--gold)
+    }
+
+    .sidebar-opt label {
+      font-size: .87rem;
+      color: var(--text-mid);
+      cursor: pointer
+    }
+
+    .pkg-result-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .pkg-result-count {
+      font-size: .88rem;
+      color: var(--text-mid)
+    }
+
+    .pkg-result-count strong {
+      color: var(--text-dark)
+    }
+
+    .sort-select {
+      border: 2px solid var(--gray);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: .85rem;
+      color: var(--text-dark);
+      outline: 0;
+    }
+
+    .view-toggle {
+      display: flex;
+      gap: 4px
+    }
+
+    .view-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      border: 2px solid var(--gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-mid);
+    }
+
+    .view-btn.active,
+    .view-btn:hover {
+      border-color: var(--gold);
+      background: rgba(198, 159, 74, .12);
+      color: var(--gold);
+    }
+
+    /* CARDS */
+    #packagesGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    #packagesGrid.list-mode {
+      grid-template-columns: 1fr
+    }
+
+    #packagesGrid.list-mode .pkg-card {
+      display: flex
+    }
+
+    #packagesGrid.list-mode .pkg-img {
+      width: 240px;
+      min-width: 240px;
+      height: auto
+    }
+
+    #packagesGrid.list-mode .pkg-img img {
+      height: 100%
+    }
+
+    .pkg-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .07);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .pkg-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, .13);
+    }
+
+    .pkg-img {
+      position: relative;
+      height: 210px;
+      overflow: hidden
+    }
+
+    .pkg-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease
+    }
+
+    .pkg-card:hover .pkg-img img {
+      transform: scale(1.08)
+    }
+
+    .pkg-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--black);
+      font-size: .68rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .pkg-badge.umrah {
+      background: linear-gradient(135deg, #00468a, #002d5c);
+      color: var(--white)
+    }
+
+    .pkg-badge.hajj {
+      background: linear-gradient(135deg, #1a7a1a, #0d5c0d);
+      color: var(--white)
+    }
+
+    .pkg-wishlist {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ccc;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+      display: none;
+    }
+
+    .pkg-wishlist:hover,
+    .pkg-wishlist.loved {
+      color: #e74c3c
+    }
+
+    .pkg-body {
+      padding: 18px
+    }
+
+    .pkg-body h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.3
+    }
+
+    .pkg-meta {
+      display: flex;
+      gap: 12px;
+      margin: 10px 0;
+      flex-wrap: wrap
+    }
+
+    .pkg-meta span {
+      font-size: .78rem;
+      color: var(--text-mid);
+      display: flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    .pkg-meta i {
+      color: var(--gold)
+    }
+
+    .pkg-highlights {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 12px
+    }
+
+    .pkg-hl {
+      padding: 3px 9px;
+      border-radius: 12px;
+      font-size: .7rem;
+      font-weight: 600;
+      background: rgba(0, 70, 138, .08);
+      color: var(--blue);
+      border: 1px solid rgba(0, 70, 138, .15);
+    }
+
+    .pkg-desc {
+      font-size: .84rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+      margin-bottom: 14px
+    }
+
+    .pkg-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--gray);
+      padding-top: 14px;
+    }
+
+    .pkg-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    .pkg-price span {
+      font-size: .75rem;
+      font-weight: 400;
+      color: var(--text-mid);
+      font-family: Roboto, sans-serif;
+    }
+
+    .btn-book {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--black);
+      font-size: .8rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 25px;
+      transition: var(--transition);
+    }
+
+    .btn-book:hover {
+      transform: translateY(-2px)
+    }
+
+    .pkg-compare-check {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .76rem;
+      color: var(--text-mid);
+      margin-top: 10px;
+      border-top: 1px solid var(--gray);
+      padding-top: 10px;
+      display: none;
+    }
+
+    .pkg-compare-check input {
+      accent-color: var(--gold)
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 70px 20px;
+      grid-column: 1/-1;
+    }
+
+    .no-results i {
+      font-size: 3rem;
+      color: var(--gray);
+      margin-bottom: 16px
+    }
+
+    .no-results h3 {
+      font-size: 1.3rem;
+      color: var(--text-mid);
+      margin-bottom: 8px
+    }
+
+    .compare-tray {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--black);
+      color: var(--white);
+      border-radius: 50px;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, .4);
+      z-index: 500;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      border: 1px solid rgba(198, 159, 74, .3);
+      font-size: .88rem;
+    }
+
+    .compare-tray.visible {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    .compare-tray strong {
+      color: var(--gold)
+    }
+
+    .compare-go {
+      background: var(--gold);
+      color: var(--black);
+      font-weight: 700;
+      padding: 7px 18px;
+      border-radius: 25px;
+      font-size: .82rem;
+    }
+
+    .compare-clear {
+      color: #aaa;
+      font-size: .8rem;
+      cursor: pointer;
+      text-decoration: underline
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: rgba(255, 255, 255, .75);
+      padding: 50px 6% 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .footer-brand p {
+      font-size: .88rem;
+      line-height: 1.7;
+      color: #aaa;
+      margin-top: 16px;
+      max-width: 330px
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+    }
+
+    .social-link:hover {
+      background: var(--gold);
+      color: var(--black)
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-weight: 700;
+      font-size: .95rem;
+      margin-bottom: 20px
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .footer-links a {
+      color: #aaa;
+      font-size: .88rem;
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .footer-links a:hover {
+      color: var(--gold)
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .footer-contact-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: .85rem;
+      color: #aaa
+    }
+
+    .footer-contact-item i {
+      color: var(--gold);
+      margin-top: 3px
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom p {
+      font-size: .82rem;
+      color: #666
+    }
+
+    .footer-bottom span {
+      color: var(--gold)
+    }
+
+    @media(max-width:900px) {
+      .pkg-layout {
+        grid-template-columns: 1fr
+      }
+
+      .pkg-sidebar {
+        position: static
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:768px) {
+      .nav-links {
+        display: none
+      }
+
+      .hamburger {
+        display: flex
+      }
+    }
+
+    @media(max-width:600px) {
+      .pkg-searchbox {
+        flex-direction: column
+      }
+
+      .search-field {
+        min-width: 100%
+      }
+
+      .continent-tabs {
+        width: max-content
+      }
+
+      #packagesGrid.list-mode .pkg-card {
+        flex-direction: column
+      }
+
+      #packagesGrid.list-mode .pkg-img {
+        width: 100%;
+        min-width: unset;
+        height: 200px
+      }
+
+      .pkg-result-bar {
+        align-items: flex-start
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center
+      }
+    }
+
+
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .logo-img {
+      width: auto;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .ctab-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f8f8f8, #ececec);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #c69f4a;
+      margin-bottom: 8px;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .ctab.active .ctab-icon {
+      background: linear-gradient(135deg, #c69f4a, #9a7a30);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .ctab:hover .ctab-icon {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .ctab-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #333;
+      letter-spacing: 0.5px;
+    }
+
+    .ctab-count {
+      font-size: 0.7rem;
+      color: #999;
+      margin-top: 2px;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <a href="home.html" class="nav-logo">
+    <img src="../images/logo-final.png" alt="Logo" class="logo-img">
+  </a>
+
+  <div class="nav-links">
+    <a class="nav-link" href="home.html?page=home">Home</a>
+    <a class="nav-link" href="home.html?page=umrah">Umrah</a>
+    <a class="nav-link" href="home.html?page=hajj">Hajj</a>
+    <a class="nav-link active" href="packages.html">Packages</a>
+    <a class="nav-link" href="home.html?page=offers">Offers</a>
+    <a class="nav-link" href="home.html?page=about">About Us</a>
+    <a class="nav-link" href="home.html?page=contact">Contact</a>
+    <a class="nav-cta nav-link" href="home.html?page=contact">Book Now</a>
+  </div>
+
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="home.html?page=home">Home</a>
+  <a href="home.html?page=umrah">Umrah</a>
+  <a href="home.html?page=hajj">Hajj</a>
+  <a href="packages.html" class="active">Packages</a>
+  <a href="home.html?page=offers">Offers</a>
+  <a href="home.html?page=about">About Us</a>
+  <a href="home.html?page=contact">Contact</a>
+  <a href="home.html?page=contact">Book Now</a>
+</div>
+  <!-- ===== SCROLL TO TOP ===== -->
+  <button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+
+
+  <main>
+    <section class="pkg-search-hero">
+      <div class="pkg-search-hero-inner">
+        <h1>Explore Our <span>Tour Packages</span></h1>
+        <p>Search handcrafted packages across continents — your dream trip is one click away.</p>
+
+        <div class="pkg-searchbox">
+          <div class="search-field" style="flex:2;min-width:200px">
+            <label>Search Destination</label>
+            <div class="search-field-inner">
+              <i class="fas fa-search"></i>
+              <input type="text" id="searchInput" placeholder="Dubai, Bali, Paris, Umrah…" oninput="pkgApplyAll()">
+            </div>
+          </div>
+
+          <div class="search-field">
+            <label>Category</label>
+            <div class="search-field-inner">
+              <i class="fas fa-tag"></i>
+              <select id="searchCat" onchange="pkgApplyAll()">
+                <option value="">All Categories</option>
+                <option value="umrah">Umrah</option>
+                <option value="hajj">Hajj</option>
+                <option value="honeymoon">Honeymoon</option>
+                <option value="adventure">Adventure</option>
+                <option value="cultural">Cultural</option>
+                <option value="beach">Beach</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="search-field">
+            <label>Budget</label>
+            <div class="search-field-inner">
+              <i class="fas fa-rupee-sign"></i>
+              <select id="searchBudget" onchange="pkgApplyAll()">
+                <option value="">Any Budget</option>
+                <option value="under50">Under ₹50,000</option>
+                <option value="50to100">₹50K – ₹1 Lakh</option>
+                <option value="100to200">₹1 – ₹2 Lakh</option>
+                <option value="above200">Above ₹2 Lakh</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="search-btn" onclick="pkgApplyAll()"><i class="fas fa-search"></i> Search</button>
+        </div>
+
+        <!-- <div class="quick-tags">
+          <span class="quick-tag active" onclick="quickTag(this,'')">🌍 All</span>
+          <span class="quick-tag" onclick="quickTag(this,'umrah')">🕌 Umrah</span>
+          <span class="quick-tag" onclick="quickTag(this,'hajj')">⭐ Hajj</span>
+          <span class="quick-tag" onclick="quickTag(this,'honeymoon')">💑 Honeymoon</span>
+          <span class="quick-tag" onclick="quickTag(this,'beach')">🏖️ Beach</span>
+          <span class="quick-tag" onclick="quickTag(this,'adventure')">🏔️ Adventure</span>
+          <span class="quick-tag" onclick="quickTag(this,'cultural')">🏛️ Cultural</span>
+        </div> -->
+      </div>
+    </section>
+
+    <section class="pkg-main">
+      <div class="continent-tabs-wrap">
+        <div class="continent-tabs">
+
+          <div class="ctab active" onclick="selectContinent('all',this)">
+            <span class="ctab-icon"><i class="fas fa-globe"></i></span>
+            <span class="ctab-name">All</span>
+            <span class="ctab-count">24 Packages</span>
+          </div>
+          <div class="ctab" onclick="selectContinent('domestic',this)">
+            <span class="ctab-icon"><i class="fas fa-map-marked-alt"></i></span>
+            <span class="ctab-name">India</span>
+            <span class="ctab-count">5 Packages</span>
+          </div>
+          <div class="ctab" onclick="selectContinent('middle-east',this)">
+            <span class="ctab-icon"><i class="fas fa-mosque"></i></span>
+            <span class="ctab-name">Middle East</span>
+            <span class="ctab-count">8 Packages</span>
+          </div>
+
+          <div class="ctab" onclick="selectContinent('asia',this)">
+            <span class="ctab-icon"><i class="fas fa-landmark"></i></span>
+            <span class="ctab-name">Asia</span>
+            <span class="ctab-count">6 Packages</span>
+          </div>
+
+          <div class="ctab" onclick="selectContinent('europe',this)">
+            <span class="ctab-icon"><i class="fas fa-monument"></i></span>
+            <span class="ctab-name">Europe</span>
+            <span class="ctab-count">4 Packages</span>
+          </div>
+
+          <div class="ctab" onclick="selectContinent('africa',this)">
+            <span class="ctab-icon"><i class="fas fa-earth-africa"></i></span>
+            <span class="ctab-name">Africa</span>
+            <span class="ctab-count">1 Packages</span>
+          </div>
+
+          <!-- <div class="ctab" onclick="selectContinent('americas',this)">
+            <span class="ctab-icon"><i class="fas fa-earth-americas"></i></span>
+            <span class="ctab-name">Americas</span>
+            <span class="ctab-count">3 Packages</span>
+          </div> -->
+
+          <!-- <div class="ctab" onclick="selectContinent('oceania',this)">
+            <span class="ctab-icon"><i class="fas fa-plane-departure"></i></span>
+            <span class="ctab-name">Oceania</span>
+            <span class="ctab-count">2 Packages</span>
+          </div> -->
+
+        </div>
+      </div>
+
+      <div class="continent-banner" id="continentBanner"
+        style="background-image:url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=70')">
+        <div class="continent-banner-text">
+          <h3 id="cBannerTitle">All Destinations</h3>
+          <p id="cBannerSub">Explore our complete collection of curated tour packages</p>
+          <span class="pkg-count-badge" id="cBannerCount">24 Packages</span>
+        </div>
+      </div>
+
+      <div class="pkg-layout">
+        <aside class="pkg-sidebar">
+          <div class="sidebar-title">
+            Refine Results
+            <button onclick="resetAllFilters()">Reset All</button>
+          </div>
+
+          <div class="sidebar-section">
+            <h4>Price Range</h4>
+            <input type="range" class="price-range-input" id="priceRange" min="10000" max="700000" value="700000"
+              step="5000" oninput="updatePriceLabel();pkgApplyAll()">
+            <div class="price-range-vals">
+              <span>₹10,000</span>
+              <span id="priceLabel" style="color:var(--gold);font-weight:700">Any Price</span>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h4>Duration</h4>
+            <div class="dur-chips">
+              <span class="dur-chip active" onclick="selectDur(this,'')">Any</span>
+              <span class="dur-chip" onclick="selectDur(this,'1-5')">1–5 Days</span>
+              <span class="dur-chip" onclick="selectDur(this,'6-10')">6–10 Days</span>
+              <span class="dur-chip" onclick="selectDur(this,'11-20')">11–20 Days</span>
+              <span class="dur-chip" onclick="selectDur(this,'21+')">21+ Days</span>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h4>Package Type</h4>
+            <div class="sidebar-options">
+              <!-- <div class="sidebar-opt"><input type="checkbox" id="ck-umrah" onchange="pkgApplyAll()"><label
+                  for="ck-umrah">Umrah</label></div>
+              <div class="sidebar-opt"><input type="checkbox" id="ck-hajj" onchange="pkgApplyAll()"><label
+                  for="ck-hajj">Hajj</label></div> -->
+              <div class="sidebar-opt"><input type="checkbox" id="ck-honeymoon" onchange="pkgApplyAll()"><label
+                  for="ck-honeymoon">Honeymoon</label></div>
+              <div class="sidebar-opt"><input type="checkbox" id="ck-beach" onchange="pkgApplyAll()"><label
+                  for="ck-beach">Beach</label></div>
+              <div class="sidebar-opt"><input type="checkbox" id="ck-adventure" onchange="pkgApplyAll()"><label
+                  for="ck-adventure">Adventure</label></div>
+              <div class="sidebar-opt"><input type="checkbox" id="ck-cultural" onchange="pkgApplyAll()"><label
+                  for="ck-cultural">Cultural</label></div>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h4>Star Rating</h4>
+            <div class="sidebar-options">
+              <div class="sidebar-opt"><input type="checkbox" id="ck-5star" onchange="pkgApplyAll()"><label
+                  for="ck-5star">⭐⭐⭐⭐⭐ 5 Star</label></div>
+              <div class="sidebar-opt"><input type="checkbox" id="ck-4star" onchange="pkgApplyAll()"><label
+                  for="ck-4star">⭐⭐⭐⭐ 4 Star</label></div>
+              <div class="sidebar-opt"><input type="checkbox" id="ck-3star" onchange="pkgApplyAll()"><label
+                  for="ck-3star">⭐⭐⭐ 3 Star</label></div>
+            </div>
+          </div>
+
+          <div id="contact"
+            style="background:linear-gradient(135deg,var(--blue-dark),var(--blue));border-radius:10px;padding:18px;text-align:center;margin-top:8px">
+            <div style="font-size:1.6rem;margin-bottom:8px">📞</div>
+            <h4 style="color:var(--white);font-size:.9rem;margin-bottom:6px">Need Custom Package?</h4>
+            <p style="color:rgba(255,255,255,.7);font-size:.78rem;margin-bottom:12px">Share your destination, date and
+              budget.</p>
+            <a href="https://wa.me/919642266675" target="_blank"
+              style="display:block;background:var(--gold);color:var(--black);font-weight:700;font-size:.8rem;padding:8px 16px;border-radius:20px;width:100%">WhatsApp
+              Now</a>
+          </div>
+        </aside>
+
+        <div>
+          <div class="pkg-result-bar">
+            <p class="pkg-result-count">Showing <strong id="resultCount">0</strong> packages</p>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+              <select class="sort-select" id="sortSelect" onchange="pkgApplyAll()">
+                <option value="popular">Sort: Most Popular</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Highest Rated</option>
+                <option value="duration">Duration: Shortest</option>
+              </select>
+              <div class="view-toggle">
+                <button class="view-btn active" onclick="setView('grid',this)" title="Grid View"><i
+                    class="fas fa-th"></i></button>
+                <button class="view-btn" onclick="setView('list',this)" title="List View"><i
+                    class="fas fa-list"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div id="packagesGrid"></div>
+          <div id="pkgPagination" style="display:flex;justify-content:center;gap:8px;margin-top:36px;flex-wrap:wrap">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="compare-tray" id="compareTray">
+    <span>Compare: <strong id="compareCount">0</strong>/3 selected</span>
+    <button class="compare-go" onclick="doCompare()">Compare Now</button>
+    <span class="compare-clear" onclick="clearCompare()">Clear</span>
+  </div>
+
+  <!-- <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" onclick="showPage('home')">
+          <img src="images/logo.png" alt="Logo" class="logo-img">
+        </div>
+        <p>Your trusted partner for world-class travel experiences, sacred pilgrimages, and unforgettable
+          adventures
+          since 2005.</p>
+        <div class="social-links">
+          <a class="social-link" href="https://www.facebook.com/paradiseworldtravels"><i
+              class="fab fa-facebook-f"></i></a>
+          <a class="social-link"
+            href="https://www.instagram.com/paradiseworldtravels?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
+              class="fab fa-instagram"></i></a>
+
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="index.html"><i class="fas fa-chevron-right"></i> Home</a>
+          <a href="packages.html"><i class="fas fa-chevron-right"></i> Packages</a>
+          <a href="offers.html"><i class="fas fa-chevron-right"></i> Offers</a>
+          <a href="umrah.html"><i class="fas fa-chevron-right"></i> Umrah</a>
+          <a href="hajj.html"><i class="fas fa-chevron-right"></i> Hajj</a>
+          <a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a>
+          <a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Top Destinations</h4>
+        <div class="footer-links">
+          <a href="packages.html"><i class="fas fa-chevron-right"></i> Dubai, UAE</a>
+          <a href="packages.html"><i class="fas fa-chevron-right"></i> Makkah, Saudi Arabia</a>
+          <a href="packages.html"><i class="fas fa-chevron-right"></i> Paris, France</a>
+          <a href="packages.html"><i class="fas fa-chevron-right"></i> Bali, Indonesia</a>
+          <a href="packages.html"><i class="fas fa-chevron-right"></i> Maldives</a>
+          <a href="packages.html"><i class="fas fa-chevron-right"></i> Singapore</a>
+          <a href="packages.html"><i class="fas fa-chevron-right"></i> Turkey</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <div class="footer-contact">
+          <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Shop No ff-5 Preside Complex,
+              Panpur Patiya, opp. Gramin Police Choki, Savagath, Savgadh, Himatnagar, Gujarat 383001, India</span></div>
+          <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+91 81287 86123<br>+91 84693 53585</span>
+          </div>
+          <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>pwtravco@gmail.com</span>
+          </div>
+          <div class="footer-contact-item"><i class="fas fa-clock"></i><span>Mon – Sat: 9:00 AM – 7:00
+              PM<br>Sunday:
+              10:00 AM – 4:00 PM</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 <span>Paradise Wide Package</span>. All Rights Reserved.</p>
+      <p>Designed with <span>♥</span> for travellers worldwide</p>
+    </div>
+  </footer> -->
+
+  <script>
+    const ALL_PACKAGES = [
+      { id: 1, title: "Kerala — God's Own Country", continent: 'domestic', cats: ['beach', 'cultural'], badge: 'Domestic', badgeCls: '', img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80', days: 5, daysLabel: '9 Days / 8 Nights', pax: '2–20', rating: 4.7, reviews: 158, price: 48130, highlights: ['Backwaters', 'Munnar', 'Ayurveda'], desc: 'Houseboat cruises, Munnar tea gardens and Kerala food.', inclusions: ['Hotel', 'Houseboat', 'Breakfast', 'Guide'], star: 4, link: 'packages/india-kerala.html' },
+      { id: 2, title: 'Gujarat Special Package', continent: 'domestic', cats: ['cultural'], badge: 'Heritage', badgeCls: '', img: 'https://images.unsplash.com/photo-1650868469306-3b9a0a198945?q=80&w=1370&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 7, daysLabel: '3 Days / 2 Nights', pax: '2–20', rating: 4.8, reviews: 134, price: 27620, highlights: ['Bhuj', 'Dhordo ', 'Rann '], desc: 'Forts, bazaars, camel safaris and royal palace experiences.', inclusions: ['Train/Flight', 'Hotel', 'Breakfast', 'Guide'], star: 4, link: 'packages/india-gujarat.html' },
+      { id: 3, title: 'Darjeeling & Gangtok ', link: 'Darjeeling-package.html', continent: 'domestic', cats: ['adventure'], badge: 'Popular', badgeCls: '', img: 'https://images.unsplash.com/photo-1622308644420-b20142dc993c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 4, daysLabel: '4 Days / 3 Nights', pax: '2–20', rating: 4.6, reviews: 192, price: 51100, highlights: ['Darjeeling', 'Gangtok ', 'Kalimpong '], desc: 'Tea gardens, Himalayan views, toy train, monasteries, sunrise at Tiger Hill.', inclusions: ['Hotel', 'Breakfast'], star: 3, link: 'packages/india-darjeeling.html' },
+      { id: 4, title: 'Srinagar — Paradise on Earth', link: 'Srinagar-package.html', continent: 'domestic', cats: ['adventure', 'honeymoon'], badge: 'Honeymoon', badgeCls: '', img: 'https://images.unsplash.com/photo-1593417376544-4c4201061e22?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 6, daysLabel: '3 Days / 2 Nights', pax: '2–15', rating: 4.9, reviews: 167, price: 48420, highlights: ['Srinagar', 'Gulmarg', 'Pahalgam'], desc: 'Shikara rides, Gulmarg, Pahalgam and Kashmir valleys.', inclusions: ['Flights', 'Houseboat', 'Hotel', 'Meals', 'Guide'], star: 4, link: 'packages/india-Srinagar.html' },
+      { id: 5, title: 'Goa Holiday Package', link: '../packages/goa-package.html', continent: 'domestic', cats: ['beach', 'honeymoon'], badge: 'Popular', badgeCls: '', img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=900&q=80', days: 4, daysLabel: '3 Nights / 4 Days', pax: '2–15', rating: 4.8, reviews: 192, price: 12999, highlights: ['South Goa', 'Beach Stay', 'Titos Club'], desc: 'Goa trip with 3 nights AC room stay, breakfast, dinner, pickup and drop, South Goa sightseeing and Titos Club entry for couples.', inclusions: ['AC Room', 'Breakfast', 'Dinner', 'Pickup & Drop', 'Sightseeing'], star: 4 },
+      { id: 6, title: 'Explore Morocco', continent: 'africa', cats: ['cultural', 'adventure'], badge: 'Exotic', badgeCls: '', img: 'https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 7, daysLabel: '7 Days / 6 Nights', pax: '2–15', rating: 4.8, reviews: 76, price: 147000, highlights: ['Sahara Desert', 'Medina', 'Riads'], desc: 'Medinas, camel treks, Sahara dunes and riad stays.', inclusions: ['Flights', 'Riad', 'Breakfast', 'Guide'], star: 4, link: '../packages/morocco-package-one.html' },
+      { id: 7, title: 'Dubai Special Package', link: 'umrah-premium-package.html', continent: 'middle-east', cats: ['dubai'], badge: 'dubai', badgeCls: 'dubai', img: 'https://images.unsplash.com/photo-1546412414-8035e1776c9a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 4, daysLabel: '4 Days / 3 Nights', pax: '2-20', rating: 5.0, reviews: 340, price: 21699, highlights: ['Safari', 'Cruise',], desc: 'Spiritually fulfilling journey with  hotels near Haram, guided ziyarat, and full visa support.', inclusions: ['Flights', 'Hotel', 'Meals', 'Visa', 'Guide'], star: 5, link: 'packages/dubai-summer-offer.html' },
+      { id: 8, title: 'Dubai City  Premium Package', continent: 'middle-east', cats: ['cultural', 'beach'], badge: 'Best Seller', badgeCls: '', img: 'https://images.unsplash.com/photo-1634007626524-f47fa37810a7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 6, daysLabel: '8 Days / 7 Nights', pax: '2–15', rating: 4.9, reviews: 128, price: 134000, highlights: ['Burj Khalifa', 'Desert Safari', 'Dhow Cruise'], desc: 'Glittering skyline, desert safaris, world-class shopping and the iconic Burj Khalifa await.', inclusions: ['Flights', 'Hotel', 'Guide', 'Breakfast'], star: 5, link: 'packages/dubai-city-tour-package.html' },
+      { id: 9, title: 'Dubai City Tour Package', link: 'dubai-premium-package.html', continent: 'middle-east', cats: ['dubai'], badge: 'dubai', badgeCls: 'dubai', img: 'https://images.unsplash.com/photo-1489516408517-0c0a15662682?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 4, daysLabel: '4 Days / 3 Nights', pax: 'Group', rating: 5.0, reviews: 340, price: 17850, highlights: ['dubai', 'Safari',], desc: 'Spiritually fulfilling journey with  hotels near Haram, guided ziyarat, and full visa support.', inclusions: ['Flights', 'Hotel', 'Meals', 'Visa', 'Guide'], star: 5, link: 'packages/dubai-spcial-offer.html' },
+      { id: 10, title: 'Moharram Umrah', link: 'moharram-umrah-package.html', continent: 'middle-east', cats: ['Moharram '], badge: 'Moharram ', badgeCls: 'umrah', img: 'https://images.unsplash.com/photo-1513072064285-240f87fa81e8?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 20, daysLabel: '20 Days', pax: 'Group', rating: 4.9, reviews: 287, price: 94999, highlights: ['Makkah', 'Madinah', 'Ziyarat'], desc: 'Affordable Umrah with 4-star hotels near Haram, visa processing and guided ziyarat tours.', inclusions: ['Flights', 'Hotel', 'Visa', 'Guide'], star: 4, link: 'packages/mohhram-package.html' },
+      { id: 11, title: 'Dubai desert safari', continent: 'middle-east', cats: ['dubai'], badge: 'Dubai', badgeCls: 'dubai', img: 'https://images.unsplash.com/photo-1576159470850-494c8b17aca0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 7, daysLabel: '7 Days / 6 Nights', pax: 'Group', rating: 5.0, reviews: 215, price: 127056, highlights: ['dubai', 'desert', 'Aquaventure '], desc: 'Luxury skyline, desert safaris, world-class shopping, iconic landmarks, pristine beaches, and vibrant nightlife.', inclusions: ['Flights', 'Hotel', 'Meals', 'Visa', 'Guide'], star: 4, link: 'packages/dubai-desert-safari-city-tour.html' },
+      { id: 12, title: 'Dubai Holiday Package', continent: 'middle-east', cats: ['dubai'], badge: 'dubai', badgeCls: 'dubai', img: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 5, daysLabel: '5 Days / 4 Nights', pax: 'Group', rating: 5.0, reviews: 88, price: 70500, highlights: ['Luxury Suite', 'Private Guide', 'Business Class'], desc: 'Luxury skyline, desert safaris, world-class shopping, iconic landmarks, pristine beaches, and vibrant nightlife.', inclusions: ['First Class', 'Luxury Hotel', 'All Meals', 'Private Guide'], star: 5, link: 'packages/dubai-package-one.html' },
+      { id: 13, title: 'Jordan & Petra Explorer', continent: 'middle-east', cats: ['cultural', 'adventure'], badge: 'Cultural', badgeCls: '', img: 'https://images.unsplash.com/photo-1580834341580-8c17a3a630ca?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 5, daysLabel: '5 Days / 4 Nights', pax: '2–12', rating: 4.8, reviews: 64, price: 44557, highlights: ['Petra', 'Dead Sea', 'Wadi Rum'], desc: 'Walk through Petra, float in the Dead Sea and camp in Wadi Rum.', inclusions: ['Flights', 'Hotel', 'Breakfast', 'Guide'], star: 4, link: 'packages/jordan-petra-dead-sea-tour.html' },
+      { id: 14, title: 'Turkey — Istanbul & Cappadocia', continent: 'middle-east', cats: ['cultural', 'honeymoon'], badge: 'Trending', badgeCls: '', img: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600&q=80', days: 6, daysLabel: '6 Days / 5 Nights', pax: '2–15', rating: 4.9, reviews: 104, price: 103774, highlights: ['Hot Air Balloon', 'Bosphorus', 'Hagia Sophia'], desc: 'Fairy chimneys, hot air balloon rides, Blue Mosque and Bosphorus cruise.', inclusions: ['Flights', 'Hotel', 'Breakfast', 'Guide'], star: 5, link: 'packages/turkey-cappadocia-antalya-tour-package.html' },
+      { id: 15, title: 'Bali Paradise Getaway', continent: 'asia', cats: ['beach', 'honeymoon'], badge: 'Trending', badgeCls: '', img: 'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=600&q=80', days: 5, daysLabel: '5 Days / 4 Nights', pax: '2–12', rating: 4.8, reviews: 96, price: 32160, highlights: ['Rice Terraces', 'Temples', 'Beach'], desc: 'Lush rice terraces, ancient temples, nightlife and pristine beaches.', inclusions: ['Flights', 'Resort', 'Breakfast', 'Guide'], star: 4, link: 'packages/bali-couple-tour.html' },
+      { id: 16, title: 'Singapore City Explorer', continent: 'asia', cats: ['cultural'], badge: 'Popular', badgeCls: '', img: 'https://images.unsplash.com/photo-1570789210967-2cac24afeb00?w=600&q=80', days: 5, daysLabel: '5 Days / 4 Nights', pax: '2–15', rating: 4.8, reviews: 112, price: 62380, highlights: ['Gardens by Bay', 'Sentosa', 'Marina Bay'], desc: 'Gardens by the Bay, Marina Bay Sands, Universal Studios and city attractions.', inclusions: ['Flights', 'Hotel', 'Breakfast'], star: 4, link: 'packages/singapore-city-sentosa-tour.html' },
+      { id: 17, title: 'Thailand — Bangkok & Phuket', continent: 'asia', cats: ['beach', 'adventure'], badge: 'Hot Deal', badgeCls: '', img: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80', days: 8, daysLabel: '8 Days / 7 Nights', pax: '2–20', rating: 4.7, reviews: 143, price: 43070, highlights: ['Grand Palace', 'Phi Phi Islands', 'Thai Massage'], desc: 'Royal palaces, emerald islands and legendary street food in Thailand.', inclusions: ['Flights', 'Hotel', 'Breakfast', 'Guide'], star: 4, link: 'packages/thailand-pattaya-phuket-tour-package.html' },
+      { id: 18, title: 'Vietnam Heritage Trail', continent: 'asia', cats: ['cultural', 'adventure'], badge: 'Cultural', badgeCls: '', img: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80', days: 6, daysLabel: '6 Days / 5 Nights', pax: '2–15', rating: 4.7, reviews: 79, price: 80170, highlights: ['Ha Long Bay', 'Hoi An', 'Ho Chi Minh'], desc: 'Cruise Ha Long Bay and explore lantern-lit streets of Hoi An.', inclusions: ['Flights', 'Hotel', 'Meals', 'Guide'], star: 4, link: 'packages/vietnam-package-one.html' },
+      { id: 19, title: 'Japan Cherry Blossom Tour', continent: 'asia', cats: ['cultural', 'honeymoon'], badge: 'Premium', badgeCls: '', img: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80', days: 6, daysLabel: '6 Days / 5 Nights', pax: '2–12', rating: 5.0, reviews: 91, price: 47500, highlights: ['Mount Fuji', 'Kyoto', 'Shibuya'], desc: 'Spring blossoms, temples, bullet trains and Japanese hospitality.', inclusions: ['Flights', 'Hotel', 'Breakfast', 'Guide'], star: 5, link: 'packages/japan-osaka-kyoto-tour.html' },
+      { id: 20, title: 'Maldives Honeymoon Escape', link: 'maldives-water-villa-package.html', continent: 'asia', cats: ['beach', 'honeymoon'], badge: 'Honeymoon', badgeCls: '', img: 'https://images.unsplash.com/photo-1512100356356-de1b84283e18?q=80&w=775&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 5, daysLabel: '5 Days / 4 Nights', pax: 'Couple', rating: 5.0, reviews: 63, price: 228130, highlights: ['Overwater Villa', 'Snorkeling', 'Sunset Cruise'], desc: 'Overwater bungalows, lagoons, private beaches and romantic sunsets.', inclusions: ['Flights', 'Luxury Resort', 'All Meals'], star: 5, link: 'packages/maldives-all-inclusive-package.html' },
+      { id: 21, title: 'Discover Switzerland', continent: 'europe', cats: ['honeymoon', 'cultural'], badge: 'Honeymoon', badgeCls: '', img: 'https://images.unsplash.com/photo-1527668752968-14dc70a27c95?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 8, daysLabel: '8 Days / 7 Nights', pax: 'Couple', rating: 4.9, reviews: 74, price: 125000, highlights: ['Swiss Alps', 'Zurich', 'Lake Geneva'], desc: 'Lake Geneva, Zurich, fine dining and romantic Switzerland experiences.', inclusions: ['Flights', 'Hotel', 'Breakfast', 'Guide'], star: 5, link: 'packages/switzerland-packages-one.html' },
+      { id: 22, title: 'Switzerland Capitals', continent: 'europe', cats: ['adventure', 'honeymoon'], badge: 'Scenic', badgeCls: '', img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80', days: 5, daysLabel: '5 Days / 4 Nights', pax: '2–15', rating: 4.9, reviews: 88, price: 101589, highlights: ['Jungfrau', 'Lake Geneva', 'Interlaken'], desc: 'Snow peaks, sparkling lakes, villages and Swiss chocolate.', inclusions: ['Flights', 'Hotel', 'Breakfast', 'Rail Pass'], star: 5, link: '../packages/switzerland-packages-two.html' },
+      { id: 23, title: 'Explore Greece', continent: 'europe', cats: ['cultural', 'honeymoon'], badge: 'Cultural', badgeCls: '', img: 'https://images.unsplash.com/photo-1580502304784-8985b7eb7260?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 4, daysLabel: '4 Days / 3 Nights', pax: '2–15', rating: 4.8, reviews: 96, price: 54660, highlights: ['Jungfrau', 'Lake Geneva', 'Interlaken'], desc: 'Snow peaks, sparkling lakes, villages and Swiss chocolate.', inclusions: ['Flights', 'Hotel', 'Breakfast', 'Guide'], star: 4, link: 'packages/greece-athens.html' },
+      { id: 24, title: 'Greece Islands Escape', continent: 'europe', cats: ['beach', 'honeymoon'], badge: 'Popular', badgeCls: '', img: 'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=600&q=80', days: 7, daysLabel: '7 Days / 6 Nights', pax: 'Couple', rating: 4.9, reviews: 71, price: 154166, highlights: ['Santorini', 'Mykonos', 'Acropolis'], desc: 'Santorini sunsets, Mykonos beaches and ancient Greek culture.', inclusions: ['Flights', 'Hotel', 'Breakfast'], star: 5, link: 'packages/greece-package-one.html' },
+      // { id: 18, title: 'Spain — Barcelona & Madrid', continent: 'europe', cats: ['cultural'], badge: 'Trending', badgeCls: '', img: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80', days: 8, daysLabel: '8 Days / 7 Nights', pax: '2–15', rating: 4.7, reviews: 67, price: 132000, highlights: ['Sagrada Familia', 'Flamenco', 'Prado Museum'], desc: 'Gaudi architecture, tapas, flamenco and Spanish city life.', inclusions: ['Flights', 'Hotel', 'Breakfast', 'Guide'], star: 4, link: '../packages/umrah-package-one.html' },
+      { id: 25, title: 'Egypt Special Package', continent: 'africa', cats: ['cultural', 'adventure'], badge: 'Historic', badgeCls: '', img: 'https://images.unsplash.com/photo-1553913861-c0fddf2619ee?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', days: 7, daysLabel: '7 Days / 6 Nights', pax: '2–15', rating: 4.8, reviews: 84, price: 112847, highlights: ['Pyramids', 'Nile Cruise', 'Luxor'], desc: 'Great Pyramids, Nile cruise and Valley of the Kings.', inclusions: ['Flights', 'Hotel', 'Meals', 'Guide'], star: 4, link: 'packages/egypt-cairo-luxor-aswan-tour.html' },
+      { id: 26, title: 'Kenya Safari Adventure', continent: 'africa', cats: ['adventure'], badge: 'Adventure', badgeCls: '', img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80', days: 6, daysLabel: '6 Days / 5 Nights', pax: '2–10', rating: 4.9, reviews: 58, price: 166345, highlights: ['Masai Mara', 'Big Five', 'Hot Air Balloon'], desc: 'Masai Mara safari, Big Five spotting and game drives.', inclusions: ['Flights', 'Safari Lodge', 'All Meals', 'Guide'], star: 5, link: 'packages/kenya-mara-lake-nakuru-safari.html' },
+      // { id: 27, title: 'New Zealand Adventure', continent: 'oceania', cats: ['adventure'], badge: 'Adventure', badgeCls: '', img: 'https://images.unsplash.com/photo-1469521669194-babb45599def?w=600&q=80', days: 12, daysLabel: '12 Days / 11 Nights', pax: '2–12', rating: 4.9, reviews: 54, price: 245000, highlights: ['Fiordland', 'Hobbiton', 'Queenstown'], desc: 'Queenstown adventure, Hobbiton and Milford Sound.', inclusions: ['Flights', 'Hotel', 'Breakfast', 'Guide'], star: 5, link: '../packages/umrah-package-one.html' },
+
+      // { id: 21, title: 'Tanzania — Zanzibar & Serengeti', continent: 'africa', cats: ['beach', 'adventure'], badge: 'Wildlife', badgeCls: '', img: 'https://images.unsplash.com/photo-1516298773066-c48f8e9bd92b?w=600&q=80', days: 10, daysLabel: '10 Days / 9 Nights', pax: '2–10', rating: 4.9, reviews: 45, price: 195000, highlights: ['Zanzibar Beach', 'Serengeti', 'Ngorongoro'], desc: 'Zanzibar beaches and Serengeti wildlife safari.', inclusions: ['Flights', 'Lodge', 'All Meals', 'Guide'], star: 5, link: '../packages/umrah-package-one.html' },
+      // { id: 22, title: 'New York City Adventure', continent: 'americas', cats: ['cultural'], badge: 'City Tour', badgeCls: '', img: 'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&q=80', days: 7, daysLabel: '7 Days / 6 Nights', pax: '2–15', rating: 4.8, reviews: 82, price: 185000, highlights: ['Times Square', 'Statue of Liberty', 'Broadway'], desc: 'Times Square, Central Park, Broadway and NYC highlights.', inclusions: ['Flights', 'Hotel', 'Guide'], star: 4, link: '../packages/umrah-package-one.html' },
+      // { id: 23, title: 'Brazil — Rio & Amazon', continent: 'americas', cats: ['adventure', 'beach'], badge: 'Adventure', badgeCls: '', img: 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&q=80', days: 10, daysLabel: '10 Days / 9 Nights', pax: '2–12', rating: 4.7, reviews: 53, price: 210000, highlights: ['Christ the Redeemer', 'Amazon Jungle', 'Copacabana'], desc: 'Rio city life, Amazon jungle and beach experiences.', inclusions: ['Flights', 'Hotel', 'Breakfast', 'Guide'], star: 4, link: '../packages/umrah-package-one.html' },
+      // { id: 24, title: 'Peru — Machu Picchu Trek', continent: 'americas', cats: ['adventure'], badge: 'Adventure', badgeCls: '', img: 'https://images.unsplash.com/photo-1526392060635-9d6019884377?w=600&q=80', days: 9, daysLabel: '9 Days / 8 Nights', pax: '2–12', rating: 4.9, reviews: 67, price: 178000, highlights: ['Machu Picchu', 'Inca Trail', 'Cusco'], desc: 'Ancient Inca Trail and Machu Picchu citadel.', inclusions: ['Flights', 'Hotel', 'Meals', 'Guide'], star: 4, link: '../packages/umrah-package-one.html' },
+      // { id: 25, title: 'Australia — Sydney & Gold Coast', continent: 'oceania', cats: ['beach', 'cultural'], badge: 'Popular', badgeCls: '', img: 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=80', days: 10, daysLabel: '10 Days / 9 Nights', pax: '2–15', rating: 4.8, reviews: 71, price: 220000, highlights: ['Opera House', 'Great Barrier Reef', 'Bondi Beach'], desc: 'Sydney Opera House, Bondi Beach and Great Barrier Reef.', inclusions: ['Flights', 'Hotel', 'Breakfast', 'Guide'], star: 5, link: '../packages/umrah-package-one.html' },
+
+    ];
+
+    const CONTINENT_META = {
+      all: { title: 'All Destinations', sub: 'Complete collection of curated packages worldwide', img: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=70', count: '31 Packages' },
+      'middle-east': { title: 'Middle East', sub: 'Spiritual pilgrimages, desert adventures and luxury Dubai', img: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1200&q=70', count: '7 Packages' },
+      asia: { title: 'Asia', sub: 'Exotic beaches, temples and vibrant cultures', img: 'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=1200&q=70', count: '6 Packages' },
+      europe: { title: 'Europe', sub: 'Romantic cities, mountains, art and culture', img: 'https://images.unsplash.com/photo-1472018584580-4c8e8deb1534?w=1200&q=70', count: '5 Packages' },
+      africa: { title: 'Africa', sub: 'Safaris, pyramids, deserts and beaches', img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1200&q=70', count: '4 Packages' },
+      americas: { title: 'The Americas', sub: 'New York, Amazon, Rio and Inca heritage', img: 'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=1200&q=70', count: '3 Packages' },
+      oceania: { title: 'Oceania', sub: 'Australia, New Zealand and island adventures', img: 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=1200&q=70', count: '2 Packages' },
+      domestic: { title: 'India — Domestic Tours', sub: 'Kerala, Rajasthan, Goa, Kashmir and more', img: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=1200&q=70', count: '4 Packages' }
+    };
+
+    let pkgState = { continent: 'all', search: '', cat: '', budget: '', dur: '', maxPrice: 700000, sort: 'popular', compareList: [], wishlist: [], page: 1, view: 'grid' };
+    const ITEMS_PER_PAGE = 9;
+
+    function toggleMobile() { document.getElementById('mobileMenu').classList.toggle('open') }
+
+    function selectContinent(c, el) {
+      pkgState.continent = c;
+      pkgState.page = 1;
+      document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      const m = CONTINENT_META[c];
+      document.getElementById('continentBanner').style.backgroundImage = `url('${m.img}')`;
+      document.getElementById('cBannerTitle').textContent = m.title;
+      document.getElementById('cBannerSub').textContent = m.sub;
+      document.getElementById('cBannerCount').textContent = m.count;
+      pkgApplyAll();
+    }
+
+    function quickTag(el, cat) {
+      document.querySelectorAll('.quick-tag').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      pkgState.cat = cat;
+      pkgState.page = 1;
+      document.getElementById('searchCat').value = cat;
+      pkgApplyAll();
+    }
+
+    function updatePriceLabel() {
+      const r = document.getElementById('priceRange');
+      const l = document.getElementById('priceLabel');
+      pkgState.maxPrice = parseInt(r.value);
+      l.textContent = pkgState.maxPrice >= 700000 ? 'Any Price' : 'Up to ₹' + pkgState.maxPrice.toLocaleString('en-IN');
+    }
+
+    function selectDur(el, val) {
+      document.querySelectorAll('.dur-chip').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      pkgState.dur = val;
+      pkgState.page = 1;
+      pkgApplyAll();
+    }
+
+    function setView(mode, el) {
+      pkgState.view = mode;
+      document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('packagesGrid').classList.toggle('list-mode', mode === 'list');
+    }
+
+    function resetAllFilters() {
+      pkgState = { ...pkgState, continent: 'all', search: '', cat: '', budget: '', dur: '', maxPrice: 700000, sort: 'popular', page: 1 };
+      document.getElementById('searchInput').value = '';
+      document.getElementById('searchCat').value = '';
+      document.getElementById('searchBudget').value = '';
+      document.getElementById('priceRange').value = 700000;
+      updatePriceLabel();
+      document.querySelectorAll('.ctab').forEach((t, i) => t.classList.toggle('active', i === 0));
+      document.querySelectorAll('.dur-chip').forEach((t, i) => t.classList.toggle('active', i === 0));
+      document.querySelectorAll('.quick-tag').forEach((t, i) => t.classList.toggle('active', i === 0));
+      document.querySelectorAll('[id^="ck-"]').forEach(c => c.checked = false);
+      document.getElementById('sortSelect').value = 'popular';
+      const m = CONTINENT_META.all;
+      document.getElementById('continentBanner').style.backgroundImage = `url('${m.img}')`;
+      document.getElementById('cBannerTitle').textContent = m.title;
+      document.getElementById('cBannerSub').textContent = m.sub;
+      document.getElementById('cBannerCount').textContent = m.count;
+      pkgApplyAll();
+    }
+
+    function pkgApplyAll() {
+      pkgState.search = document.getElementById('searchInput').value.toLowerCase();
+      pkgState.cat = document.getElementById('searchCat').value;
+      pkgState.budget = document.getElementById('searchBudget').value;
+      pkgState.sort = document.getElementById('sortSelect').value;
+
+      const checkedCats = ['umrah', 'hajj', 'honeymoon', 'beach', 'adventure', 'cultural'].filter(c => {
+        const el = document.getElementById('ck-' + c);
+        return el && el.checked;
+      });
+
+      let data = [...ALL_PACKAGES];
+
+      if (pkgState.continent !== 'all') data = data.filter(p => p.continent === pkgState.continent);
+
+      if (pkgState.search) {
+        data = data.filter(p =>
+          p.title.toLowerCase().includes(pkgState.search) ||
+          p.desc.toLowerCase().includes(pkgState.search) ||
+          p.highlights.some(h => h.toLowerCase().includes(pkgState.search))
+        );
+      }
+
+      if (checkedCats.length) data = data.filter(p => checkedCats.some(c => p.cats.includes(c)));
+      else if (pkgState.cat) data = data.filter(p => p.cats.includes(pkgState.cat));
+
+      if (pkgState.budget) {
+        if (pkgState.budget === 'under50') data = data.filter(p => p.price < 50000);
+        if (pkgState.budget === '50to100') data = data.filter(p => p.price >= 50000 && p.price < 100000);
+        if (pkgState.budget === '100to200') data = data.filter(p => p.price >= 100000 && p.price < 200000);
+        if (pkgState.budget === 'above200') data = data.filter(p => p.price >= 200000);
+      }
+
+      data = data.filter(p => p.price <= pkgState.maxPrice);
+
+      if (pkgState.dur) {
+        const range = pkgState.dur === '21+' ? [21, 999] : pkgState.dur.split('-').map(Number);
+        data = data.filter(p => p.days >= range[0] && p.days <= range[1]);
+      }
+
+      const stars = [5, 4, 3].filter(s => {
+        const el = document.getElementById('ck-' + s + 'star');
+        return el && el.checked;
+      });
+      if (stars.length) data = data.filter(p => stars.includes(p.star));
+
+      if (pkgState.sort === 'price-low') data.sort((a, b) => a.price - b.price);
+      else if (pkgState.sort === 'price-high') data.sort((a, b) => b.price - a.price);
+      else if (pkgState.sort === 'rating') data.sort((a, b) => b.rating - a.rating);
+      else if (pkgState.sort === 'duration') data.sort((a, b) => a.days - b.days);
+
+      renderPkgGrid(data);
+    }
+
+    function renderPkgGrid(data) {
+      const grid = document.getElementById('packagesGrid');
+      document.getElementById('resultCount').textContent = data.length;
+
+      const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
+      if (pkgState.page > totalPages) pkgState.page = 1;
+      const start = (pkgState.page - 1) * ITEMS_PER_PAGE;
+      const paged = data.slice(start, start + ITEMS_PER_PAGE);
+
+      if (!paged.length) {
+        grid.innerHTML = `<div class="no-results"><i class="fas fa-map-signs"></i><h3>No packages found</h3><p>Try adjusting your filters or search differently.</p><button class="btn-book" style="margin-top:16px;padding:10px 24px" onclick="resetAllFilters()">Clear All Filters</button></div>`;
+        renderPagination(0);
+        return;
+      }
+
+      grid.innerHTML = paged.map(p => {
+        const loved = pkgState.wishlist.includes(p.id);
+        const inComp = pkgState.compareList.includes(p.id);
+        const priceStr = '₹' + p.price.toLocaleString('en-IN');
+        const highlights = p.highlights.map(h => `<span class="pkg-hl">${h}</span>`).join('');
+        const inclusions = p.inclusions.slice(0, 3).map(i => `<span style="font-size:.72rem;color:var(--text-mid);display:flex;align-items:center;gap:3px"><i class="fas fa-check" style="color:var(--gold)"></i>${i}</span>`).join('');
+
+        return `
+  <article class="pkg-card" onclick="openPackageLink('${p.link || '#'}')">
+    <div class="pkg-img">
+      <img src="${p.img}" alt="${p.title}" loading="lazy">
+      <span class="pkg-badge ${p.badgeCls}">${p.badge}</span>
+
+      <button class="pkg-wishlist ${loved ? 'loved' : ''}" 
+        onclick="event.stopPropagation(); toggleWishlist(${p.id}, this)">
+        <i class="fa${loved ? 's' : 'r'} fa-heart"></i>
+      </button>
+    </div>
+
+    <div class="pkg-body">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px">
+        <h3>${p.title}</h3>
+        <span style="font-size:.78rem;color:var(--text-mid);white-space:nowrap">
+          ${'⭐'.repeat(p.star)}
+        </span>
+      </div>
+
+      <div class="pkg-meta">
+        <span><i class="fas fa-clock"></i> ${p.daysLabel}</span>
+        <span><i class="fas fa-users"></i> ${p.pax}</span>
+        <span><i class="fas fa-star"></i> ${p.rating} (${p.reviews})</span>
+      </div>
+
+      <div class="pkg-highlights">${highlights}</div>
+
+      <p class="pkg-desc">${p.desc}</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+        ${inclusions}
+      </div>
+
+      <div class="pkg-footer">
+        <div class="pkg-price">${priceStr} <span>/ person</span></div>
+
+        <button class="btn-book" type="button" 
+          onclick="event.stopPropagation(); openPackageLink('${p.link || '#'}')">
+          View Details
+        </button>
+      </div>
+
+      <label class="pkg-compare-check" onclick="event.stopPropagation()">
+        <input type="checkbox" ${inComp ? 'checked' : ''} 
+          onchange="toggleCompare(${p.id}, this)">
+        Compare
+      </label>
+    </div>
+  </article>
+`;
+      }).join('');
+
+      renderPagination(totalPages);
+    }
+
+
+    function openPackageLink(link) {
+      if (!link || link === '#') {
+        return;
+      }
+      window.location.href = link;
+    }
+
+    function renderPagination(totalPages) {
+      const pg = document.getElementById('pkgPagination');
+      if (totalPages <= 1) { pg.innerHTML = ''; return }
+      let html = '';
+      for (let i = 1; i <= totalPages; i++) {
+        html += `<button onclick="goPage(${i})" style="padding:8px 14px;border-radius:8px;border:2px solid ${i === pkgState.page ? 'var(--gold)' : 'var(--gray)'};background:${i === pkgState.page ? 'var(--gold)' : 'var(--white)'};color:${i === pkgState.page ? 'var(--black)' : 'var(--text-mid)'};font-weight:700">${i}</button>`;
+      }
+      pg.innerHTML = html;
+    }
+
+    function goPage(p) {
+      pkgState.page = p;
+      pkgApplyAll();
+      document.querySelector('.pkg-main').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleWishlist(id, btn) {
+      const idx = pkgState.wishlist.indexOf(id);
+      if (idx >= 0) {
+        pkgState.wishlist.splice(idx, 1);
+        btn.classList.remove('loved');
+        btn.innerHTML = '<i class="far fa-heart"></i>';
+      } else {
+        pkgState.wishlist.push(id);
+        btn.classList.add('loved');
+        btn.innerHTML = '<i class="fas fa-heart"></i>';
+      }
+    }
+
+    function toggleCompare(id, cb) {
+      const idx = pkgState.compareList.indexOf(id);
+      if (cb.checked) {
+        if (pkgState.compareList.length >= 3) {
+          cb.checked = false;
+          alert('You can compare up to 3 packages only.');
+          return;
+        }
+        pkgState.compareList.push(id);
+      } else if (idx >= 0) {
+        pkgState.compareList.splice(idx, 1);
+      }
+      document.getElementById('compareCount').textContent = pkgState.compareList.length;
+      document.getElementById('compareTray').classList.toggle('visible', pkgState.compareList.length > 0);
+    }
+
+    function clearCompare() {
+      pkgState.compareList = [];
+      document.getElementById('compareTray').classList.remove('visible');
+      pkgApplyAll();
+    }
+
+    function doCompare() {
+      const pkgs = pkgState.compareList.map(id => ALL_PACKAGES.find(p => p.id === id)).filter(Boolean);
+      if (pkgs.length < 2) { alert('Please select at least 2 packages to compare.'); return }
+      const lines = pkgs.map(p => `${p.title} - ₹${p.price.toLocaleString('en-IN')} - ${p.daysLabel}`).join('\\n');
+      alert('Package Comparison:\\n\\n' + lines);
+    }
+
+    pkgApplyAll();
+  </script>
+</body>
+
+</html>

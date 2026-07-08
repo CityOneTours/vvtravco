@@ -1,0 +1,2543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VV Travco | Creative Design Horizon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #071018;
+            --bg2: #0b1621;
+            --bg3: #102030;
+            --card: #0e1c29;
+            --card2: #132536;
+            --accent: #00aaff;
+            --accent2: #00d4ff;
+            --text: #eef6ff;
+            --muted: #9eb0c2;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            --radius: 18px;
+            --max-width: 1240px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #061018;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(var(--max-width), calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        /* ===== THREE.JS CANVAS ===== */
+        #three-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(7, 16, 24, 0.88);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-wrap {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: #00131d;
+            font-weight: 900;
+            font-size: 16px;
+            box-shadow: 0 10px 24px rgba(0, 170, 255, 0.28);
+        }
+
+        .nav-brand {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .nav-brand span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: #00131d !important;
+            padding: 12px 20px;
+            border-radius: 999px;
+            font-weight: 700 !important;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 500;
+            transition: .3s;
+            cursor: pointer;
+        }
+
+        .dropbtn:hover {
+            color: var(--accent);
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 300px;
+            background: #0f1823;
+            border: 1px solid rgba(0, 170, 255, .15);
+            border-radius: 16px;
+            padding: 12px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: all .3s ease;
+            z-index: 999;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .3);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 14px 20px;
+            color: #d8e4f0;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 170, 255, .08);
+            color: #00aaff;
+            padding-left: 28px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 46px;
+            height: 46px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, .03);
+            border-radius: 12px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+            transition: .3s ease;
+        }
+
+        .menu-toggle:hover {
+            border-color: rgba(0, 170, 255, .35);
+            background: rgba(0, 170, 255, .08);
+        }
+
+        .menu-toggle span {
+            width: 20px;
+            height: 2px;
+            background: #fff;
+            border-radius: 10px;
+            display: block;
+            transition: .3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .mobile-menu {
+            display: none;
+            width: 100%;
+            padding: 0 24px 20px;
+            background: rgba(7, 16, 24, .96);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu a {
+            color: var(--text);
+            font-size: 15px;
+            font-weight: 500;
+            padding: 12px 14px;
+            border-radius: 12px;
+            transition: .3s ease;
+            border: 1px solid transparent;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255, 255, 255, .04);
+            border-color: var(--border);
+        }
+
+        .mobile-menu .mobile-cta {
+            margin-top: 8px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: #00131d;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* ===== SECTIONS BASE ===== */
+        section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent2);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-desc {
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 700px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0 26px;
+            border-radius: 999px;
+            font-size: 15px;
+            font-weight: 700;
+            transition: .3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: #00131d;
+            box-shadow: 0 16px 35px rgba(0, 170, 255, .22);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            color: #fff;
+            background: rgba(255, 255, 255, .02);
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(0, 170, 255, .35);
+            background: rgba(0, 170, 255, .08);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 70px 0 80px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(0, 170, 255, .14), transparent 35%),
+                radial-gradient(circle at 85% 30%, rgba(0, 212, 255, .10), transparent 30%),
+                radial-gradient(circle at 50% 100%, rgba(0, 140, 255, .08), transparent 35%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+            min-height: calc(100vh - 120px);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 16px;
+            border: 1px solid rgba(0, 212, 255, .2);
+            background: rgba(0, 170, 255, .08);
+            color: var(--accent2);
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 4vw, 5.6rem);
+            font-weight: 900;
+            line-height: 1.02;
+            margin-bottom: 22px;
+        }
+
+        .hero-title .gradient {
+            display: inline-block;
+            background: linear-gradient(135deg, #8bdfff, #00d4ff, #00aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--muted);
+            max-width: 640px;
+            margin-bottom: 34px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 34px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .hero-stat {
+            padding: 18px 16px;
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(8px);
+            transition: transform .3s;
+        }
+
+        .hero-stat:hover {
+            transform: translateY(-4px);
+        }
+
+        .hero-stat strong {
+            display: block;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--accent2);
+            margin-bottom: 6px;
+        }
+
+        .hero-stat span {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* 3D HERO VISUAL */
+        .hero-visual {
+            position: relative;
+            perspective: 1200px;
+        }
+
+        .hero-3d-wrapper {
+            transform-style: preserve-3d;
+            transform: rotateY(-8deg) rotateX(4deg);
+            transition: transform .6s ease;
+        }
+
+        .hero-3d-wrapper:hover {
+            transform: rotateY(0deg) rotateX(0deg);
+        }
+
+        .hero-main-image {
+            border-radius: 26px;
+            overflow: hidden;
+            min-height: 620px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, .08);
+            position: relative;
+        }
+
+        .hero-main-image img {
+            width: 100%;
+            height: 620px;
+            object-fit: cover;
+        }
+
+        .hero-main-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, .06), rgba(0, 0, 0, .32));
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(10, 22, 33, .95);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: var(--shadow);
+            max-width: 240px;
+            transform: translateZ(40px);
+            backdrop-filter: blur(12px);
+        }
+
+        .floating-card h4 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .floating-card p {
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--muted);
+        }
+
+        .floating-card.one {
+            top: 20px;
+            right: -20px;
+        }
+
+        .floating-card.two {
+            left: -20px;
+            bottom: 40px;
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            padding: 60px 0 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .stat-item {
+            background: linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, .02));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform .4s, box-shadow .4s;
+            transform-style: preserve-3d;
+            cursor: default;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px) rotateX(6deg);
+            box-shadow: 0 30px 80px rgba(0, 170, 255, .15);
+            border-color: rgba(0, 170, 255, .3);
+        }
+
+        .stat-num {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 900;
+            color: var(--accent2);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            padding: 110px 0;
+        }
+
+        .services-grid {
+            margin-top: 48px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: linear-gradient(180deg, rgba(19, 37, 54, .95), rgba(13, 27, 40, .96));
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            overflow: hidden;
+            transition: .4s ease;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transform-style: preserve-3d;
+            perspective: 600px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) rotateX(4deg) rotateY(-2deg);
+            border-color: rgba(0, 170, 255, .3);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, .4), 0 0 40px rgba(0, 170, 255, .1);
+        }
+
+        .service-image {
+            height: 230px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.08);
+        }
+
+        .service-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .svc-num {
+            font-size: 12px;
+            color: var(--accent2);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .svc-title {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.25;
+            color: #eaeced;
+        }
+
+        .svc-desc {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            flex: 1;
+        }
+
+        .svc-link {
+            color: var(--accent2);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* ===== PARTNERSHIP ===== */
+        .partnership {
+            padding: 110px 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .02), rgba(255, 255, 255, .01));
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .partner-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .partner-image-wrap {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .partner-3d {
+            transform-style: preserve-3d;
+            transform: rotateY(8deg) rotateX(-3deg);
+            transition: transform .6s ease;
+        }
+
+        .partner-3d:hover {
+            transform: rotateY(0deg) rotateX(0deg);
+        }
+
+        .partner-image {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .partner-image img {
+            width: 100%;
+            height: 560px;
+            object-fit: cover;
+        }
+
+        .partner-overlay-card {
+            position: absolute;
+            right: 24px;
+            bottom: 24px;
+            background: rgba(7, 16, 24, .88);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+            border-radius: 18px;
+            padding: 22px;
+            width: min(320px, calc(100% - 48px));
+            transform: translateZ(30px);
+        }
+
+        .partner-logo-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo-name {
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .partner-logo-name span {
+            color: var(--accent);
+        }
+
+        .partner-overlay-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .partner-points {
+            margin-top: 28px;
+            display: grid;
+            gap: 14px;
+        }
+
+        .partner-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px 18px;
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: .3s;
+        }
+
+        .partner-point:hover {
+            border-color: rgba(0, 170, 255, .25);
+            transform: translateX(4px);
+        }
+
+        .partner-point-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: rgba(0, 170, 255, .15);
+            color: var(--accent2);
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .partner-point div strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 15px;
+        }
+
+        .partner-point div span {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* ===== GROUP ===== */
+        .group-section {
+            padding: 110px 0;
+        }
+
+        .group-top {
+            display: grid;
+            grid-template-columns: .95fr 1.05fr;
+            gap: 34px;
+            align-items: center;
+            margin-bottom: 46px;
+        }
+
+        .group-image {
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .group-image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .group-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .group-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, .02));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: .4s;
+            transform-style: preserve-3d;
+        }
+
+        .group-card:hover {
+            transform: translateY(-8px) rotateX(5deg);
+            border-color: rgba(0, 170, 255, .25);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 170, 255, .08);
+        }
+
+        .group-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: transform .5s;
+        }
+
+        .group-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .group-card-content {
+            padding: 20px;
+        }
+
+        .group-card-name {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            line-height: 1.35;
+        }
+
+        .group-card-type {
+            color: var(--accent2);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .group-card-text {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.75;
+        }
+
+        /* ===== WHY ===== */
+        .why {
+            padding: 110px 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .02), rgba(255, 255, 255, .01));
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .why-top {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 34px;
+            align-items: center;
+            margin-bottom: 44px;
+        }
+
+        .why-image {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            perspective: 800px;
+        }
+
+        .why-image img {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .why-card {
+            background: linear-gradient(180deg, rgba(19, 37, 54, .95), rgba(11, 23, 34, .95));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px 22px;
+            box-shadow: var(--shadow);
+            transition: .4s;
+            transform-style: preserve-3d;
+        }
+
+        .why-card:hover {
+            transform: translateY(-8px) rotateX(6deg) rotateY(3deg);
+            border-color: rgba(0, 170, 255, .3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 170, 255, .1);
+        }
+
+        .why-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-size: 24px;
+            background: rgba(0, 170, 255, .13);
+            margin-bottom: 16px;
+        }
+
+        .why-card h4 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            padding: 110px 0;
+        }
+
+        .cta-box {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            min-height: 460px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transform-style: preserve-3d;
+            perspective: 800px;
+            transition: transform .5s;
+        }
+
+        .cta-box:hover {
+            transform: rotateX(2deg) scale(1.01);
+        }
+
+        .cta-box img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cta-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(5, 12, 18, .92) 0%, rgba(5, 12, 18, .72) 45%, rgba(5, 12, 18, .5) 100%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            padding: 70px;
+            max-width: 720px;
+        }
+
+        .cta-content h2 {
+            font-size: clamp(2.2rem, 4vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 18px;
+            line-height: 1.1;
+        }
+
+        .cta-content h2 span {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-content p {
+            color: #d9e7f3;
+            font-size: 17px;
+            line-height: 1.9;
+            margin-bottom: 30px;
+            max-width: 580px;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 70px 0 30px;
+            background: #061018;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 34px;
+            margin-bottom: 36px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 14px;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-about p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 14px;
+            margin-bottom: 20px;
+            max-width: 360px;
+        }
+
+        .footer-col h5 {
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .footer-col a,
+        .footer-col p {
+            display: block;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+            margin-bottom: 8px;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid var(--border);
+            color: #fff;
+            font-size: 15px;
+            transition: .3s;
+        }
+
+        .social-links a:hover {
+            border-color: rgba(0, 170, 255, .25);
+            background: rgba(0, 170, 255, .12);
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) rotateX(8deg);
+            transition: .8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg);
+        }
+
+        /* ===== 3D ORBIT ANIMATION ===== */
+        @keyframes orbit {
+            from {
+                transform: rotateZ(0deg) translateX(120px) rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateZ(360deg) translateX(120px) rotateZ(-360deg);
+            }
+        }
+
+        @keyframes orbitReverse {
+            from {
+                transform: rotateZ(0deg) translateX(80px) rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateZ(-360deg) translateX(80px) rotateZ(360deg);
+            }
+        }
+
+        @keyframes pulse3d {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(0, 170, 255, .3), 0 0 40px rgba(0, 170, 255, .1);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(0, 212, 255, .5), 0 0 80px rgba(0, 170, 255, .2);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotateX(4deg) rotateY(-8deg);
+            }
+
+            50% {
+                transform: translateY(-14px) rotateX(4deg) rotateY(-8deg);
+            }
+        }
+
+        @keyframes floatCard {
+
+            0%,
+            100% {
+                transform: translateZ(40px) translateY(0);
+            }
+
+            50% {
+                transform: translateZ(40px) translateY(-8px);
+            }
+        }
+
+        .hero-3d-wrapper {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-card {
+            animation: floatCard 4s ease-in-out infinite;
+        }
+
+        .floating-card.two {
+            animation-delay: -2s;
+        }
+
+        /* ===== POPUP (unchanged) ===== */
+        .vv-popup-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(4, 9, 14, .82);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .35s ease, visibility .35s ease;
+        }
+
+        .vv-popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .vv-popup-box {
+            position: relative;
+            width: min(960px, 100%);
+            max-height: 90vh;
+            overflow-y: auto;
+            background: linear-gradient(180deg, var(--card2), var(--bg2));
+            border: 1px solid rgb(255 255 255 / 40%);
+            border-radius: 26px;
+            box-shadow: var(--shadow);
+            padding: 40px 40px 26px;
+            transform: translateY(24px) scale(.97);
+            transition: transform .35s ease;
+        }
+
+        .vv-popup-overlay.active .vv-popup-box {
+            transform: translateY(0) scale(1);
+        }
+
+        .vv-popup-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, .04);
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            transition: .3s;
+            z-index: 2;
+        }
+
+        .vv-popup-close:hover {
+            border-color: rgba(0, 170, 255, .4);
+            background: rgba(0, 170, 255, .12);
+        }
+
+        .vv-popup-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .vv-popup-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border: 1px solid rgba(0, 212, 255, .2);
+            background: rgba(0, 170, 255, .08);
+            color: var(--accent2);
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+
+        .vv-popup-title {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .vv-popup-title span {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .vv-popup-sub {
+            color: var(--muted);
+            font-size: 14.5px;
+            line-height: 1.75;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .vv-popup-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .vv-popup-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, .02);
+            transition: .3s ease;
+        }
+
+        .vv-popup-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, .18);
+        }
+
+        .vv-popup-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            z-index: 2;
+        }
+
+        .vv-popup-marketing::before {
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+        }
+
+        .vv-popup-travel::before {
+            background: linear-gradient(90deg, #ff9d2e, #ffc24b);
+        }
+
+        .vv-popup-card-image {
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .vv-popup-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .vv-popup-card-content {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .vv-popup-card-tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .vv-popup-marketing .vv-popup-card-tag {
+            color: var(--accent2);
+        }
+
+        .vv-popup-travel .vv-popup-card-tag {
+            color: #ffc24b;
+        }
+
+        .vv-popup-card-content h3 {
+            font-size: 19px;
+            font-weight: 800;
+            color: #eef6ff;
+            margin-bottom: 14px;
+            line-height: 1.3;
+        }
+
+        .vv-popup-list {
+            list-style: none;
+            margin: 0 0 18px;
+            padding: 0;
+            display: grid;
+            gap: 9px;
+        }
+
+        .vv-popup-list li {
+            font-size: 13.5px;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            line-height: 1.4;
+        }
+
+        .vv-popup-cta {
+            margin-top: auto;
+            font-weight: 700;
+            font-size: 13.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .vv-popup-marketing .vv-popup-cta {
+            color: var(--accent2);
+        }
+
+        .vv-popup-travel .vv-popup-cta {
+            color: #ffc24b;
+        }
+
+        .vv-popup-footer {
+            margin-top: 26px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .vv-popup-checkbox {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--muted);
+            cursor: pointer;
+        }
+
+        .vv-popup-checkbox input {
+            width: 15px;
+            height: 15px;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:1100px) {
+
+            .hero-grid,
+            .partner-grid,
+            .group-top,
+            .why-top {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .group-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-main-image img,
+            .partner-image img,
+            .why-image img {
+                height: 480px;
+            }
+        }
+
+        @media(max-width:768px) {
+            .container {
+                width: min(var(--max-width), calc(100% - 24px));
+            }
+
+            .services,
+            .partnership,
+            .group-section,
+            .why,
+            .cta {
+                padding: 75px 0;
+            }
+
+            .nav-wrap {
+                padding: 14px 0;
+                align-items: center;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .desktop-nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero {
+                padding: 40px 0 50px;
+            }
+
+            .hero-grid {
+                min-height: auto;
+                gap: 28px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-sub {
+                font-size: 16px;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-main-image {
+                min-height: auto;
+            }
+
+            .hero-main-image img {
+                height: 360px;
+            }
+
+            .floating-card {
+                position: static;
+                margin-top: 14px;
+                max-width: 100%;
+                transform: none;
+            }
+
+            .stats-grid,
+            .services-grid,
+            .group-grid,
+            .why-grid,
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .partner-image img,
+            .group-image img,
+            .why-image img {
+                height: 300px;
+            }
+
+            .service-image {
+                height: 210px;
+            }
+
+            .group-card img {
+                height: 200px;
+            }
+
+            .cta-box {
+                min-height: 520px;
+            }
+
+            .cta-content {
+                padding: 40px 24px;
+            }
+
+            .cta-content p {
+                font-size: 15px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media(max-width:700px) {
+            .vv-popup-box {
+                padding: 32px 20px 20px;
+                border-radius: 20px;
+            }
+
+            .vv-popup-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .vv-popup-card-image {
+                height: 130px;
+            }
+
+            .vv-popup-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media(max-width:480px) {
+            .hero-title {
+                font-size: 2.15rem;
+            }
+
+            .section-title {
+                font-size: 1.9rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .cta-actions,
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .cta-box {
+                min-height: 560px;
+            }
+        }
+
+        /* ===== PLANET SECTION ===== */
+        .planet-section {
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .planet-container {
+            position: relative;
+            display: inline-block;
+            width: 340px;
+            height: 340px;
+            margin: 40px auto;
+        }
+
+        .planet {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #1a5fa8, #0a2a50 60%, #060e1e);
+            box-shadow:
+                inset -20px -10px 40px rgba(0, 0, 0, .5),
+                inset 10px 5px 30px rgba(0, 100, 200, .3),
+                0 0 60px rgba(0, 170, 255, .3),
+                0 0 120px rgba(0, 100, 200, .15);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: spin 20s linear infinite;
+            overflow: hidden;
+        }
+
+        .planet-surface {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='100'%3E%3Cellipse cx='50' cy='50' rx='40' ry='15' fill='rgba(0,150,255,0.15)'/%3E%3Cellipse cx='140' cy='30' rx='30' ry='10' fill='rgba(0,180,255,0.12)'/%3E%3C/svg%3E") center/cover;
+        }
+
+        @keyframes spin {
+            from {
+                box-shadow: inset -20px -10px 40px rgba(0, 0, 0, .5), inset 10px 5px 30px rgba(0, 100, 200, .3), 0 0 60px rgba(0, 170, 255, .3), 0 0 120px rgba(0, 100, 200, .15), -20px 0 60px rgba(0, 50, 150, .2);
+            }
+
+            50% {
+                box-shadow: inset -20px -10px 40px rgba(0, 0, 0, .5), inset 10px 5px 30px rgba(0, 100, 200, .3), 0 0 80px rgba(0, 212, 255, .4), 0 0 150px rgba(0, 150, 255, .2), 20px 0 60px rgba(0, 100, 200, .2);
+            }
+
+            to {
+                box-shadow: inset -20px -10px 40px rgba(0, 0, 0, .5), inset 10px 5px 30px rgba(0, 100, 200, .3), 0 0 60px rgba(0, 170, 255, .3), 0 0 120px rgba(0, 100, 200, .15), -20px 0 60px rgba(0, 50, 150, .2);
+            }
+        }
+
+        .planet-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 340px;
+            height: 50px;
+            transform: translate(-50%, -50%) rotateX(72deg);
+            border-radius: 50%;
+            border: 18px solid transparent;
+            border-top: 18px solid rgba(0, 180, 255, .35);
+            border-bottom: 18px solid rgba(0, 120, 220, .25);
+            box-shadow: 0 0 20px rgba(0, 170, 255, .2);
+            animation: ringGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes ringGlow {
+
+            0%,
+            100% {
+                border-top-color: rgba(0, 180, 255, .35);
+            }
+
+            50% {
+                border-top-color: rgba(0, 212, 255, .55);
+            }
+        }
+
+        .orbit-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            margin: -6px;
+            border-radius: 50%;
+            background: var(--accent2);
+            box-shadow: 0 0 12px rgba(0, 212, 255, .8);
+            animation: orbit 8s linear infinite;
+        }
+
+        .orbit-dot:nth-child(2) {
+            width: 8px;
+            height: 8px;
+            margin: -4px;
+            background: #ff9d2e;
+            box-shadow: 0 0 10px rgba(255, 157, 46, .8);
+            animation: orbitReverse 5s linear infinite;
+        }
+
+        .orbit-dot:nth-child(3) {
+            width: 6px;
+            height: 6px;
+            margin: -3px;
+            background: #fff;
+            box-shadow: 0 0 8px rgba(255, 255, 255, .8);
+            animation: orbit 12s linear infinite;
+            animation-delay: -3s;
+        }
+
+        .planet-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 280px;
+            height: 280px;
+            margin: -140px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 170, 255, .08), transparent 70%);
+            animation: pulse3d 3s ease-in-out infinite;
+        }
+
+        /* ===== ANIMATED GRID BACKGROUND ===== */
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(0, 170, 255, .03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 170, 255, .03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+        }
+
+        /* ===== GLOW ORBS ===== */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: rgba(0, 100, 200, .06);
+            top: -100px;
+            left: -100px;
+            animation: orbMove1 15s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 170, 255, .05);
+            bottom: 0;
+            right: -100px;
+            animation: orbMove2 12s ease-in-out infinite;
+        }
+
+        @keyframes orbMove1 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(80px, 60px);
+            }
+        }
+
+        @keyframes orbMove2 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(-60px, -80px);
+            }
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 60px;
+            /* Adjust as needed */
+            width: auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Ambient background -->
+    <div class="grid-bg"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- Three.js canvas -->
+    <canvas id="three-canvas"></canvas>
+
+    
+    <!-- NAV -->
+    <nav>
+        <div class="container nav-wrap">
+            <a class="nav-logo" href="index.html">
+                <img src="images/logo-final.png" alt="VV Travco Logo" class="logo-img">
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"
+                aria-controls="mobileMenu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links desktop-nav">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="bpo.html">BPO</a>
+                <div class="dropdown">
+                    <a href="digital.html" class="dropbtn">Digital <span>▾</span></a>
+                    <div class="dropdown-content">
+                        <a href="video-editing-services.html">Video Editing Services</a>
+                        <a href="web-design-development-services.html">Web Design & Development</a>
+                        <a href="search-engine-optimization-services.html">SEO Services</a>
+                        <a href="offline-marketing-promotions.html">Offline Marketing & Promotions</a>
+                        <a href="content-marketing-services.html">Content Marketing Services</a>
+                    </div>
+                </div>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="nav-cta">Contact Us</a>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="bpo.html">BPO</a>
+            <a href="digital.html">Digital</a>
+            <a href="video-editing-services.html">Video Editing Services</a>
+            <a href="web-design-development-services.html">Web Design & Development</a>
+            <a href="search-engine-optimization-services.html">SEO Services</a>
+            <a href="offline-marketing-promotions.html">Offline Marketing & Promotions</a>
+            <a href="content-marketing-services.html">Content Marketing Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="mobile-cta">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content reveal">
+                <div class="hero-badge">✦ CREATIVE DESIGN HORIZON</div>
+                <h1 class="hero-title">Your Partner for <span class="gradient">Growth, Business Solutions</span> &
+                    Global
+                    Exploration</h1>
+                <p class="hero-sub">VV Travco delivers world-class Digital Services, BPO Solutions, HR Consultancy,
+                    Travel
+                    Management, and Creative Design — all under one roof with a modern approach, strong execution, and
+                    global
+                    vision.</p>
+                <div class="hero-actions">
+                    <a href="services.html" class="btn-primary">Explore Services</a>
+                    <a href="contact.html" class="btn-secondary">Get in Touch</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat"><strong>500+</strong><span>Projects and campaigns delivered
+                            successfully</span></div>
+                    <div class="hero-stat"><strong>10+</strong><span>Countries served across multiple industries</span>
+                    </div>
+                    <div class="hero-stat"><strong>24/7</strong><span>Support-driven BPO and business service
+                            network</span></div>
+                </div>
+            </div>
+            <div class="hero-visual reveal">
+                <div class="hero-3d-wrapper">
+                    <div class="hero-main-image">
+                        <img src="images/image-7050.webp"
+                            onerror="this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80'"
+                            alt="Business and travel services">
+                    </div>
+                    <div class="floating-card one">
+                        <h4>Digital Marketing</h4>
+                        <p>Performance-driven branding, paid campaigns, social media, SEO, and creative strategy for
+                            global growth.
+                        </p>
+                    </div>
+                    <div class="floating-card two">
+                        <h4>Travel & BPO Network</h4>
+                        <p>Reliable support systems, travel operations, backend management, and end-to-end client
+                            servicing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-num" data-target="9">1</div>
+                    <div class="stat-label">Group Companies</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-num" data-target="500">1</div>
+                    <div class="stat-label">Projects Delivered</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-num" data-target="10">1</div>
+                    <div class="stat-label">Countries Served</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-num" data-target="24">1</div>
+                    <div class="stat-label">Customer Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-tag">WHAT WE DO</div>
+                <h2 class="section-title">Core Services at <span>a Glance</span></h2>
+                <p class="section-desc">From digital transformation to travel solutions, we deliver scalable business
+                    services
+                    with creativity, precision, and strong operational support.</p>
+            </div>
+            <div class="services-grid">
+                <a href="digital.html" class="service-card reveal">
+                    <div class="service-image"><img
+                            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+                            alt="Digital marketing"></div>
+                    <div class="service-content">
+                        <div class="svc-num">01</div>
+                        <div class="svc-title">Digital Marketing & Branding</div>
+                        <p class="svc-desc">Social media management, SEO, paid ads, content planning, branding strategy,
+                            and digital
+                            presence building for modern businesses.</p>
+                        <div class="svc-link">Explore More →</div>
+                    </div>
+                </a>
+                <a href="bpo.html" class="service-card reveal">
+                    <div class="service-image"><img
+                            src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
+                            alt="BPO services"></div>
+                    <div class="service-content">
+                        <div class="svc-num">02</div>
+                        <div class="svc-title">BPO Services</div>
+                        <p class="svc-desc">24/7 customer support, backend operations, sales support, travel processing,
+                            and data
+                            management with scalable business systems.</p>
+                        <div class="svc-link">Explore More →</div>
+                    </div>
+                </a>
+                <a href="services.html" class="service-card reveal">
+                    <div class="service-image"><img
+                            src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80"
+                            alt="Travel solutions"></div>
+                    <div class="service-content">
+                        <div class="svc-num">03</div>
+                        <div class="svc-title">Travel & Tourism Solutions</div>
+                        <p class="svc-desc">End-to-end travel planning, visa support, itinerary management, hotel
+                            bookings,
+                            ticketing, and tourism consultancy services.</p>
+                        <div class="svc-link">Explore More →</div>
+                    </div>
+                </a>
+                <a href="digital.html" class="service-card reveal">
+                    <div class="service-image"><img
+                            src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80"
+                            alt="Creative design"></div>
+                    <div class="service-content">
+                        <div class="svc-num">04</div>
+                        <div class="svc-title">Creative Design & Video</div>
+                        <p class="svc-desc">Graphic design, marketing creatives, promotional visuals, short-form video
+                            editing,
+                            motion content, and digital storytelling.</p>
+                        <div class="svc-link">Explore More →</div>
+                    </div>
+                </a>
+                <a href="digital.html" class="service-card reveal">
+                    <div class="service-image"><img
+                            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+                            alt="Web development"></div>
+                    <div class="service-content">
+                        <div class="svc-num">05</div>
+                        <div class="svc-title">Custom Web Development</div>
+                        <p class="svc-desc">Responsive business websites, landing pages, custom portals, admin systems,
+                            and digital
+                            platforms built for performance and growth.</p>
+                        <div class="svc-link">Explore More →</div>
+                    </div>
+                </a>
+                <a href="services.html" class="service-card reveal">
+                    <div class="service-image"><img
+                            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+                            alt="HR consultancy"></div>
+                    <div class="service-content">
+                        <div class="svc-num">06</div>
+                        <div class="svc-title">HR Consultancy Services</div>
+                        <p class="svc-desc">Recruitment support, HR operations, compliance guidance, performance
+                            systems, team
+                            development, and people-focused consulting.</p>
+                        <div class="svc-link">Explore More →</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANET SECTION -->
+    <section class="planet-section">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-tag">GLOBAL REACH</div>
+                <h2 class="section-title">Operating Across <span>10+ Countries</span></h2>
+                <p class="section-desc" style="margin:0 auto;text-align:center;">A worldwide network of services,
+                    partners, and
+                    clients — powered by VV Travco's global vision.</p>
+            </div>
+            <div class="planet-container reveal">
+                <div class="planet-glow"></div>
+                <div class="planet-ring"></div>
+                <div class="planet">
+                    <div class="planet-surface"></div>
+                </div>
+                <div class="orbit-dot"></div>
+                <div class="orbit-dot"></div>
+                <div class="orbit-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTNERSHIP -->
+    <section class="partnership">
+        <div class="container partner-grid">
+            <div class="reveal">
+                <div class="section-tag">STRATEGIC PARTNERSHIP</div>
+                <h2 class="section-title">Cityone Tourism <span>& VV Travco</span></h2>
+                <p class="section-desc">Two strong brands working together to deliver enhanced travel, digital, and
+                    operational
+                    solutions with better service quality, broader market reach, and stronger execution.</p>
+                <div class="partner-points">
+                    <div class="partner-point">
+                        <div class="partner-point-icon">✓</div>
+                        <div><strong>Combined Expertise</strong><span>Integrated travel, business, digital, and support
+                                solutions
+                                for clients across sectors.</span></div>
+                    </div>
+                    <div class="partner-point">
+                        <div class="partner-point-icon">✓</div>
+                        <div><strong>Stronger Reach</strong><span>Expanded service capabilities across international and
+                                regional
+                                business markets.</span></div>
+                    </div>
+                    <div class="partner-point">
+                        <div class="partner-point-icon">✓</div>
+                        <div><strong>Operational Excellence</strong><span>Reliable systems, dedicated teams, and
+                                efficient client
+                                support from start to finish.</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="partner-image-wrap reveal">
+                <div class="partner-3d">
+                    <div class="partner-image">
+                        <img src="images/Gemini_Generated_Image_1nkfy11nkfy11nkf.png"
+                            onerror="this.src='https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80'"
+                            alt="Partnership">
+                    </div>
+                    <div class="partner-overlay-card">
+                        <div class="partner-logo-row">
+                            <div class="partner-logo-name">VV <span>Travco</span></div>
+                            <div style="font-size:20px;color:var(--accent2);font-weight:900;">+</div>
+                            <div class="partner-logo-name"><span>CITY</span>ONE</div>
+                        </div>
+                        <p>A partnership focused on delivering stronger travel support, better client service, and
+                            complete business
+                            solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GROUP -->
+    <section class="group-section">
+        <div class="container">
+            <div class="group-top">
+                <div class="group-image reveal">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
+                        alt="Group companies">
+                </div>
+                <div class="reveal">
+                    <div class="section-tag">OUR ECOSYSTEM</div>
+                    <h2 class="section-title">Our Group of <span>Companies</span></h2>
+                    <p class="section-desc">Building long-term business value through trust, innovation, service
+                        excellence, and
+                        diverse industry experience across multiple brands.</p>
+                </div>
+            </div>
+            <div class="group-grid">
+                <div class="group-card reveal"><img src="images/cityone-logo.png"
+                        onerror="this.src='https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80'"
+                        alt="Tourism">
+                    <div class="group-card-content">
+                        <div class="group-card-name">Cityone Tourism & Travel</div>
+                        <div class="group-card-type">Tourism & Hospitality</div>
+                        <div class="group-card-text">Travel experiences, visa support, holiday planning, and destination
+                            services.
+                        </div>
+                    </div>
+                </div>
+                <div class="group-card reveal"><img src="images/whiterose.png"
+                        onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80'"
+                        alt="Trading">
+                    <div class="group-card-content">
+                        <div class="group-card-name">Whiterose General Trading LLC</div>
+                        <div class="group-card-type">General Trading</div>
+                        <div class="group-card-text">Broad trading support and commercial supply services for growing
+                            markets.</div>
+                    </div>
+                </div>
+                <div class="group-card reveal"><img src="images/ybl.png"
+                        onerror="this.src='https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=600&q=80'"
+                        alt="Beverages">
+                    <div class="group-card-content">
+                        <div class="group-card-name">Yuti Breweries Ltd</div>
+                        <div class="group-card-type">Beverages & FMCG</div>
+                        <div class="group-card-text">Consumer beverage products with strong brand identity and market
+                            reach.</div>
+                    </div>
+                </div>
+                <div class="group-card reveal"><img src="images/whiterose (1).png"
+                        onerror="this.src='https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=600&q=80'"
+                        alt="Lifestyle">
+                    <div class="group-card-content">
+                        <div class="group-card-name">LumiLife</div>
+                        <div class="group-card-type">Lifestyle & Smart Living</div>
+                        <div class="group-card-text">Modern lifestyle-focused solutions designed for quality and better
+                            living.
+                        </div>
+                    </div>
+                </div>
+                <div class="group-card reveal"><img src="images/khotols-logo.png"
+                        onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80'"
+                        alt="Hotels">
+                    <div class="group-card-content">
+                        <div class="group-card-name">K Hotels — The Pride of Uganda</div>
+                        <div class="group-card-type">Hospitality</div>
+                        <div class="group-card-text">Comfort, service excellence, and hospitality experiences built for
+                            guests.
+                        </div>
+                    </div>
+                </div>
+                <div class="group-card reveal"><img src="images/whiterose (2).png"
+                        onerror="this.src='https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=600&q=80'"
+                        alt="Distribution">
+                    <div class="group-card-content">
+                        <div class="group-card-name">HNH International Distribution</div>
+                        <div class="group-card-type">International Distribution</div>
+                        <div class="group-card-text">Efficient product movement, logistics support, and regional
+                            distribution
+                            systems.</div>
+                    </div>
+                </div>
+                <div class="group-card reveal"><img src="images/rudra.png"
+                        onerror="this.src='https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80'"
+                        alt="Agriculture">
+                    <div class="group-card-content">
+                        <div class="group-card-name">Rudra Agro</div>
+                        <div class="group-card-type">Agriculture & Commodities</div>
+                        <div class="group-card-text">Agricultural growth, commodity support, and long-term value
+                            creation.</div>
+                    </div>
+                </div>
+                <div class="group-card reveal"><img src="images/emiboozi.png"
+                        onerror="this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80'"
+                        alt="Food">
+                    <div class="group-card-content">
+                        <div class="group-card-name">EmiBoozi Restobar by K Hotels</div>
+                        <div class="group-card-type">Food & Beverage</div>
+                        <div class="group-card-text">Dining, ambiance, and hospitality-driven food and beverage
+                            experiences.</div>
+                    </div>
+                </div>
+                <div class="group-card reveal"><img src="images/oneworld logo.png"
+                        onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80'"
+                        alt="Tech">
+                    <div class="group-card-content">
+                        <div class="group-card-name">One World Tech Spares</div>
+                        <div class="group-card-type">Technology & Spare Parts</div>
+                        <div class="group-card-text">Technical support products, industrial solutions, and parts supply
+                            services.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="why">
+        <div class="container">
+            <div class="why-top">
+                <div class="reveal">
+                    <div class="section-tag">WHY CHOOSE US</div>
+                    <h2 class="section-title">Built for <span>Results</span></h2>
+                    <p class="section-desc">We combine creative thinking, operational depth, responsive service, and
+                        multi-industry experience to help businesses grow faster and serve better.</p>
+                </div>
+                <div class="why-image reveal">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+                        alt="Professional team">
+                </div>
+            </div>
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <div class="why-icon">🌐</div>
+                    <h4>Global Network</h4>
+                    <p>Strong international approach supported by multi-country experience and a reliable business
+                        network.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon">⚙️</div>
+                    <h4>End-to-End Solutions</h4>
+                    <p>From planning to execution, we handle digital, travel, BPO, HR, and business support services.
+                    </p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon">💡</div>
+                    <h4>Creative Excellence</h4>
+                    <p>Strong design direction, impactful visual communication, and modern digital presentation
+                        standards.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon">🔒</div>
+                    <h4>Trusted & Reliable</h4>
+                    <p>Committed teams, responsive communication, and a proven record of quality-focused service
+                        delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-box reveal">
+                <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1400&q=80"
+                    alt="Start your project">
+                <div class="cta-overlay"></div>
+                <div class="cta-content">
+                    <div class="section-tag">GET STARTED</div>
+                    <h2>Ready to <span>Grow Together?</span></h2>
+                    <p>Let VV Travco support your travel, branding, operations, digital growth, and business expansion
+                        with a
+                        complete service-driven approach.</p>
+                    <div class="cta-actions">
+                        <a href="contact.html" class="btn-primary">Start a Project</a>
+                        <a href="portfolio.html" class="btn-secondary">See Our Work</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-about">
+                    <div class="footer-logo">VV <span>Travco</span></div>
+                    <p>Your partner for growth and global exploration. Delivering digital services, BPO support, travel
+                        solutions,
+                        and creative excellence worldwide.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <a href="digital.html">Digital Marketing</a>
+                    <a href="bpo.html">BPO Services</a>
+                    <a href="digital.html">Web Development</a>
+                    <a href="digital.html">Creative Design</a>
+                    <a href="services.html">HR Consultancy</a>
+                    <a href="services.html">Travel Solutions</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <a href="about.html">About Us</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="about.html">Our Group</a>
+                    <a href="about.html">Partnership</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact</h5>
+                    <p>📞 +91 9848774484</p>
+                    <p>✉️ vijay@vvtravco.com</p>
+                    <p>🌐 www.vvtravco.com</p>
+                    <p>Available for travel, business support, and digital growth solutions.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 VV Travco. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#">IG</a><a href="#">FB</a><a href="#">IN</a><a href="#">X</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- THREE.JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        // ===== THREE.JS SPACE BACKGROUND =====
+        (function () {
+            const canvas = document.getElementById('three-canvas');
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+
+            // Stars
+            const starsGeo = new THREE.BufferGeometry();
+            const starCount = 3000;
+            const starPos = new Float32Array(starCount * 3);
+            const starSizes = new Float32Array(starCount);
+            for (let i = 0; i < starCount; i++) {
+                starPos[i * 3] = (Math.random() - 0.5) * 200;
+                starPos[i * 3 + 1] = (Math.random() - 0.5) * 200;
+                starPos[i * 3 + 2] = (Math.random() - 0.5) * 200;
+                starSizes[i] = Math.random() * 2.5 + 0.5;
+            }
+            starsGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+            starsGeo.setAttribute('size', new THREE.BufferAttribute(starSizes, 1));
+
+            const starMat = new THREE.PointsMaterial({
+                color: 0xaaddff,
+                size: 0.12,
+                transparent: true,
+                opacity: 0.75,
+                sizeAttenuation: true
+            });
+            const stars = new THREE.Points(starsGeo, starMat);
+            scene.add(stars);
+
+            // Bright accent stars
+            const accentGeo = new THREE.BufferGeometry();
+            const aCount = 200;
+            const aPos = new Float32Array(aCount * 3);
+            for (let i = 0; i < aCount; i++) {
+                aPos[i * 3] = (Math.random() - 0.5) * 100;
+                aPos[i * 3 + 1] = (Math.random() - 0.5) * 100;
+                aPos[i * 3 + 2] = (Math.random() - 0.5) * 50;
+            }
+            accentGeo.setAttribute('position', new THREE.BufferAttribute(aPos, 3));
+            const accentMat = new THREE.PointsMaterial({ color: 0x00d4ff, size: 0.22, transparent: true, opacity: 0.9, sizeAttenuation: true });
+            const accentStars = new THREE.Points(accentGeo, accentMat);
+            scene.add(accentStars);
+
+            // Floating 3D spheres (planets)
+            const spheres = [];
+            const sphereData = [
+                { r: 0.55, x: -4, y: 2, z: -3, color: 0x0055aa, emissive: 0x001133, speed: 0.004 },
+                { r: 0.30, x: 5, y: -1, z: -2, color: 0x003388, emissive: 0x000c22, speed: 0.007 },
+                { r: 0.18, x: 2, y: 3, z: -4, color: 0x00aaff, emissive: 0x002244, speed: 0.010 },
+                { r: 0.40, x: -6, y: -2, z: -5, color: 0x0077cc, emissive: 0x001a33, speed: 0.005 },
+                { r: 0.12, x: 7, y: 1, z: -1, color: 0x00ccff, emissive: 0x003344, speed: 0.015 },
+            ];
+            sphereData.forEach(d => {
+                const geo = new THREE.SphereGeometry(d.r, 32, 32);
+                const mat = new THREE.MeshStandardMaterial({
+                    color: d.color,
+                    emissive: d.emissive,
+                    roughness: 0.4,
+                    metalness: 0.3,
+                });
+                const mesh = new THREE.Mesh(geo, mat);
+                mesh.position.set(d.x, d.y, d.z);
+                mesh.userData.speed = d.speed;
+                mesh.userData.origY = d.y;
+                scene.add(mesh);
+                spheres.push(mesh);
+            });
+
+            // Rings for large sphere
+            const ringGeo = new THREE.RingGeometry(0.75, 1.0, 64);
+            const ringMat = new THREE.MeshBasicMaterial({ color: 0x0088cc, side: THREE.DoubleSide, transparent: true, opacity: 0.25 });
+            const ring = new THREE.Mesh(ringGeo, ringMat);
+            ring.position.set(-4, 2, -3);
+            ring.rotation.x = 1.2;
+            scene.add(ring);
+
+            // Ambient + point lights
+            const ambient = new THREE.AmbientLight(0x001122, 1.5);
+            scene.add(ambient);
+            const pointLight = new THREE.PointLight(0x00aaff, 2, 30);
+            pointLight.position.set(5, 5, 5);
+            scene.add(pointLight);
+            const pointLight2 = new THREE.PointLight(0x0055ff, 1.5, 20);
+            pointLight2.position.set(-5, -3, 3);
+            scene.add(pointLight2);
+
+            // Mouse parallax
+            let mouseX = 0, mouseY = 0;
+            document.addEventListener('mousemove', e => {
+                mouseX = (e.clientX / window.innerWidth - 0.5) * 0.8;
+                mouseY = (e.clientY / window.innerHeight - 0.5) * 0.4;
+            });
+
+            // Resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            let t = 0;
+            function animate() {
+                requestAnimationFrame(animate);
+                t += 0.005;
+
+                stars.rotation.y += 0.0001;
+                stars.rotation.x += 0.00005;
+                accentStars.rotation.y -= 0.0002;
+
+                spheres.forEach((s, i) => {
+                    s.rotation.y += s.userData.speed;
+                    s.position.y = s.userData.origY + Math.sin(t + i * 1.2) * 0.18;
+                });
+                ring.rotation.z += 0.003;
+
+                // Parallax
+                camera.position.x += (mouseX - camera.position.x) * 0.03;
+                camera.position.y += (-mouseY - camera.position.y) * 0.03;
+                camera.lookAt(0, 0, 0);
+
+                // Pulsing star opacity
+                starMat.opacity = 0.65 + Math.sin(t * 0.5) * 0.1;
+
+                renderer.render(scene, camera);
+            }
+            animate();
+        })();
+
+        // ===== SCROLL REVEAL =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ===== COUNTER =====
+        const counters = document.querySelectorAll('.stat-num');
+        const counterObs = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    let count = 1;
+                    const speed = 200;
+                    const update = () => {
+                        const inc = Math.ceil(target / speed);
+                        if (count < target) { count += inc; counter.innerText = count; setTimeout(update, 20); }
+                        else { counter.innerText = target === 24 ? '24/7' : target + '+'; }
+                    };
+                    update();
+                    counterObs.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(c => counterObs.observe(c));
+
+        // ===== MOBILE MENU =====
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', menuToggle.classList.contains('active'));
+        });
+        document.querySelectorAll('#mobileMenu a').forEach(l => {
+            l.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // ===== POPUP =====
+        (function () {
+            const overlay = document.getElementById('vvPopupOverlay');
+            const closeBtn = document.getElementById('vvPopupClose');
+            const STORAGE_KEY = 'vvPopupHiddenUntil';
+            function shouldShow() { const h = localStorage.getItem(STORAGE_KEY); return !h || Date.now() > Number(h); }
+            function open() { overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+            function close() { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+            if (shouldShow()) window.addEventListener('load', () => setTimeout(open, 600));
+            closeBtn.addEventListener('click', close);
+            overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('active')) close(); });
+        })();
+
+        // ===== 3D TILT ON SERVICE / WHY CARDS =====
+        document.querySelectorAll('.service-card,.why-card,.group-card,.stat-item').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                card.style.transform = `translateY(-8px) rotateX(${-y * 12}deg) rotateY(${x * 12}deg) scale(1.02)`;
+                card.style.boxShadow = `${-x * 20}px ${-y * 20}px 40px rgba(0,170,255,0.15), 0 30px 60px rgba(0,0,0,0.4)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

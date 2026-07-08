@@ -897,63 +897,76 @@
                 height: 260px
             }
         }
-        
-    /* Dropdown */
 
-    .dropdown {
-      position: relative;
-    }
+        /* Dropdown */
 
-    .dropbtn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 500;
-      transition: 0.3s;
-    }
+        .dropdown {
+            position: relative;
+        }
 
-    .dropbtn:hover {
-      color: var(--accent);
-    }
+        .dropbtn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
 
-    .dropdown-content {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 300px;
-      background: #0f1823;
-      border: 1px solid rgba(0, 170, 255, 0.15);
-      border-radius: 16px;
-      padding: 12px 0;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(15px);
-      transition: all .3s ease;
-      z-index: 999;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, .3);
-    }
+        .dropbtn:hover {
+            color: var(--accent);
+        }
 
-    .dropdown-content a {
-      display: block;
-      padding: 14px 20px;
-      color: #d8e4f0;
-      font-size: 14px;
-      transition: .3s;
-    }
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 300px;
+            background: #0f1823;
+            border: 1px solid rgba(0, 170, 255, 0.15);
+            border-radius: 16px;
+            padding: 12px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: all .3s ease;
+            z-index: 999;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, .3);
+        }
 
-    .dropdown-content a:hover {
-      background: rgba(0, 170, 255, 0.08);
-      color: #00aaff;
-      padding-left: 28px;
-    }
+        .dropdown-content a {
+            display: block;
+            padding: 14px 20px;
+            color: #d8e4f0;
+            font-size: 14px;
+            transition: .3s;
+        }
 
-    .dropdown:hover .dropdown-content {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
+        .dropdown-content a:hover {
+            background: rgba(0, 170, 255, 0.08);
+            color: #00aaff;
+            padding-left: 28px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 60px;
+            /* Adjust as needed */
+            width: auto;
+            display: block;
+        }
     </style>
 </head>
 
@@ -961,8 +974,7 @@
     <nav>
         <div class="container nav-wrap">
             <a class="nav-logo" href="index.html">
-                <div class="nav-logo-icon">VV</div>
-                <div class="nav-brand">VV <span>Travco</span></div>
+                <img src="images/logo-final.png" alt="VV Travco Logo" class="logo-img">
             </a>
 
             <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"

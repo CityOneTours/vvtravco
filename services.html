@@ -1329,15 +1329,27 @@
       visibility: visible;
       transform: translateY(0);
     }
+
+
+    .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 60px; /* Adjust as needed */
+    width: auto;
+    display: block;
+}
   </style>
 </head>
 <body>
 <nav>
     <div class="container nav-wrap">
-      <a class="nav-logo" href="index.html">
-        <div class="nav-logo-icon">VV</div>
-        <div class="nav-brand">VV <span>Travco</span></div>
-      </a>
+<a class="nav-logo" href="index.html">
+  <img src="images/logo-final.png" alt="VV Travco Logo" class="logo-img">
+</a>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"
         aria-controls="mobileMenu">

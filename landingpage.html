@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>VV Travco | The Design, Web & Advertising Company</title>
+    <meta name="description"
+        content="VV Travco — Creative Design Horizon. Branding, Web Design, Digital Marketing, SEO, Content & Video Production." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --paper: #FBF1E6;
+            --paper2: #F4E3CE;
+            --paper-deep: #EFD9BC;
+            --ink: #292522;
+            --ink-soft: #5c554e;
+            --orange: #F58220;
+            --orange-deep: #D9660A;
+            --charcoal: #393939;
+            --red: #D64545;
+            --line: rgba(41, 37, 34, 0.14);
+            --shadow: 0 18px 50px rgba(41, 30, 15, 0.14);
+            --max: 1220px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: min(var(--max), calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .display {
+            font-family: 'Anton', sans-serif;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+
+        .mono {
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* paper texture */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: .5;
+            background-image: radial-gradient(rgba(41, 37, 34, .035) 1px, transparent 1px);
+            background-size: 4px 4px;
+        }
+
+        section,
+        header,
+        footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(251, 241, 230, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .nav-wrap {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            background: var(--ink);
+            display: grid;
+            place-items: center;
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+
+        .logo-mark span {
+            transform: rotate(-45deg);
+            color: var(--orange);
+            font-family: 'Anton', sans-serif;
+            font-size: 16px;
+        }
+
+        .nav-brand {
+            font-family: 'Anton', sans-serif;
+            font-size: 20px;
+            letter-spacing: .5px;
+            line-height: 1;
+        }
+
+        .nav-brand small {
+            display: block;
+            font-family: 'Space Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: var(--ink-soft);
+            font-weight: 400;
+            margin-top: 3px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ink);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            transition: .25s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--ink);
+            color: var(--paper) !important;
+            padding: 12px 22px;
+            font-weight: 800 !important;
+            border-radius: 2px;
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        .nav-cta:hover {
+            background: var(--orange-deep);
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border: 2px solid var(--ink);
+            background: transparent;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+            flex-shrink: 0;
+        }
+
+        .menu-toggle span {
+            width: 20px;
+            height: 2px;
+            background: var(--ink);
+            display: block;
+            transition: .3s;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .mobile-menu {
+            display: none;
+            width: 100%;
+            padding: 6px 20px 20px;
+            background: var(--paper);
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu a {
+            font-size: 16px;
+            font-weight: 700;
+            padding: 14px 4px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .mobile-menu .mobile-cta {
+            margin-top: 12px;
+            background: var(--ink);
+            color: var(--paper);
+            text-align: center;
+            padding: 14px;
+            border: none;
+        }
+
+        /* ===== eyebrow / swatch signature ===== */
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--orange-deep);
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 26px;
+            height: 2px;
+            background: var(--orange);
+            display: inline-block;
+        }
+
+        .swatch-duo {
+            display: inline-flex;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .swatch-duo div {
+            width: 34px;
+            height: 44px;
+        }
+
+        .swatch-duo .c1 {
+            background: var(--charcoal);
+        }
+
+        .swatch-duo .c2 {
+            background: var(--orange);
+        }
+
+        /* ===== vertical rotated word (signature element) ===== */
+        .vertical-word {
+            position: absolute;
+            top: 0;
+            right: 6%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            pointer-events: none;
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3rem, 9vw, 7rem);
+            color: var(--ink);
+            opacity: .06;
+            writing-mode: vertical-rl;
+            letter-spacing: 6px;
+            white-space: nowrap;
+        }
+
+        .vertical-word.orange {
+            color: var(--orange);
+            opacity: .14;
+        }
+
+        /* ===== arrow bullet list ===== */
+        .arrow-list {
+            display: grid;
+            gap: 9px;
+        }
+
+        .arrow-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14.5px;
+            line-height: 1.5;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .arrow-item-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--ink);
+            color: var(--paper);
+            display: grid;
+            place-items: center;
+            font-size: 10px;
+            margin-top: 2px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 54px;
+            padding: 0 28px;
+            font-weight: 800;
+            font-size: 15px;
+            border: 2px solid var(--ink);
+            border-radius: 2px;
+            transition: .25s;
+            cursor: pointer;
+        }
+
+        .btn-solid {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .btn-solid:hover {
+            background: var(--orange);
+            border-color: var(--orange);
+            color: var(--ink);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--ink);
+        }
+
+        .btn-outline:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 70px 0 90px;
+            overflow: hidden;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.6rem, 6vw, 5.2rem);
+            line-height: 0.98;
+            text-transform: uppercase;
+            margin-bottom: 26px;
+        }
+
+        .hero-title .o {
+            color: var(--orange);
+        }
+
+        .hero-title .k {
+            -webkit-text-stroke: 1.5px var(--ink);
+            color: var(--paper);
+        }
+
+        .hero-sub {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--ink-soft);
+            max-width: 520px;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+        }
+
+        .hero-chips {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: #fff;
+            border: 2px solid var(--ink);
+            border-radius: 999px;
+            padding: 8px 14px 8px 8px;
+            font-size: 12.5px;
+            font-weight: 700;
+            box-shadow: 3px 3px 0 var(--ink);
+        }
+
+        .chip-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-frame {
+            border: 3px solid var(--ink);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 10px 10px 0 var(--orange);
+            position: relative;
+        }
+
+        .hero-frame img {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+            filter: grayscale(0.08) contrast(1.05);
+        }
+
+        .hero-badge-float {
+            position: absolute;
+            bottom: -22px;
+            left: -22px;
+            background: var(--ink);
+            color: var(--paper);
+            padding: 18px 20px;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            max-width: 220px;
+        }
+
+        .hero-badge-float .num {
+            font-family: 'Anton', sans-serif;
+            font-size: 30px;
+            color: var(--orange);
+            line-height: 1;
+        }
+
+        .hero-badge-float .lbl {
+            font-size: 11.5px;
+            color: #cfc7bb;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        /* ===== MARQUEE ===== */
+        .marquee-strip {
+            background: var(--ink);
+            border-bottom: 2px solid var(--ink);
+            overflow: hidden;
+            padding: 16px 0;
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 50px;
+            white-space: nowrap;
+            animation: scrollLeft 24s linear infinite;
+            width: max-content;
+        }
+
+        .marquee-track span {
+            font-family: 'Anton', sans-serif;
+            font-size: 20px;
+            color: var(--paper);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .marquee-track span em {
+            font-style: normal;
+            color: var(--orange);
+        }
+
+        @keyframes scrollLeft {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .sec-head {
+            max-width: 640px;
+            margin-bottom: 44px;
+        }
+
+        .sec-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2rem, 4.4vw, 3.6rem);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .sec-title .o {
+            color: var(--orange);
+        }
+
+        .sec-desc {
+            color: var(--ink-soft);
+            font-size: 15.5px;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        /* ===== THIS IS US ===== */
+        .about {
+            padding: 90px 0;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-copy p {
+            font-size: 15px;
+            line-height: 1.85;
+            color: var(--ink-soft);
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .about-copy strong {
+            color: var(--ink);
+        }
+
+        .about-since {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #fff;
+            border: 2px solid var(--ink);
+            border-radius: 999px;
+            padding: 10px 20px;
+            box-shadow: 4px 4px 0 var(--ink);
+            margin-bottom: 24px;
+            font-weight: 800;
+            font-size: 13.5px;
+        }
+
+        .about-since .yr {
+            font-family: 'Anton', sans-serif;
+            font-size: 20px;
+            color: var(--orange);
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-frame {
+            border: 3px solid var(--ink);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: -10px 10px 0 var(--charcoal);
+        }
+
+        .about-frame img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        /* ===== VALUES ===== */
+        .values {
+            padding: 90px 0;
+            background: var(--paper2);
+            border-bottom: 2px solid var(--ink);
+            position: relative;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            border: 2px solid var(--ink);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .value-item {
+            padding: 30px 22px;
+            border-right: 2px solid var(--ink);
+            background: var(--paper);
+            transition: .25s;
+        }
+
+        .value-item:last-child {
+            border-right: none;
+        }
+
+        .value-item:hover {
+            background: var(--ink);
+        }
+
+        .value-item:hover h4,
+        .value-item:hover p {
+            color: var(--paper);
+        }
+
+        .value-item h4 {
+            font-family: 'Anton', sans-serif;
+            font-size: 17px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 10px;
+            letter-spacing: .5px;
+        }
+
+        .value-item p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--ink-soft);
+            font-weight: 500;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            padding: 90px 0;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            background: var(--ink);
+            border: 2px solid var(--ink);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .svc-card {
+            background: var(--paper);
+            padding: 30px 24px;
+            transition: .25s;
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .svc-card:hover {
+            background: var(--orange);
+        }
+
+        .svc-card:hover .svc-num,
+        .svc-card:hover .svc-title,
+        .svc-card:hover .arrow-list li,
+        .svc-card:hover .arrow-item-icon {
+            color: var(--ink);
+        }
+
+        .svc-card:hover .arrow-item-icon {
+            background: var(--ink);
+            color: var(--orange);
+        }
+
+        .svc-num {
+            font-family: 'Anton', sans-serif;
+            font-size: 13px;
+            color: var(--orange-deep);
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .svc-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 19px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            line-height: 1.15;
+        }
+
+        .svc-card .arrow-list {
+            margin-top: auto;
+            padding-top: 10px;
+        }
+
+        .svc-card .arrow-list li {
+            font-size: 13px;
+        }
+
+        /* ===== DESIGN PHILOSOPHY BANNER ===== */
+        .philosophy {
+            padding: 80px 0;
+            background: var(--ink);
+            color: var(--paper);
+            border-bottom: 2px solid var(--ink);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .philosophy .eyebrow {
+            color: var(--orange);
+        }
+
+        .philosophy .sec-title {
+            color: var(--paper);
+        }
+
+        .philosophy p {
+            color: #c9c2b6;
+            font-size: 15px;
+            line-height: 1.85;
+            font-weight: 500;
+            margin-bottom: 14px;
+        }
+
+        .obj-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .obj-list li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: 'Anton', sans-serif;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+
+        .obj-list li span {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--orange);
+            color: var(--ink);
+            display: grid;
+            place-items: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .philosophy-swatches {
+            display: flex;
+            gap: 16px;
+        }
+
+        .big-swatch {
+            flex: 1;
+            border-radius: 6px;
+            height: 260px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .big-swatch.c1 {
+            background: var(--charcoal);
+        }
+
+        .big-swatch.c2 {
+            background: var(--orange);
+        }
+
+        .big-swatch span {
+            font-family: 'Space Mono', monospace;
+            color: #fff;
+            font-size: 13px;
+            background: rgba(0, 0, 0, .25);
+            padding: 6px 10px;
+            border-radius: 4px;
+            width: fit-content;
+        }
+
+        /* ===== CLIENTS / GROUP ===== */
+        .clients {
+            padding: 90px 0;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .client-card {
+            background: #fff;
+            border: 2px solid var(--ink);
+            border-radius: 4px;
+            padding: 26px 20px;
+            text-align: center;
+            box-shadow: 5px 5px 0 var(--paper-deep);
+            transition: .25s;
+        }
+
+        .client-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 8px 8px 0 var(--orange);
+        }
+
+        .client-name {
+            font-family: 'Anton', sans-serif;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            letter-spacing: .5px;
+        }
+
+        .client-type {
+            font-size: 11.5px;
+            color: var(--ink-soft);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            padding: 90px 0;
+            background: var(--paper2);
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            gap: 44px;
+        }
+
+        .office-card {
+            background: var(--ink);
+            color: var(--paper);
+            border-radius: 6px;
+            padding: 34px;
+            box-shadow: var(--shadow);
+            height: 100%;
+        }
+
+        .office-card h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--orange);
+        }
+
+        .office-row {
+            display: flex;
+            gap: 14px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .12);
+        }
+
+        .office-row:last-of-type {
+            border-bottom: none;
+        }
+
+        .office-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--orange);
+            color: var(--ink);
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            font-size: 16px;
+        }
+
+        .office-row strong {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 3px;
+        }
+
+        .office-row a,
+        .office-row span {
+            font-size: 14px;
+            color: #cfc7bb;
+            line-height: 1.6;
+        }
+
+        .office-row a:hover {
+            color: var(--orange);
+        }
+
+        .office-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .office-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .2);
+            display: grid;
+            place-items: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .office-social a:hover {
+            background: var(--orange);
+            color: var(--ink);
+        }
+
+        .form-card {
+            background: #fff;
+            border: 2px solid var(--ink);
+            border-radius: 6px;
+            padding: 34px;
+            box-shadow: 8px 8px 0 var(--ink);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--ink-soft);
+            margin-bottom: 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 3px;
+            border: 2px solid var(--ink);
+            background: var(--paper);
+            color: var(--ink);
+            font-size: 14.5px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: .2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: #fff;
+            border-color: var(--orange);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 4px;
+        }
+
+        /* ===== CTA STRIP ===== */
+        .cta-strip {
+            padding: 70px 0;
+            text-align: center;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .cta-strip .display {
+            font-size: clamp(1.8rem, 5vw, 3.4rem);
+            line-height: 1.05;
+            margin-bottom: 22px;
+        }
+
+        .cta-strip .o {
+            color: var(--orange);
+        }
+
+        .cta-strip-actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 50px 0 24px;
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            font-family: 'Anton', sans-serif;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo span {
+            color: var(--orange);
+        }
+
+        .footer-about p {
+            color: #a89f92;
+            line-height: 1.8;
+            font-size: 13.5px;
+            margin-bottom: 14px;
+            max-width: 320px;
+        }
+
+        .footer-col h5 {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            color: var(--orange);
+        }
+
+        .footer-col a,
+        .footer-col p {
+            display: block;
+            color: #a89f92;
+            font-size: 13.5px;
+            line-height: 1.9;
+            margin-bottom: 7px;
+        }
+
+        .footer-col a:hover {
+            color: var(--paper);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .12);
+            padding-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom p {
+            color: #8a8175;
+            font-size: 12px;
+        }
+
+        /* mobile sticky bar */
+        .mobile-callbar {
+            display: none;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: .6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:1100px) {
+
+            .hero-grid,
+            .about-grid,
+            .philosophy-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .value-item {
+                border-bottom: 2px solid var(--ink);
+            }
+
+            .value-item:nth-child(2n) {
+                border-right: none;
+            }
+
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .vertical-word {
+                display: none;
+            }
+
+            .about-visual {
+                order: -1;
+            }
+        }
+
+        @media(max-width:768px) {
+            .container {
+                width: min(var(--max), calc(100% - 24px));
+            }
+
+            .hero,
+            .about,
+            .values,
+            .services,
+            .philosophy,
+            .clients,
+            .contact,
+            .cta-strip {
+                padding: 56px 0;
+            }
+
+            .nav-wrap {
+                padding: 12px 0;
+            }
+
+            .desktop-nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2.3rem;
+            }
+
+            .hero-frame img {
+                height: 300px;
+            }
+
+            .hero-badge-float {
+                left: 10px;
+                bottom: -18px;
+                padding: 14px 16px;
+                max-width: 180px;
+            }
+
+            .marquee-track span {
+                font-size: 15px;
+                gap: 30px;
+            }
+
+            .marquee-track {
+                gap: 30px;
+            }
+
+            .services-grid,
+            .values-grid,
+            .clients-grid,
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .value-item {
+                border-right: none !important;
+            }
+
+            .philosophy-swatches {
+                flex-direction: column;
+            }
+
+            .big-swatch {
+                height: 140px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .office-card,
+            .form-card {
+                padding: 24px;
+            }
+
+            .about-frame img {
+                height: 280px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .mobile-callbar {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 998;
+                background: var(--ink);
+                border-top: 2px solid var(--orange);
+                padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+                gap: 10px;
+            }
+
+            .mobile-callbar a {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                padding: 12px;
+                border-radius: 3px;
+                font-weight: 800;
+                font-size: 14px;
+            }
+
+            .mobile-callbar .call-btn {
+                background: transparent;
+                border: 2px solid var(--paper);
+                color: var(--paper);
+            }
+
+            .mobile-callbar .whatsapp-btn {
+                background: var(--orange);
+                color: var(--ink);
+                border: 2px solid var(--orange);
+            }
+
+            body {
+                padding-bottom: 72px;
+            }
+        }
+
+        @media(max-width:480px) {
+            .hero-title {
+                font-size: 1.95rem;
+            }
+
+            .sec-title {
+                font-size: 1.7rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .hero-actions,
+            .cta-strip-actions {
+                flex-direction: column;
+            }
+
+            .hero-chips {
+                justify-content: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.001ms !important;
+                transition-duration: 0.001ms !important;
+            }
+        }
+
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            width: auto;
+            height: 60px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="container nav-wrap">
+            <div class="nav-logo" onclick="showPage('home')">
+            <img src="images/new logo vv 1 copy (1).png" alt="Logo" class="logo-img">
+        </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links desktop-nav">
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#clients">Clients</a>
+                <a href="#contact">Contact</a>
+                <a href="tel:+919642266684">Let's Talk</a>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#clients">Clients</a>
+            <a href="#contact">Contact</a>
+            <a href="tel:+919642266684" class="mobile-cta">Let's Talk</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero" id="top">
+        <div class="container hero-grid">
+            <div class="reveal">
+                <div class="eyebrow">Creative Design Horizon</div>
+                <h1 class="hero-title">The <span class="o">Design</span>, Web<br>and <span
+                        class="k">Advertising</span><br>Company.</h1>
+                <p class="hero-sub">Since 2016, VV Travco has helped businesses strengthen their brand presence, improve
+                    customer engagement, and achieve sustainable growth through creative and digital solutions.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-solid">Start a Project →</a>
+                    <a href="#services" class="btn btn-outline">See Our Services</a>
+                </div>
+                <div class="hero-chips">
+                    <span class="chip"><span class="chip-icon" style="background:#3b5998;">f</span>Facebook Ads</span>
+                    <span class="chip"><span class="chip-icon" style="background:#25D366;">w</span>WhatsApp</span>
+                    <span class="chip"><span class="chip-icon" style="background:#E1306C;">ig</span>Instagram</span>
+                    <span class="chip"><span class="chip-icon" style="background:#0077B5;">in</span>LinkedIn</span>
+                </div>
+            </div>
+            <div class="hero-visual reveal">
+                <div class="hero-frame">
+                    <img src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?auto=format&fit=crop&w=900&q=80"
+                        alt="Creative design team at work">
+                </div>
+                <div class="hero-badge-float">
+                    <div class="num">2016</div>
+                    <div class="lbl">Building brands with creativity &amp; strategy ever since</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MARQUEE -->
+    <div class="marquee-strip">
+        <div class="marquee-track">
+            <span>BRANDING <em>•</em> WEB DESIGN <em>•</em> DIGITAL MARKETING <em>•</em> SEO <em>•</em> VIDEO PRODUCTION
+                <em>•</em> CONTENT <em>•</em></span>
+            <span>BRANDING <em>•</em> WEB DESIGN <em>•</em> DIGITAL MARKETING <em>•</em> SEO <em>•</em> VIDEO PRODUCTION
+                <em>•</em> CONTENT <em>•</em></span>
+        </div>
+    </div>
+
+    <!-- THIS IS US / ABOUT -->
+    <section class="about" id="about">
+        <div class="vertical-word">This Is Us</div>
+        <div class="container about-grid">
+            <div class="about-visual reveal">
+                <div class="about-frame">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
+                        alt="VV Travco team">
+                </div>
+            </div>
+            <div class="about-copy reveal">
+                <div class="about-since"><span class="yr">08+</span> Years of building brands</div>
+                <h2 class="sec-title">This Is <span class="o">Us</span></h2>
+                <p>Since 2016, VV Travco has been helping businesses strengthen their brand presence, improve customer
+                    engagement, and achieve sustainable growth through creative and digital solutions.</p>
+                <p>We specialize in <strong>branding, website development, digital marketing, SEO, social media
+                        management, content creation</strong>, and advertising services designed to deliver measurable
+                    business results.</p>
+                <p>At VV Travco, we believe every brand has a unique story. Our mission is to transform that story into
+                    meaningful customer experiences that generate awareness, trust, and growth.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="values">
+        <div class="container">
+            <div class="sec-head reveal">
+                <div class="eyebrow">Driven By Values</div>
+                <h2 class="sec-title">Focused on <span class="o">Results</span></h2>
+                <p class="sec-desc">At VV Travco, our success is built on strong values that guide every project and
+                    client relationship.</p>
+            </div>
+            <div class="values-grid reveal">
+                <div class="value-item">
+                    <h4>Achievement</h4>
+                    <p>We strive to deliver measurable outcomes that contribute to our clients' growth and success.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Transparency</h4>
+                    <p>We maintain honest communication and complete project visibility throughout the process.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Integrity</h4>
+                    <p>We uphold the highest professional standards and always act in our clients' best interests.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Collaboration</h4>
+                    <p>We work closely with clients to ensure every solution reflects their vision and objectives.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Innovation</h4>
+                    <p>We embrace new ideas, technologies, and creative approaches to deliver exceptional results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="vertical-word orange">Services</div>
+        <div class="container">
+            <div class="sec-head reveal">
+                <div class="eyebrow">What We Do</div>
+                <h2 class="sec-title">Create Ideas. <span class="o">Strategic</span> Execution.</h2>
+                <p class="sec-desc">A full-service creative and digital team — from brand strategy to web design,
+                    marketing, content, and video production.</p>
+            </div>
+            <div class="services-grid reveal">
+                <div class="svc-card">
+                    <div class="svc-num">01 — STRATEGY</div>
+                    <div class="svc-title">Brand Strategy</div>
+                    <ul class="arrow-list">
+                        <li><span class="arrow-item-icon">➜</span>Market Research</li>
+                        <li><span class="arrow-item-icon">➜</span>Positioning Strategy</li>
+                        <li><span class="arrow-item-icon">➜</span>Value Proposition</li>
+                        <li><span class="arrow-item-icon">➜</span>Brand Voice</li>
+                    </ul>
+                </div>
+                <div class="svc-card">
+                    <div class="svc-num">02 — DESIGN</div>
+                    <div class="svc-title">Web Design</div>
+                    <ul class="arrow-list">
+                        <li><span class="arrow-item-icon">➜</span>UI/UX Design</li>
+                        <li><span class="arrow-item-icon">➜</span>Corporate Websites</li>
+                        <li><span class="arrow-item-icon">➜</span>E-Commerce Builds</li>
+                        <li><span class="arrow-item-icon">➜</span>Hosting &amp; Maintenance</li>
+                    </ul>
+                </div>
+                <div class="svc-card">
+                    <div class="svc-num">03 — GROWTH</div>
+                    <div class="svc-title">Digital Marketing</div>
+                    <ul class="arrow-list">
+                        <li><span class="arrow-item-icon">➜</span>Google &amp; Meta Ads</li>
+                        <li><span class="arrow-item-icon">➜</span>Lead Generation</li>
+                        <li><span class="arrow-item-icon">➜</span>Social Media Marketing</li>
+                        <li><span class="arrow-item-icon">➜</span>WhatsApp Marketing</li>
+                    </ul>
+                </div>
+                <div class="svc-card">
+                    <div class="svc-num">04 — CREATIVE</div>
+                    <div class="svc-title">Design Services</div>
+                    <ul class="arrow-list">
+                        <li><span class="arrow-item-icon">➜</span>Logo &amp; Brand Identity</li>
+                        <li><span class="arrow-item-icon">➜</span>Brochures &amp; Flyers</li>
+                        <li><span class="arrow-item-icon">➜</span>Social Media Designs</li>
+                        <li><span class="arrow-item-icon">➜</span>Packaging Design</li>
+                    </ul>
+                </div>
+                <div class="svc-card">
+                    <div class="svc-num">05 — CONTENT</div>
+                    <div class="svc-title">Content Marketing</div>
+                    <ul class="arrow-list">
+                        <li><span class="arrow-item-icon">➜</span>Content Strategy</li>
+                        <li><span class="arrow-item-icon">➜</span>SEO-Based Writing</li>
+                        <li><span class="arrow-item-icon">➜</span>Newsletters &amp; Blogs</li>
+                        <li><span class="arrow-item-icon">➜</span>Investor Decks</li>
+                    </ul>
+                </div>
+                <div class="svc-card">
+                    <div class="svc-num">06 — VIDEO</div>
+                    <div class="svc-title">Video Production</div>
+                    <ul class="arrow-list">
+                        <li><span class="arrow-item-icon">➜</span>Product Photoshoots</li>
+                        <li><span class="arrow-item-icon">➜</span>Explainer &amp; Animated Videos</li>
+                        <li><span class="arrow-item-icon">➜</span>Reels &amp; Shorts</li>
+                        <li><span class="arrow-item-icon">➜</span>Testimonial Videos</li>
+                    </ul>
+                </div>
+                <div class="svc-card">
+                    <div class="svc-num">07 — VISIBILITY</div>
+                    <div class="svc-title">SEO Services</div>
+                    <ul class="arrow-list">
+                        <li><span class="arrow-item-icon">➜</span>Search Ranking Growth</li>
+                        <li><span class="arrow-item-icon">➜</span>Targeted Traffic</li>
+                        <li><span class="arrow-item-icon">➜</span>Technical SEO</li>
+                        <li><span class="arrow-item-icon">➜</span>Link Building</li>
+                    </ul>
+                </div>
+                <div class="svc-card">
+                    <div class="svc-num">08 — PRINT</div>
+                    <div class="svc-title">Print Media</div>
+                    <ul class="arrow-list">
+                        <li><span class="arrow-item-icon">➜</span>Newspaper &amp; Magazines</li>
+                        <li><span class="arrow-item-icon">➜</span>Brochures &amp; Reports</li>
+                        <li><span class="arrow-item-icon">➜</span>Event Branding</li>
+                        <li><span class="arrow-item-icon">➜</span>Business Stationery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESIGN PHILOSOPHY -->
+    <section class="philosophy">
+        <div class="container philosophy-grid">
+            <div class="reveal">
+                <div class="eyebrow">Guided By Design Thinking</div>
+                <h2 class="sec-title">DESIGN</h2>
+                <p>At the core of our mission is the creation of impactful brand communication through intentional,
+                    design-focused creativity. We excel in innovative branding that fosters deeper connections between
+                    brands and customers.</p>
+                <p>We believe collaboration fosters the best ideas — which is why we engage you throughout the creative
+                    process, from brand identity to marketing materials.</p>
+                <ul class="obj-list">
+                    <li><span>01</span>Connect with your audience</li>
+                    <li><span>02</span>Echo your brand and vision</li>
+                    <li><span>03</span>Adaptable across all platforms</li>
+                </ul>
+            </div>
+            <div class="philosophy-swatches reveal">
+                <div class="big-swatch c1"><span>#393939</span></div>
+                <div class="big-swatch c2"><span>#F58220</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENTS / GROUP -->
+    <section class="clients" id="clients">
+        <div class="container">
+            <div class="sec-head reveal">
+                <div class="eyebrow">Our Clients</div>
+                <h2 class="sec-title">Foundations of <span class="o">Collaboration</span></h2>
+                <p class="sec-desc">Trust, clear communication, and a shared vision for growth — the businesses we're
+                    proud to work with.</p>
+            </div>
+            <div class="clients-grid reveal">
+                <div class="client-card">
+                    <div class="client-name">Cityone</div>
+                    <div class="client-type">Tourism &amp; Travel</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-name">LumiLife</div>
+                    <div class="client-type">Smart Living</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-name">Yuti Breweries</div>
+                    <div class="client-type">Hand-Brewed Flavors</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-name">K Hotels</div>
+                    <div class="client-type">Pride of Uganda</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-name">Rudra Agro</div>
+                    <div class="client-type">Agriculture</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-name">EmiBoozi</div>
+                    <div class="client-type">Restobar</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-name">Whiterose</div>
+                    <div class="client-type">General Trading LLC</div>
+                </div>
+                <div class="client-card">
+                    <div class="client-name">+ You Next</div>
+                    <div class="client-type">Let's Collaborate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="sec-head reveal">
+                <div class="eyebrow">Get In Touch</div>
+                <h2 class="sec-title">Your Ideas Matter — <span class="o">Let's Talk.</span></h2>
+                <p class="sec-desc">Tell us about your project and our team will get back to you within 24 hours.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="office-card reveal">
+                    <h3>Our Office</h3>
+                    <div class="office-row">
+                        <div class="office-icon">📍</div>
+                        <div><strong>Hyderabad</strong><span>Surekha Chambers, II Floor, 202, Ameerpet,
+                                Hyderabad.</span></div>
+                    </div>
+                    <div class="office-row">
+                        <div class="office-icon">📞</div>
+                        <div><strong>Call Us</strong><a href="tel:+919642266684">+91 96422 66684</a></div>
+                    </div>
+                    <div class="office-row">
+                        <div class="office-icon">✉️</div>
+                        <div><strong>Email Us</strong><a href="mailto:hello@vvtravco.com">hello@vvtravco.com</a></div>
+                    </div>
+                    <div class="office-row">
+                        <div class="office-icon">🌐</div>
+                        <div><strong>Website</strong><span>www.vvtravco.com</span></div>
+                    </div>
+                    <div class="office-social">
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="Facebook">FB</a>
+                        <a href="#" aria-label="LinkedIn">IN</a>
+                    </div>
+                </div>
+
+                <form class="form-card reveal" onsubmit="return handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" placeholder="+91 00000 00000" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="you@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Service Interested In</label>
+                        <select name="service">
+                            <option>Brand Strategy</option>
+                            <option>Web Design &amp; Development</option>
+                            <option>Digital Marketing</option>
+                            <option>Design Services</option>
+                            <option>Content Marketing</option>
+                            <option>Video Production</option>
+                            <option>SEO Services</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-solid form-submit">Send Message →</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA STRIP -->
+    <section class="cta-strip">
+        <div class="container reveal">
+            <div class="eyebrow" style="justify-content:center;">Let's Build Something Great</div>
+            <h2 class="display">Your Ideas Matter — <span class="o">Let's Start</span> the Conversation.</h2>
+            <div class="cta-strip-actions">
+                <a href="#contact" class="btn btn-solid">Start a Project →</a>
+                <a href="tel:+919642266684" class="btn btn-outline">Call Us Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-about">
+                    <div class="footer-logo">VV <span>Travco</span></div>
+                    <p>Creative Design Horizon — branding, web design, digital marketing, content and video production,
+                        all under one roof.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <a href="#services">Brand Strategy</a>
+                    <a href="#services">Web Design</a>
+                    <a href="#services">Digital Marketing</a>
+                    <a href="#services">Video Production</a>
+                    <a href="#services">SEO Services</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <a href="#about">About Us</a>
+                    <a href="#clients">Clients</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact</h5>
+                    <p>📞 +91 96422 66684</p>
+                    <p>✉️ hello@vvtravco.com</p>
+                    <p>📍 Ameerpet, Hyderabad</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 VV Travco — Creative Design Horizon. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="mobile-callbar">
+        <a href="tel:+919642266684" class="call-btn">📞 Call Now</a>
+        <a href="https://wa.me/919642266684" class="whatsapp-btn">💬 WhatsApp</a>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', menuToggle.classList.contains('active'));
+        });
+        document.querySelectorAll('#mobileMenu a').forEach(l => {
+            l.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            alert('Thank you ' + form.name.value + '! Your enquiry has been noted. Our team will contact you shortly.');
+            form.reset();
+            return false;
+        }
+    </script>
+</body>
+
+</html>

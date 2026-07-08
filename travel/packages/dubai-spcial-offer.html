@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dubai Ultimate Escape Package | Paradise World Travels</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto:wght@300;400;500;700;900&family=Cormorant+Garamond:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c69f4a;
+            --gold-light: #e2c47a;
+            --gold-dark: #9a7a30;
+            --blue: #00468a;
+            --blue-dark: #002d5c;
+            --black: #111;
+            --white: #fff;
+            --gray-light: #f5f5f5;
+            --gray: #e0e0e0;
+            --text-dark: #222;
+            --text-mid: #555;
+            --radius: 14px;
+            --transition: .35s cubic-bezier(.4, 0, .2, 1)
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: var(--gray-light);
+            color: var(--text-dark);
+            overflow-x: hidden
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        img {
+            max-width: 100%;
+            display: block
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer
+        }
+
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            z-index: 1000;
+            background: var(--black);
+            padding: 0 4%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, .5)
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px
+        }
+
+        .nav-link {
+            color: #ddd !important;
+            font-size: .88rem;
+            font-weight: 500;
+            padding: 8px 14px !important;
+            border-radius: 6px;
+            transition: var(--transition)
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--gold) !important;
+            background: rgba(198, 159, 74, .12)
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important;
+            color: var(--black) !important;
+            font-weight: 700 !important;
+            padding: 9px 20px !important;
+            border-radius: 25px !important;
+            box-shadow: 0 4px 15px rgba(198, 159, 74, .4)
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 2px
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: #111;
+            z-index: 999;
+            display: none;
+            flex-direction: column;
+            padding: 18px
+        }
+
+        .mobile-menu.open {
+            display: flex
+        }
+
+        .mobile-menu a {
+            color: #ddd;
+            padding: 13px 16px;
+            border-radius: 8px;
+            font-size: .95rem
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            color: var(--gold);
+            background: rgba(198, 159, 74, .12)
+        }
+
+        .promo-hero {
+            position: relative;
+            margin-top: 70px
+        }
+
+        .promo-carousel,
+        .promo-carousel .carousel-item {
+            height: 88vh
+        }
+
+        .carousel-item {
+            position: relative;
+            overflow: hidden
+        }
+
+        .slide-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.08);
+            transition: transform 6s ease
+        }
+
+        .carousel-item.active .slide-bg {
+            transform: scale(1)
+        }
+
+        .slide-1 .slide-bg {
+            background-image: linear-gradient(135deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .65)), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=80')
+        }
+
+        .slide-2 .slide-bg {
+            background-image: linear-gradient(135deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .65)), url('https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1600&q=80')
+        }
+
+        .slide-3 .slide-bg {
+            background-image: linear-gradient(135deg, rgba(0, 0, 0, .5), rgba(0, 0, 0, .65)), url('https://images.unsplash.com/photo-1546412414-e1885259563a?w=1600&q=80')
+        }
+
+        .slide-content {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem
+        }
+
+        .slide-badge {
+            background: var(--gold);
+            color: #111;
+            font-size: .72rem;
+            font-weight: 900;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            padding: .45rem 1.25rem;
+            border-radius: 2rem;
+            margin-bottom: 1.4rem
+        }
+
+        .slide-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 6vw, 5rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 24px rgba(0, 0, 0, .4)
+        }
+
+        .slide-title span {
+            color: var(--gold-light)
+        }
+
+        .slide-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: rgba(255, 255, 255, .9);
+            margin-bottom: 1.6rem
+        }
+
+        .slide-prices {
+            display: flex;
+            gap: .8rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.6rem
+        }
+
+        .price-chip {
+            background: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, .3);
+            border-radius: 1rem;
+            padding: .45rem 1rem;
+            color: #fff;
+            font-size: .82rem;
+            font-weight: 500
+        }
+
+        .price-chip strong {
+            color: var(--gold-light);
+            font-size: 1rem
+        }
+
+        .package-actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .enquiry-btn,
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 40px;
+            font-weight: 800;
+            border: 0;
+            text-decoration: none;
+            transition: .3s
+        }
+
+        .enquiry-btn {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #111
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: #fff
+        }
+
+        .enquiry-btn:hover,
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            color: #fff
+        }
+
+        .promo-carousel .carousel-control-prev,
+        .promo-carousel .carousel-control-next {
+            width: 3.5rem;
+            height: 3.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0 1rem;
+            background: rgba(198, 159, 74, .75);
+            border-radius: 50%;
+            opacity: 1
+        }
+
+        .promo-carousel .carousel-indicators [data-bs-target] {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .6);
+            border: none
+        }
+
+        .promo-carousel .carousel-indicators .active {
+            background: var(--gold-light);
+            width: 26px;
+            border-radius: 5px
+        }
+
+        .overview-strip {
+            background: #00468a;
+            color: #fff;
+            padding: 1.2rem 0
+        }
+
+        .strip-items {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap
+        }
+
+        .strip-item {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .9rem;
+            font-weight: 500
+        }
+
+        .strip-item i {
+            color: var(--gold-light)
+        }
+
+        .strip-divider {
+            width: 1px;
+            height: 1.4rem;
+            background: rgba(255, 255, 255, .3)
+        }
+
+        .section-label {
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: .5rem
+        }
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--blue);
+            line-height: 1.2
+        }
+
+        .section-heading span {
+            color: var(--gold-dark)
+        }
+
+        .package-summary-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #f7f7f7, #fff)
+        }
+
+        .package-summary-card {
+            max-width: 1120px;
+            margin: auto;
+            background: #fff;
+            border-radius: 26px;
+            overflow: hidden;
+            box-shadow: 0 22px 60px rgba(0, 0, 0, .14);
+            display: grid;
+            grid-template-columns: 45% 55%;
+            border: 1px solid rgba(198, 159, 74, .25)
+        }
+
+        .package-summary-img {
+            position: relative;
+            min-height: 430px
+        }
+
+        .package-summary-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .package-summary-badge {
+            position: absolute;
+            top: 22px;
+            left: 22px;
+            background: linear-gradient(135deg, #c69f4a, #9a7a30);
+            color: #111;
+            padding: 9px 18px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 1px
+        }
+
+        .package-summary-content {
+            padding: 42px
+        }
+
+        .package-summary-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 34px;
+            font-weight: 900;
+            color: #00468a;
+            margin-bottom: 12px
+        }
+
+        .package-summary-content p {
+            color: #555;
+            line-height: 1.75;
+            font-size: 16px
+        }
+
+        .package-summary-meta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 22px 0
+        }
+
+        .package-summary-meta span {
+            background: #f8edce;
+            color: #7a5b12;
+            padding: 9px 14px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 800
+        }
+
+        .package-summary-meta i {
+            color: #9a7a30;
+            margin-right: 6px
+        }
+
+        .package-summary-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 22px 0
+        }
+
+        .package-summary-tags span {
+            background: #eaf4ff;
+            color: #00468a;
+            border: 1px solid #c7ddf3;
+            padding: 8px 14px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700
+        }
+
+        .package-summary-price-box {
+            margin-top: 28px;
+            padding: 24px;
+            background: linear-gradient(135deg, #00468a, #002d5c);
+            border-radius: 20px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            align-items: center;
+            flex-wrap: wrap
+        }
+
+        .package-summary-price small {
+            display: block;
+            font-size: 13px;
+            opacity: .8
+        }
+
+        .package-summary-price strong {
+            font-size: 32px;
+            color: #e2c47a
+        }
+
+        .package-summary-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .package-summary-actions button,
+        .package-summary-actions a {
+            border: 0;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-weight: 900
+        }
+
+        .package-summary-actions button {
+            background: linear-gradient(135deg, #c69f4a, #9a7a30);
+            color: #111
+        }
+
+        .package-summary-actions a {
+            background: #25D366;
+            color: #fff
+        }
+
+        .itinerary-section {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, #e0e0e0, #f5f5f5)
+        }
+
+        .itin-card {
+            background: #fff;
+            border-radius: 1.4rem;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, .08);
+            border: 1.5px solid #e0e0e0;
+            margin-bottom: 2rem;
+            display: flex;
+            transition: .3s
+        }
+
+        .itin-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .14)
+        }
+
+        .itin-card.reverse {
+            flex-direction: row-reverse
+        }
+
+        .itin-img-wrap {
+            width: 38%;
+            min-height: 260px;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden
+        }
+
+        .itin-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .6s
+        }
+
+        .itin-card:hover .itin-img-wrap img {
+            transform: scale(1.07)
+        }
+
+        .itin-day-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--gold);
+            color: #111;
+            border-radius: .8rem;
+            padding: .4rem .9rem;
+            font-family: 'Playfair Display', serif;
+            font-size: .7rem;
+            font-weight: 900;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
+            text-align: center
+        }
+
+        .itin-day-badge span {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 900;
+            line-height: 1
+        }
+
+        .itin-content {
+            padding: 2rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1
+        }
+
+        .day-tag {
+            display: inline-block;
+            background: #f8edce;
+            color: #9a7a30;
+            font-size: .68rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: .25rem .7rem;
+            border-radius: .4rem;
+            margin-bottom: .7rem;
+            width: max-content
+        }
+
+        .itin-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: #00468a;
+            margin-bottom: .7rem
+        }
+
+        .itin-content p {
+            font-size: .92rem;
+            color: #555;
+            line-height: 1.75;
+            margin-bottom: 1rem
+        }
+
+        .itin-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem
+        }
+
+        .itin-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem;
+            background: #f5f5f5;
+            border: 1px solid #e2c47a;
+            border-radius: 2rem;
+            padding: .3rem .8rem;
+            font-size: .75rem;
+            color: #00468a;
+            font-weight: 700
+        }
+
+        .itin-pill i {
+            font-size: .7rem;
+            color: var(--gold-dark)
+        }
+
+        .good-section {
+            padding: 5rem 0;
+            background: #fff
+        }
+
+        .inclusions-section {
+            padding: 5rem 0;
+            background: #f5f5f5
+        }
+
+        .good-grid,
+        .inclusion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 35px
+        }
+
+        .good-card,
+        .inclusion-item {
+            background: #f5f5f5;
+            border-radius: 18px;
+            padding: 24px;
+            border: 1px solid #e0e0e0;
+            transition: .3s
+        }
+
+        .inclusion-item {
+            background: #fff;
+            display: flex;
+            align-items: flex-start;
+            gap: .8rem
+        }
+
+        .good-card:hover,
+        .inclusion-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .08)
+        }
+
+        .good-icon,
+        .incl-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #111;
+            font-size: 20px;
+            margin-bottom: 15px
+        }
+
+        .incl-icon {
+            width: 2.4rem;
+            height: 2.4rem;
+            margin-bottom: 0;
+            flex-shrink: 0
+        }
+
+        .good-card h4 {
+            font-size: 18px;
+            font-weight: 900;
+            color: #00468a;
+            margin-bottom: 8px
+        }
+
+        .good-card p,
+        .incl-text {
+            color: #555;
+            line-height: 1.6;
+            font-size: 14px;
+            margin: 0
+        }
+
+        .incl-text {
+            font-weight: 700;
+            color: #222
+        }
+
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #9a7a30, #c69f4a 55%, #00468a);
+            text-align: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: #fff;
+            font-weight: 900;
+            margin-bottom: 1rem
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, .9);
+            font-size: 1.05rem;
+            margin-bottom: 2rem
+        }
+
+        .promo-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .72);
+            backdrop-filter: blur(6px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem
+        }
+
+        .promo-overlay.active {
+            display: flex
+        }
+
+        .promo-modal {
+            background: #fff;
+            border-radius: 1.4rem;
+            width: 100%;
+            max-width: 560px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .35);
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column
+        }
+
+        .modal-header-bar {
+            background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+            padding: 2rem 2rem 1.5rem;
+            color: #fff;
+            position: relative
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 2rem;
+            height: 2rem;
+            background: rgba(255, 255, 255, .15);
+            border: none;
+            border-radius: 50%;
+            color: #fff
+        }
+
+        .modal-header-bar h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 900
+        }
+
+        .modal-body-content {
+            max-height: calc(92vh - 115px);
+            overflow-y: auto;
+            padding: 1.4rem 1.6rem
+        }
+
+        .promo-form-group {
+            margin-bottom: 1.1rem
+        }
+
+        .promo-form-group label {
+            display: block;
+            font-size: .8rem;
+            font-weight: 700;
+            color: #555;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            margin-bottom: .4rem
+        }
+
+        .promo-form-control {
+            width: 100%;
+            border: 1.5px solid #e0e0e0;
+            border-radius: .7rem;
+            padding: .72rem 1rem;
+            font-size: .92rem;
+            background: #f5f5f5;
+            color: #222;
+            outline: none
+        }
+
+        .promo-form-control:focus {
+            border-color: var(--gold);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(198, 159, 74, .15)
+        }
+
+        .promo-submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #111;
+            font-weight: 900;
+            font-size: 1rem;
+            padding: .9rem;
+            border-radius: .9rem;
+            border: none;
+            margin-top: .5rem
+        }
+
+        .modal-contact-row {
+            display: flex;
+            gap: .8rem;
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e0e0e0;
+            flex-wrap: wrap
+        }
+
+        .modal-contact-item {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            font-size: .85rem;
+            color: #555
+        }
+
+        .promo-footer {
+            background: #00468a;
+            color: rgba(255, 255, 255, .75);
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: .85rem
+        }
+
+        .promo-footer strong {
+            color: var(--gold-light)
+        }
+
+        @media(max-width:768px) {
+            .nav-links {
+                display: none
+            }
+
+            .hamburger {
+                display: flex
+            }
+
+            .promo-carousel,
+            .promo-carousel .carousel-item {
+                height: 82vh
+            }
+
+            .promo-carousel .carousel-control-prev,
+            .promo-carousel .carousel-control-next {
+                display: none
+            }
+
+            .slide-title {
+                font-size: 2.45rem
+            }
+
+            .enquiry-btn,
+            .whatsapp-btn {
+                width: 100%;
+                max-width: 320px
+            }
+
+            .strip-divider {
+                display: none
+            }
+
+            .package-summary-card {
+                grid-template-columns: 1fr;
+                border-radius: 22px
+            }
+
+            .package-summary-img {
+                min-height: 260px
+            }
+
+            .package-summary-content {
+                padding: 26px 20px
+            }
+
+            .package-summary-content h2 {
+                font-size: 28px
+            }
+
+            .package-summary-actions,
+            .package-summary-actions button,
+            .package-summary-actions a {
+                width: 100%;
+                text-align: center;
+                justify-content: center
+            }
+
+            .itin-card,
+            .itin-card.reverse {
+                flex-direction: column
+            }
+
+            .itin-img-wrap {
+                width: 100%;
+                min-height: 210px
+            }
+
+            .itin-content {
+                padding: 1.5rem
+            }
+
+            .package-summary-section,
+            .itinerary-section,
+            .good-section,
+            .inclusions-section,
+            .cta-section {
+                padding: 3.5rem 0
+            }
+        }
+
+        @media(max-width:576px) {
+            .logo-img {
+                height: 52px
+            }
+
+            #navbar {
+                height: 66px
+            }
+
+            .mobile-menu {
+                top: 66px
+            }
+
+            .promo-hero {
+                margin-top: 66px
+            }
+
+            .modal-body-content {
+                padding: 1rem
+            }
+
+            .modal-header-bar {
+                padding: 1.2rem 1.3rem 1rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar">
+        <a class="nav-logo" href="../home.html">
+            <img src="../../images/logo-final.png" alt="Paradise World Travels Logo" class="logo-img">
+        </a>
+
+        <div class="nav-links">
+            <a class="nav-link" href="../home.html">Home</a>
+            <a class="nav-link" href="../home.html?page=umrah">Umrah</a>
+            <a class="nav-link" href="../home.html?page=hajj">Hajj</a>
+            <a class="nav-link active" href="../packages.html">Packages</a>
+            <a class="nav-link" href="../home.html?page=offers">Offers</a>
+            <a class="nav-link" href="../home.html?page=about">About Us</a>
+            <a class="nav-link" href="../home.html?page=contact">Contact</a>
+            <a class="nav-cta nav-link" href="../home.html?page=contact">Book Now</a>
+        </div>
+
+        <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="home.html?page=home">Home</a>
+        <a href="../home.html?page=umrah">Umrah</a>
+        <a href="../home.html?page=hajj">Hajj</a>
+        <a href="../packages.html" class="active">Packages</a>
+        <a href="../home.html?page=offers">Offers</a>
+        <a href="../home.html?page=about">About Us</a>
+        <a href="../home.html?page=contact">Contact</a>
+        <a href="../home.html?page=contact">Book Now</a>
+    </div>
+    <section class="promo-hero">
+        <div id="dubaiCarousel" class="carousel slide promo-carousel" data-bs-ride="carousel">
+            <div class="carousel-indicators"><button type="button" data-bs-target="#dubaiCarousel" data-bs-slide-to="0"
+                    class="active"></button><button type="button" data-bs-target="#dubaiCarousel"
+                    data-bs-slide-to="1"></button><button type="button" data-bs-target="#dubaiCarousel"
+                    data-bs-slide-to="2"></button></div>
+            <div class="carousel-inner">
+                <div class="carousel-item active slide-1">
+                    <div class="slide-bg"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge">Dubai Special Offer</div>
+                        <h1 class="slide-title">Dubai <span>The Ultimate Escape</span></h1>
+                        <p class="slide-sub">Unforgettable experiences, one incredible journey with 3N/4D 4-star
+                            accommodation.</p>
+                        <div class="slide-prices">
+                            <div class="price-chip">Starting from <strong>₹17,850</strong> / person</div>
+                            <div class="price-chip">3 Nights / 4 Days</div>
+                            <div class="price-chip">City Tour + Safari + Cruise</div>
+                        </div>
+                        <div class="package-actions"><button class="enquiry-btn" onclick="openPromoModal()">Enquire Now
+                                <i class="fas fa-arrow-right"></i></button><a class="whatsapp-btn"
+                                href="https://wa.me/919642266675?text=Hi%20I%20want%20Dubai%20Ultimate%20Escape%20Package%20details"
+                                target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+                    </div>
+                </div>
+                <div class="carousel-item slide-2">
+                    <div class="slide-bg"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge">Dubai Experiences</div>
+                        <h1 class="slide-title">City Lights & <span>Desert Nights</span></h1>
+                        <p class="slide-sub">Half-day city tour, fountain show, desert safari with dinner and dhow
+                            cruise.</p>
+                        <div class="package-actions"><button class="enquiry-btn" onclick="openPromoModal()">Book
+                                Now</button><a class="whatsapp-btn"
+                                href="https://wa.me/919642266675?text=Hi%20I%20want%20Dubai%20Ultimate%20Escape%20Package%20details"
+                                target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+                    </div>
+                </div>
+                <div class="carousel-item slide-3">
+                    <div class="slide-bg"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge">Private Transfers Included</div>
+                        <h1 class="slide-title">Easy Dubai <span>Holiday</span></h1>
+                        <p class="slide-sub">Return airport transfers, hotel stay and travel assistance included.</p>
+                        <div class="package-actions"><button class="enquiry-btn" onclick="openPromoModal()">Get Best
+                                Deal</button><a class="whatsapp-btn"
+                                href="https://wa.me/919642266675?text=Hi%20I%20want%20Dubai%20Ultimate%20Escape%20best%20deal"
+                                target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="overview-strip">
+        <div class="container">
+            <div class="strip-items">
+                <div class="strip-item"><i class="fas fa-clock"></i> 3 Nights / 4 Days</div>
+                <div class="strip-divider"></div>
+                <div class="strip-item"><i class="fas fa-hotel"></i> 4★ Accommodation</div>
+                <div class="strip-divider"></div>
+                <div class="strip-item"><i class="fas fa-car"></i> Private Airport Transfers</div>
+                <div class="strip-divider"></div>
+                <div class="strip-item"><i class="fas fa-star"></i> Dubai Special Offer</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="package-summary-section">
+        <div class="container">
+            <div class="package-summary-card">
+                <div class="package-summary-img"><span class="package-summary-badge">SPECIAL OFFER</span><img
+                        src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80"
+                        alt="Dubai Ultimate Escape Package"></div>
+                <div class="package-summary-content">
+                    <h2>Dubai The Ultimate Escape</h2>
+                    <p>Enjoy Dubai with a premium 3 nights / 4 days holiday package including half-day Dubai city tour,
+                        Dubai Fountain Show, desert safari with dinner, dhow creek cruise with dinner and private return
+                        airport transfers.</p>
+                    <div class="package-summary-meta"><span><i class="fas fa-clock"></i> 3N / 4D</span><span><i
+                                class="fas fa-hotel"></i> 4★ Stay</span><span><i class="fas fa-utensils"></i> Dinner
+                            Experiences</span><span><i class="fas fa-car"></i> Private Transfers</span></div>
+                    <div class="package-summary-tags"><span>Dubai City Tour</span><span>Dubai Fountain
+                            Show</span><span>Desert Safari</span><span>Dhow Creek Cruise</span></div>
+                    <div class="package-summary-price-box">
+                        <div class="package-summary-price"><small>Starting
+                                From</small><strong>₹17,850</strong><small>Per Person on Double Sharing Basis</small>
+                        </div>
+                        <div class="package-summary-actions"><button onclick="openPromoModal()">Enquire Now</button><a
+                                href="https://wa.me/919642266675?text=Hi%20I%20want%20Dubai%20Ultimate%20Escape%20Package%20details"
+                                target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="itinerary-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label">Travel Plan</div>
+                <h2 class="section-heading">Dubai <span>Itinerary</span></h2>
+            </div>
+            <div class="itin-card">
+                <div class="itin-img-wrap"><img
+                        src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900&q=80"
+                        alt="Dubai Arrival">
+                    <div class="itin-day-badge">Day <span>1</span></div>
+                </div>
+                <div class="itin-content"><span class="day-tag">Arrival</span>
+                    <h4>Arrival in Dubai & Private Transfer</h4>
+                    <p>Arrive at Dubai International Airport. Meet our representative and enjoy a private transfer to
+                        your 4-star hotel. Check in and relax.</p>
+                    <div class="itin-highlights"><span class="itin-pill"><i class="fas fa-plane"></i>
+                            Arrival</span><span class="itin-pill"><i class="fas fa-car"></i> Private
+                            Transfer</span><span class="itin-pill"><i class="fas fa-hotel"></i> Hotel Check-in</span>
+                    </div>
+                </div>
+            </div>
+            <div class="itin-card reverse">
+                <div class="itin-img-wrap"><img
+                        src="https://images.unsplash.com/photo-1518684079-3c830dcef090?w=900&q=80"
+                        alt="Dubai City Tour">
+                    <div class="itin-day-badge">Day <span>2</span></div>
+                </div>
+                <div class="itin-content"><span class="day-tag">City Tour</span>
+                    <h4>Half-day Dubai City Tour & Fountain Show</h4>
+                    <p>Explore Dubai highlights with a half-day city tour. In the evening, enjoy the famous Dubai
+                        Fountain Show at Downtown Dubai.</p>
+                    <div class="itin-highlights"><span class="itin-pill"><i class="fas fa-city"></i> City
+                            Tour</span><span class="itin-pill"><i class="fas fa-water"></i> Fountain Show</span><span
+                            class="itin-pill"><i class="fas fa-camera"></i> Photo Stops</span></div>
+                </div>
+            </div>
+            <div class="itin-card">
+                <div class="itin-img-wrap"><img
+                        src="https://images.unsplash.com/photo-1546412414-e1885259563a?w=900&q=80"
+                        alt="Dubai Desert Safari">
+                    <div class="itin-day-badge">Day <span>3</span></div>
+                </div>
+                <div class="itin-content"><span class="day-tag">Desert Safari</span>
+                    <h4>Desert Safari with Dinner</h4>
+                    <p>Experience thrilling desert safari, dune drive, cultural entertainment and dinner in a desert
+                        camp for a memorable Dubai evening.</p>
+                    <div class="itin-highlights"><span class="itin-pill"><i class="fas fa-car-side"></i> Desert
+                            Safari</span><span class="itin-pill"><i class="fas fa-utensils"></i> Dinner</span><span
+                            class="itin-pill"><i class="fas fa-music"></i> Entertainment</span></div>
+                </div>
+            </div>
+            <div class="itin-card reverse">
+                <div class="itin-img-wrap"><img
+                        src="https://images.unsplash.com/photo-1526495124232-a04e1849168c?w=900&q=80"
+                        alt="Dhow Cruise Dubai">
+                    <div class="itin-day-badge">Day <span>4</span></div>
+                </div>
+                <div class="itin-content"><span class="day-tag">Cruise & Departure</span>
+                    <h4>Dhow Creek Cruise with Dinner / Departure</h4>
+                    <p>Enjoy Dhow Creek Cruise with dinner as per schedule. Later, private transfer to Dubai Airport for
+                        your return flight with wonderful memories.</p>
+                    <div class="itin-highlights"><span class="itin-pill"><i class="fas fa-ship"></i> Dhow
+                            Cruise</span><span class="itin-pill"><i class="fas fa-utensils"></i> Dinner</span><span
+                            class="itin-pill"><i class="fas fa-plane-departure"></i> Departure</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="good-section">
+        <div class="container">
+            <div class="text-center">
+                <div class="section-label">Important Information</div>
+                <h2 class="section-heading">Good to <span>Know</span></h2>
+            </div>
+            <div class="good-grid">
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-calendar-check"></i></div>
+                    <h4>Best Time</h4>
+                    <p>October to April is the best season for pleasant weather, sightseeing and outdoor activities in
+                        Dubai.</p>
+                </div>
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-passport"></i></div>
+                    <h4>Documents</h4>
+                    <p>Carry valid passport, visa and confirmed travel documents for hotel and airport verification.</p>
+                </div>
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-cloud-sun"></i></div>
+                    <h4>Activities</h4>
+                    <p>Desert safari and outdoor activities are subject to weather and local operator conditions.</p>
+                </div>
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-hotel"></i></div>
+                    <h4>Hotel Policy</h4>
+                    <p>Standard hotel check-in and check-out timings apply. Early check-in depends on availability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="inclusions-section">
+        <div class="container">
+            <div class="text-center">
+                <div class="section-label">Package Includes</div>
+                <h2 class="section-heading">What’s <span>Included</span></h2>
+            </div>
+            <div class="inclusion-grid">
+                <div class="inclusion-item">
+                    <div class="incl-icon"><i class="fas fa-hotel"></i></div>
+                    <div class="incl-text">3 nights 4-star hotel accommodation</div>
+                </div>
+                <div class="inclusion-item">
+                    <div class="incl-icon"><i class="fas fa-city"></i></div>
+                    <div class="incl-text">Half-day Dubai City Tour</div>
+                </div>
+                <div class="inclusion-item">
+                    <div class="incl-icon"><i class="fas fa-water"></i></div>
+                    <div class="incl-text">Dubai Fountain Show</div>
+                </div>
+                <div class="inclusion-item">
+                    <div class="incl-icon"><i class="fas fa-car-side"></i></div>
+                    <div class="incl-text">Desert Safari with Dinner</div>
+                </div>
+                <div class="inclusion-item">
+                    <div class="incl-icon"><i class="fas fa-ship"></i></div>
+                    <div class="incl-text">Dhow Creek Cruise with Dinner</div>
+                </div>
+                <div class="inclusion-item">
+                    <div class="incl-icon"><i class="fas fa-plane-arrival"></i></div>
+                    <div class="incl-text">Return airport transfers private</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="good-section" id="terms-conditions">
+        <div class="container">
+            <div class="text-center">
+                <div class="section-label">Package Policy</div>
+                <h2 class="section-heading">Terms & <span>Conditions</span></h2>
+            </div>
+            <div class="good-grid">
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-indian-rupee-sign"></i></div>
+                    <h4>Price</h4>
+                    <p>Package price is subject to availability, travel dates and final confirmation at the time of
+                        booking.</p>
+                </div>
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-ban"></i></div>
+                    <h4>Cancellation</h4>
+                    <p>Cancellation charges may apply as per hotel, transport and supplier policy.</p>
+                </div>
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-clock"></i></div>
+                    <h4>Timings</h4>
+                    <p>Tour pickup and activity timings will be confirmed after booking confirmation.</p>
+                </div>
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>Validity</h4>
+                    <p>Offer is subject to room availability and seasonal supplements may apply.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready for Your Dubai Holiday?</h2>
+            <p>Send your travel dates and number of passengers. We will share the best available deal.</p>
+            <div class="package-actions"><button class="enquiry-btn" onclick="openPromoModal()">Enquire Now <i
+                        class="fas fa-arrow-right"></i></button><a class="whatsapp-btn"
+                    href="https://wa.me/919642266675?text=Hi%20I%20want%20Dubai%20Ultimate%20Escape%20Package%20details"
+                    target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+        </div>
+    </section>
+
+    <div class="promo-overlay" id="promoOverlay">
+        <div class="promo-modal">
+            <div class="modal-header-bar"><button class="close-btn" onclick="closePromoModal()"><i
+                        class="fas fa-times"></i></button>
+                <h3>Dubai Package Enquiry</h3>
+                <p>Fill the details and our team will contact you shortly.</p>
+            </div>
+            <div class="modal-body-content">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="f7b00981-6f87-428e-84aa-0f1f6ac6f139">
+                    <input type="hidden" name="subject" value="Dubai Package Enquiry - Paradise World Travels">
+
+                    <div class="promo-form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" class="promo-form-control" placeholder="Enter your name"
+                            required>
+                    </div>
+
+                    <div class="promo-form-group">
+                        <label>Mobile Number</label>
+                        <input type="tel" name="phone" class="promo-form-control" placeholder="Enter mobile number"
+                            required>
+                    </div>
+
+                    <div class="promo-form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" class="promo-form-control" placeholder="Enter email address">
+                    </div>
+
+                    <div class="promo-form-group">
+                        <label>Travel Date</label>
+                        <input type="date" name="travel_date" class="promo-form-control">
+                    </div>
+
+                    <div class="promo-form-group">
+                        <label>No. of Passengers</label>
+                        <input type="number" name="passengers" class="promo-form-control" placeholder="Example: 4">
+                    </div>
+
+                    <div class="promo-form-group">
+                        <label>Package Type</label>
+                        <select name="package_type" class="promo-form-control">
+                            <option>Dubai 4N/5D Holiday Package</option>
+                            <option>Dubai City Tour Package</option>
+                            <option>Dubai Desert Safari Package</option>
+                            <option>Customize My Dubai Package</option>
+                        </select>
+                    </div>
+
+                    <div class="promo-form-group">
+                        <label>Message</label>
+                        <textarea name="message" class="promo-form-control" rows="3"
+                            placeholder="Your message"></textarea>
+                    </div>
+
+                    <div class="terms-box">
+                        <input type="checkbox" id="termsCheck" required>
+                        <label for="termsCheck">
+                            I agree to the <a href="#terms-conditions" onclick="closePromoModal()">Terms &
+                                Conditions</a>, cancellation policy and package conditions.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="promo-submit-btn">
+                        Submit Enquiry <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+
+                <div class="modal-contact-row">
+                    <a href="tel:+919642266675" class="modal-contact-item"><i class="fas fa-phone"></i> +91 84693
+                        53585</a>
+                    <a href="mailto:pwtravco@gmail.com" class="modal-contact-item"><i class="fas fa-envelope"></i>
+                        pwtravco@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="promo-footer">© 2026 <strong>Paradise World Travels</strong>. All Rights Reserved.</footer>
+    <script>
+        function toggleMobile() { document.getElementById('mobileMenu').classList.toggle('open') }
+        function openPromoModal() { document.getElementById('promoOverlay').classList.add('active'); document.body.style.overflow = 'hidden' }
+        function closePromoModal() { document.getElementById('promoOverlay').classList.remove('active'); document.body.style.overflow = '' }
+        document.getElementById('promoOverlay').addEventListener('click', function (e) { if (e.target === this) closePromoModal() })
+        function submitPromoForm(e) { e.preventDefault(); alert('Thank you! Your Dubai package enquiry has been submitted.'); closePromoModal(); e.target.reset() }
+    </script>
+</body>
+
+</html>

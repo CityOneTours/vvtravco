@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umrah Package Ahmedabad | Paradise World Travels</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;600;700;900&family=Playfair+Display:wght@700;900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#b8860b;
+  --gold2:#f3d36b;
+  --blue:#00468a;
+  --dark:#111;
+  --white:#fff;
+  --light:#f7f3e8;
+  --green:#25D366;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Noto Sans Gujarati','Roboto',sans-serif;
+  background:#fff;
+  color:#222;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+#navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:72px;
+  background:#111;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 5%;
+  box-shadow:0 4px 25px rgba(0,0,0,.4);
+}
+.logo-img{height:62px;object-fit:contain}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-link{
+  color:#eee!important;
+  padding:9px 14px!important;
+  font-size:14px;
+  font-weight:700;
+  border-radius:8px;
+}
+.nav-link:hover,.nav-link.active{
+  background:rgba(243,211,107,.14);
+  color:var(--gold2)!important;
+}
+.nav-cta{
+  background:linear-gradient(135deg,var(--gold2),var(--gold))!important;
+  color:#111!important;
+  border-radius:30px!important;
+}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{width:26px;height:3px;background:var(--gold2)}
+.mobile-menu{
+  display:none;
+  position:fixed;
+  top:72px;
+  left:0;
+  width:100%;
+  background:#111;
+  z-index:998;
+  padding:15px;
+}
+.mobile-menu.open{display:block}
+.mobile-menu a{
+  display:block;
+  color:#fff;
+  padding:13px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.hero{
+  min-height:100vh;
+  margin-top:72px;
+  background:
+  linear-gradient(90deg,rgba(0,0,0,.75),rgba(0,0,0,.35)),
+  url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=1600&q=80');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  color:#fff;
+  position:relative;
+}
+.hero-content{
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+  padding:70px 20px;
+}
+.hero-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:#111;
+  padding:9px 22px;
+  border-radius:30px;
+  font-weight:900;
+  margin-bottom:20px;
+}
+.hero h1{
+  font-size:clamp(38px,7vw,82px);
+  font-weight:900;
+  line-height:1.08;
+  text-shadow:0 5px 22px rgba(0,0,0,.45);
+}
+.hero h1 span{color:var(--gold2)}
+.hero p{
+  max-width:750px;
+  font-size:22px;
+  margin:20px 0 28px;
+}
+.hero-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:30px;
+}
+.chip{
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.35);
+  padding:10px 18px;
+  border-radius:30px;
+  backdrop-filter:blur(8px);
+  font-weight:700;
+}
+.btn-main,.btn-whatsapp{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:15px 30px;
+  border-radius:40px;
+  border:none;
+  font-weight:900;
+  margin:5px;
+}
+.btn-main{
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:#111;
+}
+.btn-whatsapp{
+  background:var(--green);
+  color:#fff;
+}
+.limited{
+  position:absolute;
+  right:8%;
+  bottom:60px;
+  background:#fff;
+  color:red;
+  font-size:32px;
+  font-weight:900;
+  padding:18px 28px;
+  transform:rotate(-5deg);
+  box-shadow:0 10px 35px rgba(0,0,0,.35);
+}
+
+.strip{
+  background:var(--blue);
+  color:#fff;
+  padding:18px 0;
+}
+.strip-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+  text-align:center;
+}
+.strip-item i{color:var(--gold2);margin-right:8px}
+
+.section{
+  padding:80px 0;
+}
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
+}
+.section-title small{
+  color:var(--gold);
+  font-weight:900;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.section-title h2{
+  font-size:clamp(30px,4vw,48px);
+  font-weight:900;
+  color:var(--blue);
+}
+.section-title span{color:var(--gold)}
+
+.price-card{
+  max-width:1100px;
+  margin:auto;
+  background:#fff;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 22px 70px rgba(0,0,0,.15);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border:2px solid rgba(184,134,11,.25);
+}
+.price-left{
+  background:
+  linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.55)),
+  url('https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=900&q=80');
+  background-size:cover;
+  background-position:center;
+  min-height:480px;
+  color:#fff;
+  display:flex;
+  align-items:flex-end;
+  padding:35px;
+}
+.price-left h3{
+  font-size:36px;
+  font-weight:900;
+}
+.price-right{padding:40px}
+.price-tag{
+  background:linear-gradient(135deg,var(--blue),#002d5c);
+  color:#fff;
+  padding:28px;
+  border-radius:22px;
+  margin-bottom:25px;
+}
+.price-tag small{opacity:.85}
+.price-tag strong{
+  display:block;
+  font-size:46px;
+  color:var(--gold2);
+}
+.meta-list{
+  display:grid;
+  gap:14px;
+}
+.meta-list div{
+  background:#f9f3df;
+  border-radius:14px;
+  padding:14px 16px;
+  font-weight:800;
+}
+.meta-list i{color:var(--gold);margin-right:8px}
+
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:22px;
+}
+.feature-card{
+  background:#fff;
+  border-radius:20px;
+  padding:26px;
+  border:1px solid #ead9ad;
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
+  transition:.3s;
+}
+.feature-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,.12);
+}
+.icon-box{
+  width:58px;
+  height:58px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  color:#111;
+  margin-bottom:16px;
+}
+.feature-card h4{
+  font-weight:900;
+  color:var(--blue);
+  font-size:19px;
+}
+.feature-card p{
+  color:#555;
+  font-size:14px;
+  margin:0;
+}
+
+.bg-light-gold{background:var(--light)}
+
+.timeline{
+  max-width:980px;
+  margin:auto;
+}
+.day-card{
+  background:#fff;
+  border-radius:20px;
+  padding:26px;
+  margin-bottom:22px;
+  border-left:7px solid var(--gold);
+  box-shadow:0 8px 28px rgba(0,0,0,.08);
+}
+.day-card h4{
+  color:var(--blue);
+  font-weight:900;
+}
+.day-card span{
+  background:var(--gold);
+  color:#fff;
+  padding:5px 14px;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:900;
+}
+
+.hotel-card{
+  background:#fff;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 12px 35px rgba(0,0,0,.1);
+}
+.hotel-card img{
+  height:260px;
+  width:100%;
+  object-fit:cover;
+}
+.hotel-content{padding:24px}
+.hotel-content h4{
+  font-weight:900;
+  color:var(--blue);
+}
+.distance{
+  color:var(--gold);
+  font-weight:900;
+  font-size:20px;
+}
+
+.cta{
+  background:linear-gradient(135deg,#111,#00468a);
+  color:#fff;
+  text-align:center;
+  padding:80px 20px;
+}
+.cta h2{
+  font-size:44px;
+  font-weight:900;
+}
+.cta p{font-size:20px}
+
+.form-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
+.form-overlay.active{display:flex}
+.form-box{
+  background:#fff;
+  max-width:560px;
+  width:100%;
+  border-radius:22px;
+  overflow:hidden;
+  max-height:92vh;
+}
+.form-head{
+  background:linear-gradient(135deg,var(--blue),#002d5c);
+  color:#fff;
+  padding:25px;
+  position:relative;
+}
+.close-btn{
+  position:absolute;
+  right:18px;
+  top:18px;
+  border:0;
+  background:rgba(255,255,255,.2);
+  color:#fff;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+}
+.form-body{
+  padding:25px;
+  overflow-y:auto;
+  max-height:70vh;
+}
+.form-control,.form-select{
+  border-radius:12px;
+  padding:12px;
+  margin-bottom:14px;
+}
+.submit-btn{
+  width:100%;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  border:0;
+  border-radius:14px;
+  padding:14px;
+  font-weight:900;
+}
+
+.float-btns{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:900;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.float-btns a,.float-btns button{
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  border:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  color:#fff;
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+.float-whatsapp{background:#25D366}
+.float-call{background:#00468a}
+.float-enquiry{background:var(--gold)}
+
+.footer{
+  background:#111;
+  color:#ddd;
+  padding:35px 0;
+  text-align:center;
+}
+.footer strong{color:var(--gold2)}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero{min-height:88vh}
+  .hero p{font-size:17px}
+  .limited{
+    position:static;
+    display:inline-block;
+    margin-left:20px;
+    margin-bottom:30px;
+    font-size:22px;
+  }
+  .price-card{grid-template-columns:1fr}
+  .price-left{min-height:300px}
+  .price-right{padding:25px}
+  .price-tag strong{font-size:34px}
+  .cta h2{font-size:32px}
+}
+</style>
+</head>
+
+<body>
+
+<nav id="navbar">
+  <a href="../index.html">
+    <img src="../../images/logo-final.png" class="logo-img" alt="Paradise World Travels">
+  </a>
+
+  <div class="nav-links">
+    <a class="nav-link" href="../index.html">Home</a>
+    <a class="nav-link active" href="../umrah.html">Umrah</a>
+    <a class="nav-link" href="../hajj.html">Hajj</a>
+    <a class="nav-link" href="../packages.html">Packages</a>
+    <a class="nav-link" href="../offers.html">Offers</a>
+<a class="nav-link" href="../visa.html">Visa & Flights</a>
+    <a class="nav-link" href="../about.html">About Us</a>
+    <a class="nav-link" href="../contact.html">Contact</a>
+    <a class="nav-link nav-cta" onclick="openForm()">Book Now</a>
+  </div>
+
+  <div class="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">Home</a>
+  <a href="../umrah.html">Umrah</a>
+  <a href="../hajj.html">Hajj</a>
+  <a href="../packages.html">Packages</a>
+  <a href="../offers.html">Offers</a>
+<a href="../visa.html">Visa & Flights</a>
+  <a href="../about.html">About Us</a>
+  <a href="../contact.html">Contact</a>
+  <a onclick="openForm()">Book Now</a>
+</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">LIMITED SEATS AVAILABLE</div>
+    <h1>મોહર્રમ <span>ઉમરાહ પેકેજ</span></h1>
+    <p>અમદાવાદ થી અમદાવાદ ફ્લાઇટ સાથે પ્રીમિયમ ઉમરાહ પેકેજ — જૂન થી જુલાઈ પ્રસ્થાન.</p>
+
+    <div class="hero-chips">
+      <div class="chip"><i class="fa-solid fa-plane"></i> Ahmedabad Return Flight</div>
+      <div class="chip"><i class="fa-solid fa-calendar"></i> 19–20 Days</div>
+      <div class="chip"><i class="fa-solid fa-kaaba"></i> Makkah 500–600 Meter</div>
+      <div class="chip"><i class="fa-solid fa-mosque"></i> Madinah 300–400 Meter</div>
+    </div>
+
+    <button class="btn-main" onclick="openForm()">Enquire Now <i class="fa-solid fa-arrow-right"></i></button>
+    <a class="btn-whatsapp" href="https://wa.me/919848774484?text=Assalamu%20Alaikum%2C%20I%20want%20details%20for%20Moharram%20Umrah%20Package%20Ahmedabad%20to%20Ahmedabad" target="_blank">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+  </div>
+
+  <div class="limited">LIMITED<br>SEATS</div>
+</section>
+
+<section class="strip">
+  <div class="container">
+    <div class="strip-grid">
+      <div class="strip-item"><i class="fa-solid fa-plane"></i> Ahmedabad to Ahmedabad</div>
+      <div class="strip-item"><i class="fa-solid fa-passport"></i> Umrah Visa</div>
+      <div class="strip-item"><i class="fa-solid fa-utensils"></i> 3 Meals Daily</div>
+      <div class="strip-item"><i class="fa-solid fa-bus"></i> AC Bus Transport</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <small>Package Price</small>
+      <h2>Deluxe <span>Umrah Package</span></h2>
+    </div>
+
+    <div class="price-card">
+      <div class="price-left">
+        <div>
+          <h3>Spiritual Journey to Makkah & Madinah</h3>
+          <p>Best arrangement with Rehbar support and complete travel assistance.</p>
+        </div>
+      </div>
+
+      <div class="price-right">
+        <div class="price-tag">
+          <small>Starting From</small>
+          <strong>INR 109,999</strong>
+          <small>Per Person</small>
+        </div>
+
+        <div class="meta-list">
+          <div><i class="fa-solid fa-calendar-days"></i> Duration: 19–20 Days</div>
+          <div><i class="fa-solid fa-plane"></i> Ahmedabad Return Flight</div>
+          <div><i class="fa-solid fa-kaaba"></i> Makkah Sharif: 500–600 Meter</div>
+          <div><i class="fa-solid fa-mosque"></i> Madinah Sharif: 300–400 Meter</div>
+          <div><i class="fa-solid fa-bell"></i> Departure: June – July</div>
+        </div>
+
+        <div class="mt-4">
+          <button class="btn-main" onclick="openForm()">Book This Package</button>
+          <a class="btn-whatsapp" href="https://wa.me/919848774484?text=I%20want%20to%20book%20Umrah%20Package%20INR%20109999" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-light-gold">
+  <div class="container">
+    <div class="section-title">
+      <small>Package Includes</small>
+      <h2>પેકેજમાં <span>સમાવેશ</span></h2>
+    </div>
+
+    <div class="cards-grid">
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-plane"></i></div><h4>અમદાવાદ થી એર ટિકિટ</h4><p>Ahmedabad to Ahmedabad return flight ticket included.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-passport"></i></div><h4>ઉમરાહ વિઝા</h4><p>Complete Umrah visa assistance included.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-utensils"></i></div><h4>દિવસમાં 3 વખત ભોજન</h4><p>Breakfast, lunch and dinner included.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-bus"></i></div><h4>AC Bus Transport</h4><p>Comfortable AC bus transport service.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-shirt"></i></div><h4>લૉન્ડ્રી સર્વિસ</h4><p>Laundry service during the package.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-suitcase"></i></div><h4>વેલકમ કિટ</h4><p>Travelling bag and passport bag included.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-bottle-water"></i></div><h4>5 લીટર ઝમઝમ પાણી</h4><p>5 liter Zamzam water included.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-user-tie"></i></div><h4>અનુભવી રહબર</h4><p>Experienced Umrah Rehbar support.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-mosque"></i></div><h4>મક્કા અને મદીના ઝિયારત</h4><p>Local Ziyarat in Makkah and Madinah.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <small>Travel Plan</small>
+      <h2>19–20 Days <span>Itinerary</span></h2>
+    </div>
+
+    <div class="timeline">
+      <div class="day-card"><span>Day 1</span><h4>Ahmedabad Departure</h4><p>Group departure from Ahmedabad airport and arrival in Saudi Arabia. Transfer to hotel.</p></div>
+      <div class="day-card"><span>Day 2</span><h4>Umrah Performance</h4><p>Perform Umrah with guidance of experienced Rehbar.</p></div>
+      <div class="day-card"><span>Day 3–9</span><h4>Makkah Sharif Stay</h4><p>Daily prayers in Haram Sharif, rest and spiritual activities.</p></div>
+      <div class="day-card"><span>Day 10</span><h4>Makkah Local Ziyarat</h4><p>Visit important holy places around Makkah as per schedule.</p></div>
+      <div class="day-card"><span>Day 11</span><h4>Transfer to Madinah Sharif</h4><p>Travel to Madinah by AC bus and check-in at hotel.</p></div>
+      <div class="day-card"><span>Day 12–18</span><h4>Madinah Sharif Stay</h4><p>Prayer at Masjid Nabawi and peaceful stay near Haram area.</p></div>
+      <div class="day-card"><span>Day 19</span><h4>Madinah Local Ziyarat</h4><p>Visit important Islamic sites in Madinah.</p></div>
+      <div class="day-card"><span>Day 20</span><h4>Return to Ahmedabad</h4><p>Airport transfer and return flight to Ahmedabad.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-light-gold">
+  <div class="container">
+    <div class="section-title">
+      <small>Hotel Distance</small>
+      <h2>Makkah & <span>Madinah Stay</span></h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="hotel-card">
+          <img src="https://images.unsplash.com/photo-1565552645632-d725f8bfc19a?auto=format&fit=crop&w=900&q=80" alt="Makkah Hotel">
+          <div class="hotel-content">
+            <h4>Makkah Sharif Hotel</h4>
+            <p class="distance">500–600 Meter from Haram</p>
+            <p>Comfortable stay with meals and group support.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="hotel-card">
+          <img src="https://images.unsplash.com/photo-1603201236596-eb1a63eb0ede?auto=format&fit=crop&w=900&q=80" alt="Madinah Hotel">
+          <div class="hotel-content">
+            <h4>Madinah Sharif Hotel</h4>
+            <p class="distance">300–400 Meter from Masjid Nabawi</p>
+            <p>Peaceful location close to Haram area.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <small>Important Information</small>
+      <h2>Good To <span>Know</span></h2>
+    </div>
+
+    <div class="cards-grid">
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-id-card"></i></div><h4>Documents Required</h4><p>Passport, photo, PAN/Aadhaar and required travel documents.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-person-praying"></i></div><h4>Ihram Guidance</h4><p>Rehbar will guide about Ihram and Umrah process.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-suitcase-rolling"></i></div><h4>Luggage</h4><p>Airline baggage rules will apply as per final ticket.</p></div>
+      <div class="feature-card"><div class="icon-box"><i class="fa-solid fa-bottle-water"></i></div><h4>Zamzam</h4><p>5 liter Zamzam water included as per airline rules.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-light-gold">
+  <div class="container">
+    <div class="section-title">
+      <small>Policy</small>
+      <h2>Terms & <span>Conditions</span></h2>
+    </div>
+
+    <div class="accordion" id="termsAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#t1">Payment Policy</button></h2>
+        <div id="t1" class="accordion-collapse collapse show" data-bs-parent="#termsAccordion"><div class="accordion-body">Booking will be confirmed only after advance payment and document submission.</div></div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#t2">Visa Policy</button></h2>
+        <div id="t2" class="accordion-collapse collapse" data-bs-parent="#termsAccordion"><div class="accordion-body">Visa approval is subject to Saudi authority rules and document clearance.</div></div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#t3">Cancellation Policy</button></h2>
+        <div id="t3" class="accordion-collapse collapse" data-bs-parent="#termsAccordion"><div class="accordion-body">Cancellation charges will apply as per airline, hotel and supplier policy.</div></div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#t4">Price Policy</button></h2>
+        <div id="t4" class="accordion-collapse collapse" data-bs-parent="#termsAccordion"><div class="accordion-body">Package price is subject to availability, airfare, visa rules and exchange rate.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Book Your Umrah Journey Today</h2>
+  <p>Limited seats available for June – July departure.</p>
+  <button class="btn-main" onclick="openForm()">Send Enquiry</button>
+  <a class="btn-whatsapp" href="https://wa.me/919848774484?text=I%20want%20Umrah%20Package%20details" target="_blank">
+    <i class="fab fa-whatsapp"></i> WhatsApp Now
+  </a>
+</section>
+
+<div class="form-overlay" id="formOverlay">
+  <div class="form-box">
+    <div class="form-head">
+      <button class="close-btn" onclick="closeForm()"><i class="fa-solid fa-xmark"></i></button>
+      <h3>Umrah Package Enquiry</h3>
+      <p>Fill details and our team will contact you.</p>
+    </div>
+
+    <div class="form-body">
+      <form onsubmit="submitForm(event)">
+        <input class="form-control" type="text" placeholder="Full Name" required>
+        <input class="form-control" type="tel" placeholder="Mobile Number" required>
+        <input class="form-control" type="email" placeholder="Email Address">
+        <select class="form-select" required>
+          <option value="">Select Departure Month</option>
+          <option>June</option>
+          <option>July</option>
+        </select>
+        <input class="form-control" type="number" placeholder="Number of Persons" required>
+        <textarea class="form-control" rows="3" placeholder="Message">I want details for Moharram Umrah Package Ahmedabad to Ahmedabad.</textarea>
+        <button class="submit-btn" type="submit">Submit Enquiry</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="float-btns">
+  <a class="float-whatsapp" href="https://wa.me/919848774484" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a class="float-call" href="tel:+919848774484"><i class="fa-solid fa-phone"></i></a>
+  <button class="float-enquiry" onclick="openForm()"><i class="fa-solid fa-envelope"></i></button>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p><strong>Paradise World Travels</strong></p>
+    <p>FF-5 Paradise Complex, Near Police Station, Panpur Patiya, Himmatnagar - 383001</p>
+    <p>+91 81287 86123 | +91 84693 53585 | www.pwtravco.com</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+function toggleMobile(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function openForm(){
+  document.getElementById('formOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeForm(){
+  document.getElementById('formOverlay').classList.remove('active');
+  document.body.style.overflow='';
+}
+document.getElementById('formOverlay').addEventListener('click',function(e){
+  if(e.target===this) closeForm();
+});
+function submitForm(e){
+  e.preventDefault();
+  alert('Thank you! Your Umrah package enquiry has been submitted.');
+  closeForm();
+  e.target.reset();
+}
+</script>
+
+</body>
+</html>

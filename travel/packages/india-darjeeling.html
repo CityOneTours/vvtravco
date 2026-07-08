@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eastern Delight Package | Paradise World Travels</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto:wght@300;400;500;700;900&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #c69f4a;
+            --gold-light: #e2c47a;
+            --gold-dark: #9a7a30;
+            --blue: #00468a;
+            --blue-dark: #002d5c;
+            --black: #111111;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+            --gray: #e0e0e0;
+            --text-dark: #222222;
+            --text-mid: #555555;
+            --radius: 14px;
+            --transition: .35s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: var(--gray-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        button { font-family: inherit; cursor: pointer; }
+
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            z-index: 1000;
+            background: var(--black);
+            padding: 0 4%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, .5);
+        }
+
+        .nav-logo { display: flex; align-items: center; }
+        .logo-img { height: 60px; width: auto; object-fit: contain; }
+
+        .nav-links { display: flex; align-items: center; gap: 4px; }
+        .nav-link {
+            color: #ddd !important;
+            font-size: .88rem;
+            font-weight: 500;
+            padding: 8px 14px !important;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--gold) !important;
+            background: rgba(198, 159, 74, .12);
+        }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important;
+            color: var(--black) !important;
+            font-weight: 700 !important;
+            padding: 9px 20px !important;
+            border-radius: 25px !important;
+            box-shadow: 0 4px 15px rgba(198, 159, 74, .4);
+        }
+
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+        .hamburger span { width: 24px; height: 2px; background: var(--gold); border-radius: 2px; }
+
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: #111;
+            z-index: 999;
+            display: none;
+            flex-direction: column;
+            padding: 18px;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            color: #ddd;
+            padding: 13px 16px;
+            border-radius: 8px;
+            font-size: .95rem;
+        }
+        .mobile-menu a:hover, .mobile-menu a.active {
+            color: var(--gold);
+            background: rgba(198, 159, 74, .12);
+        }
+
+        .promo-hero { position: relative; margin-top: 70px; }
+        .promo-carousel, .promo-carousel .carousel-item { height: 88vh; }
+        .carousel-item { position: relative; overflow: hidden; }
+        .slide-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.08);
+            transition: transform 6s ease;
+        }
+        .carousel-item.active .slide-bg { transform: scale(1); }
+
+        .slide-1 .slide-bg {
+            background-image: linear-gradient(135deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .72)),
+            url('https://images.unsplash.com/photo-1622308644420-b20142dc993c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        }
+        .slide-2 .slide-bg {
+            background-image: linear-gradient(135deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .72)),
+            url('https://images.unsplash.com/photo-1590256518627-c9f8a6855185?q=80&w=1202&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        }
+        .slide-3 .slide-bg {
+            background-image: linear-gradient(135deg, rgba(0, 0, 0, .52), rgba(0, 0, 0, .72)),
+            url('https://images.unsplash.com/photo-1545324367-8997ba3b801e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        }
+
+        .slide-content {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .slide-badge {
+            background: var(--gold);
+            color: #111;
+            font-size: .72rem;
+            font-weight: 900;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            padding: .45rem 1.25rem;
+            border-radius: 2rem;
+            margin-bottom: 1.4rem;
+        }
+        .slide-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 6vw, 5rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 24px rgba(0, 0, 0, .4);
+        }
+        .slide-title span { color: var(--gold-light); }
+        .slide-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: rgba(255, 255, 255, .9);
+            margin-bottom: 1.6rem;
+        }
+        .slide-prices {
+            display: flex;
+            gap: .8rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.6rem;
+        }
+        .price-chip {
+            background: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, .3);
+            border-radius: 1rem;
+            padding: .45rem 1rem;
+            color: #fff;
+            font-size: .82rem;
+            font-weight: 500;
+        }
+        .price-chip strong { color: var(--gold-light); font-size: 1rem; }
+
+        .package-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .enquiry-btn, .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 40px;
+            font-weight: 800;
+            border: 0;
+            text-decoration: none;
+            transition: .3s;
+        }
+        .enquiry-btn {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #111;
+        }
+        .whatsapp-btn { background: #25D366; color: #fff; }
+        .enquiry-btn:hover, .whatsapp-btn:hover { transform: translateY(-3px); color: #fff; }
+
+        .promo-carousel .carousel-control-prev,
+        .promo-carousel .carousel-control-next {
+            width: 3.5rem;
+            height: 3.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0 1rem;
+            background: rgba(198, 159, 74, .75);
+            border-radius: 50%;
+            opacity: 1;
+        }
+        .promo-carousel .carousel-indicators [data-bs-target] {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .6);
+            border: none;
+        }
+        .promo-carousel .carousel-indicators .active {
+            background: var(--gold-light);
+            width: 26px;
+            border-radius: 5px;
+        }
+
+        .overview-strip {
+            background: #00468a;
+            color: #fff;
+            padding: 1.2rem 0;
+        }
+        .strip-items {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .strip-item { display: flex; align-items: center; gap: .5rem; font-size: .9rem; font-weight: 500; }
+        .strip-item i { color: var(--gold-light); }
+        .strip-divider { width: 1px; height: 1.4rem; background: rgba(255, 255, 255, .3); }
+
+        .section-label {
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: .5rem;
+        }
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--blue);
+            line-height: 1.2;
+        }
+        .section-heading span { color: var(--gold-dark); }
+
+        .package-summary-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, #f7f7f7, #ffffff);
+        }
+        .package-summary-card {
+            max-width: 1120px;
+            margin: auto;
+            background: #fff;
+            border-radius: 26px;
+            overflow: hidden;
+            box-shadow: 0 22px 60px rgba(0, 0, 0, .14);
+            display: grid;
+            grid-template-columns: 45% 55%;
+            border: 1px solid rgba(198, 159, 74, .25);
+        }
+        .package-summary-img { position: relative; min-height: 430px; }
+        .package-summary-img img { width: 100%; height: 100%; object-fit: cover; }
+        .package-summary-badge {
+            position: absolute;
+            top: 22px;
+            left: 22px;
+            background: linear-gradient(135deg, #c69f4a, #9a7a30);
+            color: #111;
+            padding: 9px 18px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+        .package-summary-content { padding: 42px; }
+        .package-summary-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 34px;
+            font-weight: 900;
+            color: #00468a;
+            margin-bottom: 12px;
+        }
+        .package-summary-content p { color: #555; line-height: 1.75; font-size: 16px; }
+        .package-summary-meta, .package-summary-tags {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 22px 0;
+        }
+        .package-summary-meta span {
+            background: #f8edce;
+            color: #7a5b12;
+            padding: 9px 14px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 800;
+        }
+        .package-summary-meta i { color: #9a7a30; margin-right: 6px; }
+        .package-summary-tags span {
+            background: #eaf4ff;
+            color: #00468a;
+            border: 1px solid #c7ddf3;
+            padding: 8px 14px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .package-summary-price-box {
+            margin-top: 28px;
+            padding: 24px;
+            background: linear-gradient(135deg, #00468a, #002d5c);
+            border-radius: 20px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .package-summary-price small { display: block; font-size: 13px; opacity: .8; }
+        .package-summary-price strong { font-size: 32px; color: #e2c47a; }
+        .package-summary-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .package-summary-actions button,
+        .package-summary-actions a {
+            border: 0;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-weight: 900;
+        }
+        .package-summary-actions button {
+            background: linear-gradient(135deg, #c69f4a, #9a7a30);
+            color: #111;
+        }
+        .package-summary-actions a { background: #25D366; color: #fff; }
+
+        .itinerary-section {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, #e0e0e0, #f5f5f5);
+        }
+        .itin-card {
+            background: #fff;
+            border-radius: 1.4rem;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, .08);
+            border: 1.5px solid #e0e0e0;
+            margin-bottom: 2rem;
+            display: flex;
+            transition: .3s;
+        }
+        .itin-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .14);
+        }
+        .itin-card.reverse { flex-direction: row-reverse; }
+        .itin-img-wrap {
+            width: 38%;
+            min-height: 260px;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .itin-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: .6s; }
+        .itin-card:hover .itin-img-wrap img { transform: scale(1.07); }
+        .itin-day-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--gold);
+            color: #111;
+            border-radius: .8rem;
+            padding: .4rem .9rem;
+            font-family: 'Playfair Display', serif;
+            font-size: .7rem;
+            font-weight: 900;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
+            text-align: center;
+        }
+        .itin-day-badge span { display: block; font-size: 1.5rem; font-weight: 900; line-height: 1; }
+        .itin-content {
+            padding: 2rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+        }
+        .day-tag {
+            display: inline-block;
+            background: #f8edce;
+            color: #9a7a30;
+            font-size: .68rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: .25rem .7rem;
+            border-radius: .4rem;
+            margin-bottom: .7rem;
+            width: max-content;
+        }
+        .itin-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: #00468a;
+            margin-bottom: .7rem;
+        }
+        .itin-content p { font-size: .92rem; color: #555; line-height: 1.75; margin-bottom: 1rem; }
+        .itin-highlights { display: flex; flex-wrap: wrap; gap: .5rem; }
+        .itin-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem;
+            background: #f5f5f5;
+            border: 1px solid #e2c47a;
+            border-radius: 2rem;
+            padding: .3rem .8rem;
+            font-size: .75rem;
+            color: #00468a;
+            font-weight: 700;
+        }
+        .itin-pill i { font-size: .7rem; color: var(--gold-dark); }
+
+        .good-section, .terms-section {
+            padding: 5rem 0;
+            background: #fff;
+        }
+        .terms-section { background: #f5f5f5; }
+        .good-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 35px;
+        }
+        .good-card {
+            background: #f5f5f5;
+            border-radius: 18px;
+            padding: 24px;
+            border: 1px solid #e0e0e0;
+            transition: .3s;
+        }
+        .terms-section .good-card { background: #fff; }
+        .good-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+        }
+        .good-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #111;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .good-card h4 { font-size: 18px; font-weight: 900; color: #00468a; margin-bottom: 8px; }
+        .good-card p { color: #555; line-height: 1.6; font-size: 14px; margin: 0; }
+
+        .inclusions-section { padding: 5rem 0; background: #f5f5f5; }
+        .inclusion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-top: 35px;
+        }
+        .inclusion-item {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 1.4rem;
+            border: 1.5px solid #e0e0e0;
+            display: flex;
+            align-items: flex-start;
+            gap: .8rem;
+            transition: .25s;
+        }
+        .inclusion-item:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, .1); transform: translateY(-3px); }
+        .incl-icon {
+            width: 2.4rem;
+            height: 2.4rem;
+            background: #f8edce;
+            border-radius: .6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--gold-dark);
+            font-size: 1rem;
+        }
+        .incl-text { font-size: .9rem; color: #222; font-weight: 600; line-height: 1.4; }
+
+        .other-packages-section { padding: 5rem 0; background: #fff; }
+        .other-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,.12);
+            border: 1px solid rgba(198,159,74,.25);
+            height: 100%;
+        }
+        .other-card img { height: 220px; width: 100%; object-fit: cover; }
+        .other-card-body { padding: 22px; }
+        .other-card-body h4 { color: #00468a; font-weight: 900; font-size: 20px; }
+        .other-price { color: #9a7a30; font-weight: 900; font-size: 19px; margin: 10px 0; }
+        .other-card-body a {
+            display: inline-flex;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #111;
+            font-weight: 900;
+            padding: 10px 18px;
+            border-radius: 26px;
+            margin-top: 10px;
+        }
+
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #9a7a30, #c69f4a 55%, #00468a);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: #fff;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+        .cta-section p { color: rgba(255, 255, 255, .9); font-size: 1.05rem; margin-bottom: 2rem; }
+
+        .promo-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .72);
+            backdrop-filter: blur(6px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .promo-overlay.active { display: flex; }
+        .promo-modal {
+            background: #fff;
+            border-radius: 1.4rem;
+            width: 100%;
+            max-width: 560px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .35);
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .modal-header-bar {
+            background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+            padding: 2rem 2rem 1.5rem;
+            color: #fff;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 2rem;
+            height: 2rem;
+            background: rgba(255, 255, 255, .15);
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            cursor: pointer;
+        }
+        .modal-header-bar h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+        }
+        .modal-body-content {
+            max-height: calc(92vh - 115px);
+            overflow-y: auto;
+            padding: 1.4rem 1.6rem;
+        }
+        .modal-body-content::-webkit-scrollbar { width: 6px; }
+        .modal-body-content::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 20px; }
+        .promo-form-group { margin-bottom: 1.1rem; }
+        .promo-form-group label {
+            display: block;
+            font-size: .8rem;
+            font-weight: 700;
+            color: #555;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            margin-bottom: .4rem;
+        }
+        .promo-form-control {
+            width: 100%;
+            border: 1.5px solid #e0e0e0;
+            border-radius: .7rem;
+            padding: .72rem 1rem;
+            font-size: .92rem;
+            background: #f5f5f5;
+            color: #222;
+            outline: none;
+        }
+        .promo-form-control:focus {
+            border-color: var(--gold);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(198, 159, 74, .15);
+        }
+        .terms-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 10px 12px;
+            margin: 8px 0 12px;
+            font-size: 13px;
+            color: #555;
+            line-height: 1.45;
+        }
+        .terms-box input { margin-top: 3px; accent-color: var(--gold); flex-shrink: 0; }
+        .terms-box a { color: #00468a; font-weight: 800; text-decoration: underline; }
+        .promo-submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #111;
+            font-weight: 900;
+            font-size: 1rem;
+            padding: .9rem;
+            border-radius: .9rem;
+            border: none;
+            cursor: pointer;
+            margin-top: .5rem;
+        }
+        .modal-contact-row {
+            display: flex;
+            gap: .8rem;
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+        .modal-contact-item { display: flex; align-items: center; gap: .4rem; font-size: .85rem; color: #555; }
+        .modal-contact-item i { color: var(--gold-dark); }
+
+        .promo-footer {
+            background: #00468a;
+            color: rgba(255, 255, 255, .75);
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: .85rem;
+        }
+        .promo-footer strong { color: var(--gold-light); }
+
+        @media(max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .promo-carousel, .promo-carousel .carousel-item { height: 82vh; }
+            .promo-carousel .carousel-control-prev, .promo-carousel .carousel-control-next { display: none; }
+            .slide-content { padding: 1rem; }
+            .slide-title { font-size: 2.45rem; }
+            .slide-sub { font-size: 1.08rem; }
+            .enquiry-btn, .whatsapp-btn { width: 100%; max-width: 320px; }
+            .strip-divider { display: none; }
+            .package-summary-section { padding: 50px 14px; }
+            .package-summary-card { grid-template-columns: 1fr; border-radius: 22px; }
+            .package-summary-img { min-height: 260px; }
+            .package-summary-content { padding: 26px 20px; }
+            .package-summary-content h2 { font-size: 28px; }
+            .package-summary-price-box { padding: 20px; }
+            .package-summary-price strong { font-size: 28px; }
+            .package-summary-actions, .package-summary-actions button, .package-summary-actions a {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            .itin-card, .itin-card.reverse { flex-direction: column; }
+            .itin-img-wrap { width: 100%; min-height: 210px; }
+            .itin-content { padding: 1.5rem; }
+            .package-summary-section, .itinerary-section, .good-section, .terms-section, .inclusions-section, .cta-section, .other-packages-section { padding: 3.5rem 0; }
+            .modal-contact-row { flex-direction: column; }
+        }
+
+        @media(max-width: 576px) {
+            .logo-img { height: 52px; }
+            #navbar { height: 66px; }
+            .mobile-menu { top: 66px; }
+            .promo-hero { margin-top: 66px; }
+            .price-chip { font-size: .78rem; }
+            .promo-overlay { align-items: flex-start; padding: 10px; overflow-y: auto; }
+            .promo-modal { margin: 10px 0; max-height: 94vh; border-radius: 18px; }
+            .modal-header-bar { padding: 1.2rem 1.3rem 1rem; }
+            .modal-header-bar h3 { font-size: 1.35rem; }
+            .modal-header-bar p { font-size: .85rem; margin-bottom: 0; }
+            .modal-body-content { padding: 1rem; max-height: calc(94vh - 95px); }
+            .promo-form-group { margin-bottom: .75rem; }
+            .promo-form-control { padding: .6rem .85rem; font-size: .88rem; }
+            .promo-submit-btn { padding: .75rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar">
+        <a class="nav-logo" href="../home.html">
+            <img src="../../images/logo-final.png" alt="Paradise World Travels Logo" class="logo-img">
+        </a>
+
+        <div class="nav-links">
+            <a class="nav-link" href="../home.html">Home</a>
+            <a class="nav-link" href="../home.html?page=umrah">Umrah</a>
+            <a class="nav-link" href="../home.html?page=hajj">Hajj</a>
+            <a class="nav-link active" href="../packages.html">Packages</a>
+            <a class="nav-link" href="../home.html?page=offers">Offers</a>
+            <a class="nav-link" href="../home.html?page=about">About Us</a>
+            <a class="nav-link" href="../home.html?page=contact">Contact</a>
+            <a class="nav-cta nav-link" href="../home.html?page=contact">Book Now</a>
+        </div>
+
+        <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="home.html?page=home">Home</a>
+        <a href="../home.html?page=umrah">Umrah</a>
+        <a href="../home.html?page=hajj">Hajj</a>
+        <a href="../packages.html" class="active">Packages</a>
+        <a href="../home.html?page=offers">Offers</a>
+        <a href="../home.html?page=about">About Us</a>
+        <a href="../home.html?page=contact">Contact</a>
+        <a href="../home.html?page=contact">Book Now</a>
+    </div>
+
+    <section class="promo-hero">
+        <div id="easternCarousel" class="carousel slide promo-carousel" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#easternCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#easternCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#easternCarousel" data-bs-slide-to="2"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active slide-1">
+                    <div class="slide-bg"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge">India Hill Station Package</div>
+                        <h1 class="slide-title">Eastern <span>Delight</span></h1>
+                        <p class="slide-sub">Darjeeling, Pelling, Gangtok and Kalimpong hill station journey.</p>
+
+                        <div class="slide-prices">
+                            <div class="price-chip">Starting from <strong>₹51,100</strong> / person</div>
+                            <div class="price-chip">7 Nights / 8 Days</div>
+                            <div class="price-chip">Hotel + Breakfast + Transfers</div>
+                        </div>
+
+                        <div class="package-actions">
+                            <button class="enquiry-btn" onclick="openPromoModal()">Enquire Now <i class="fas fa-arrow-right"></i></button>
+                            <a class="whatsapp-btn" href="https://wa.me/919642266675?text=Hi%20I%20want%20Eastern%20Delight%20Package%20details" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item slide-2">
+                    <div class="slide-bg"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge">Darjeeling & Gangtok</div>
+                        <h1 class="slide-title">Hills & <span>Tea Gardens</span></h1>
+                        <p class="slide-sub">Perfect scenic hill holiday for families, couples and nature lovers.</p>
+                        <div class="package-actions">
+                            <button class="enquiry-btn" onclick="openPromoModal()">Book Now</button>
+                            <a class="whatsapp-btn" href="https://wa.me/919642266675?text=Hi%20I%20want%20Eastern%20Delight%20Package%20details" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item slide-3">
+                    <div class="slide-bg"></div>
+                    <div class="slide-content">
+                        <div class="slide-badge">Sikkim Holiday</div>
+                        <h1 class="slide-title">Eastern <span>Memories</span></h1>
+                        <p class="slide-sub">Enjoy tea gardens, Himalayan views, monasteries, lakes and peaceful mountain moments.</p>
+                        <div class="package-actions">
+                            <button class="enquiry-btn" onclick="openPromoModal()">Get Best Deal</button>
+                            <a class="whatsapp-btn" href="https://wa.me/919642266675?text=Hi%20I%20want%20Eastern%20Delight%20best%20deal" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#easternCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#easternCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <section class="overview-strip">
+        <div class="container">
+            <div class="strip-items">
+                <div class="strip-item"><i class="fas fa-clock"></i> 7 Nights / 8 Days</div>
+                <div class="strip-divider"></div>
+                <div class="strip-item"><i class="fas fa-mountain-sun"></i> Hill Stations</div>
+                <div class="strip-divider"></div>
+                <div class="strip-item"><i class="fas fa-hotel"></i> Hotel Stay</div>
+                <div class="strip-divider"></div>
+                <div class="strip-item"><i class="fas fa-car"></i> Transfers</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="package-summary-section">
+        <div class="container">
+            <div class="package-summary-card">
+                <div class="package-summary-img">
+                    <span class="package-summary-badge">POPULAR PACKAGE</span>
+                    <img src="https://images.unsplash.com/photo-1622308644420-b20142dc993c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Eastern Delight Package">
+                </div>
+
+                <div class="package-summary-content">
+                    <h2>Eastern Delight Package</h2>
+                    <p>
+                        Experience the beauty of Eastern India with Darjeeling, Pelling, Gangtok and Kalimpong.
+                        Enjoy tea gardens, Himalayan viewpoints, peaceful monasteries, lakes and scenic mountain drives.
+                        This package is ideal for families, couples and nature travellers.
+                    </p>
+
+                    <div class="package-summary-meta">
+                        <span><i class="fas fa-clock"></i> 7 Nights / 8 Days</span>
+                        <span><i class="fas fa-hotel"></i> 3*/4*/5* Hotels</span>
+                        <span><i class="fas fa-mug-hot"></i> Breakfast</span>
+                        <span><i class="fas fa-car"></i> Transfers</span>
+                    </div>
+
+                    <div class="package-summary-tags">
+                        <span>Darjeeling</span>
+                        <span>Pelling</span>
+                        <span>Gangtok</span>
+                        <span>Kalimpong</span>
+                    </div>
+
+                    <div class="package-summary-price-box">
+                        <div class="package-summary-price">
+                            <small>Starting From</small>
+                            <strong>₹51,100</strong>
+                            <small>Per Person</small>
+                        </div>
+
+                        <div class="package-summary-actions">
+                            <button onclick="openPromoModal()">Enquire Now</button>
+                            <a href="https://wa.me/919642266675?text=Hi%20I%20want%20Eastern%20Delight%20Package%20details" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="itinerary-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label">Travel Plan</div>
+                <h2 class="section-heading">Eastern Delight <span>Itinerary</span></h2>
+            </div>
+
+            <div class="itin-card">
+                <div class="itin-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1556388158-158ea5ccacbd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bagdogra / New Jalpaiguri to Darjeeling">
+                    <div class="itin-day-badge">Day <span>1</span></div>
+                </div>
+                <div class="itin-content">
+                    <span class="day-tag">Arrival</span>
+                    <h4>Bagdogra / New Jalpaiguri to Darjeeling</h4>
+                    <p>Arrive at Bagdogra Airport or New Jalpaiguri Railway Station and transfer to Darjeeling. Check in and relax in the hill-station atmosphere.</p>
+                    <div class="itin-highlights">
+                        <span class="itin-pill"><i class="fas fa-check"></i> Arrival</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Transfer</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Darjeeling</span>
+                    </div>
+                </div>
+            </div>
+            <div class="itin-card reverse">
+                <div class="itin-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1622308644420-b20142dc993c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sightseeing of Darjeeling">
+                    <div class="itin-day-badge">Day <span>2</span></div>
+                </div>
+                <div class="itin-content">
+                    <span class="day-tag">Darjeeling</span>
+                    <h4>Sightseeing of Darjeeling</h4>
+                    <p>Enjoy Darjeeling sightseeing including scenic viewpoints, tea garden atmosphere and local attractions as per package schedule.</p>
+                    <div class="itin-highlights">
+                        <span class="itin-pill"><i class="fas fa-check"></i> Sightseeing</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Tea Garden</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Hill Views</span>
+                    </div>
+                </div>
+            </div>
+            <div class="itin-card">
+                <div class="itin-img-wrap">
+                    <img src="https://plus.unsplash.com/premium_photo-1697730484307-a05ad3449015?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Darjeeling to Pelling">
+                    <div class="itin-day-badge">Day <span>3</span></div>
+                </div>
+                <div class="itin-content">
+                    <span class="day-tag">Pelling</span>
+                    <h4>Darjeeling to Pelling</h4>
+                    <p>After breakfast, drive from Darjeeling to Pelling. Enjoy beautiful mountain routes and check in at the hotel.</p>
+                    <div class="itin-highlights">
+                        <span class="itin-pill"><i class="fas fa-check"></i> Scenic Drive</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Pelling</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Mountains</span>
+                    </div>
+                </div>
+            </div>
+            <div class="itin-card reverse">
+                <div class="itin-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1640777807318-bed5d6889822?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sightseeing of Pelling">
+                    <div class="itin-day-badge">Day <span>4</span></div>
+                </div>
+                <div class="itin-content">
+                    <span class="day-tag">Pelling</span>
+                    <h4>Sightseeing of Pelling</h4>
+                    <p>Explore Pelling sightseeing and enjoy peaceful Himalayan views, monasteries and local attractions.</p>
+                    <div class="itin-highlights">
+                        <span class="itin-pill"><i class="fas fa-check"></i> Monastery</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Sightseeing</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Nature</span>
+                    </div>
+                </div>
+            </div>
+            <div class="itin-card">
+                <div class="itin-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1590256518627-c9f8a6855185?q=80&w=1202&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pelling to Gangtok">
+                    <div class="itin-day-badge">Day <span>5</span></div>
+                </div>
+                <div class="itin-content">
+                    <span class="day-tag">Gangtok</span>
+                    <h4>Pelling to Gangtok</h4>
+                    <p>Proceed from Pelling to Gangtok. Arrive, check in and enjoy leisure time in the capital of Sikkim.</p>
+                    <div class="itin-highlights">
+                        <span class="itin-pill"><i class="fas fa-check"></i> Transfer</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Gangtok</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Hotel Stay</span>
+                    </div>
+                </div>
+            </div>
+            <div class="itin-card reverse">
+                <div class="itin-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1641233122088-9562e3ef0105?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sightseeing of Gangtok">
+                    <div class="itin-day-badge">Day <span>6</span></div>
+                </div>
+                <div class="itin-content">
+                    <span class="day-tag">Gangtok</span>
+                    <h4>Sightseeing of Gangtok</h4>
+                    <p>Enjoy Gangtok sightseeing with beautiful lakes, monasteries and local market time as per schedule.</p>
+                    <div class="itin-highlights">
+                        <span class="itin-pill"><i class="fas fa-check"></i> Lake</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Monastery</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Shopping</span>
+                    </div>
+                </div>
+            </div>
+            <div class="itin-card">
+                <div class="itin-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1718559458984-2388be615270?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gangtok to Kalimpong">
+                    <div class="itin-day-badge">Day <span>7</span></div>
+                </div>
+                <div class="itin-content">
+                    <span class="day-tag">Kalimpong</span>
+                    <h4>Gangtok to Kalimpong</h4>
+                    <p>Drive from Gangtok to Kalimpong. Enjoy the peaceful hill town, viewpoints and relaxed evening.</p>
+                    <div class="itin-highlights">
+                        <span class="itin-pill"><i class="fas fa-check"></i> Kalimpong</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Hill Town</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Viewpoints</span>
+                    </div>
+                </div>
+            </div>
+            <div class="itin-card reverse">
+                <div class="itin-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1589082675045-34b979730940?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kalimpong to Bagdogra / New Jalpaiguri">
+                    <div class="itin-day-badge">Day <span>8</span></div>
+                </div>
+                <div class="itin-content">
+                    <span class="day-tag">Departure</span>
+                    <h4>Kalimpong to Bagdogra / New Jalpaiguri</h4>
+                    <p>After breakfast, check out and transfer to Bagdogra Airport or New Jalpaiguri Railway Station for departure.</p>
+                    <div class="itin-highlights">
+                        <span class="itin-pill"><i class="fas fa-check"></i> Check-out</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Transfer</span>
+                        <span class="itin-pill"><i class="fas fa-check"></i> Departure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="good-section">
+        <div class="container">
+            <div class="text-center">
+                <div class="section-label">Important Information</div>
+                <h2 class="section-heading">Good to <span>Know</span></h2>
+            </div>
+
+            <div class="good-grid">
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-calendar-check"></i></div>
+                    <h4>Best Time to Visit</h4>
+                    <p>March to June and October to December are popular for Darjeeling, Gangtok and Sikkim hill holidays.</p>
+                </div>
+
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-passport"></i></div>
+                    <h4>Documents Required</h4>
+                    <p>Carry valid government ID/passport copy, hotel voucher and travel confirmation for check-in.</p>
+                </div>
+
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-paw"></i></div>
+                    <h4>Activity Timing</h4>
+                    <p>Sightseeing and optional activities are subject to weather, local conditions and operator schedule.</p>
+                </div>
+
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-suitcase"></i></div>
+                    <h4>Luggage Advice</h4>
+                    <p>Light luggage is recommended for hill station transfers and mountain routes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="inclusions-section">
+        <div class="container">
+            <div class="text-center">
+                <div class="section-label">Package Includes</div>
+                <h2 class="section-heading">What’s <span>Included</span></h2>
+            </div>
+
+            <div class="inclusion-grid">
+                <div class="inclusion-item">
+                    <div class="incl-icon"><i class="fas fa-hotel"></i></div>
+                    <div class="incl-text">Hotel accommodation</div>
+                </div>
+
+                <div class="inclusion-item">
+                    <div class="incl-icon"><i class="fas fa-mug-hot"></i></div>
+                    <div class="incl-text">Breakfast as per itinerary</div>
+                </div>
+
+                <div class="inclusion-item">
+                    <div class="incl-icon"><i class="fas fa-car"></i></div>
+                    <div class="incl-text">Airport and local transfers</div>
+                </div>
+
+                <div class="inclusion-item">
+                    <div class="incl-icon"><i class="fas fa-paw"></i></div>
+                    <div class="incl-text">Kerala sightseeing experience</div>
+                </div>
+
+                <div class="inclusion-item">
+                    <div class="incl-icon"><i class="fas fa-map-location-dot"></i></div>
+                    <div class="incl-text">Sightseeing as per package</div>
+                </div>
+
+                <div class="inclusion-item">
+                    <div class="incl-icon"><i class="fas fa-headset"></i></div>
+                    <div class="incl-text">Travel assistance support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="terms-section" id="terms-conditions">
+        <div class="container">
+            <div class="text-center">
+                <div class="section-label">Package Policy</div>
+                <h2 class="section-heading">Terms & <span>Conditions</span></h2>
+            </div>
+
+            <div class="good-grid">
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-indian-rupee-sign"></i></div>
+                    <h4>Price & Availability</h4>
+                    <p>Package price is subject to hotel availability, travel dates, season and final confirmation at the time of booking.</p>
+                </div>
+
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-ban"></i></div>
+                    <h4>Cancellation Policy</h4>
+                    <p>Cancellation charges may apply as per hotel, transport and supplier policy. Final policy will be shared before confirmation.</p>
+                </div>
+
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-clock"></i></div>
+                    <h4>Unused Services</h4>
+                    <p>There are no refunds for any services such as meals, sightseeing or transfers not utilized on tour.</p>
+                </div>
+
+                <div class="good-card">
+                    <div class="good-icon"><i class="fas fa-cloud-sun-rain"></i></div>
+                    <h4>Weather & Park Rules</h4>
+                    <p>Sightseeing, backwater activities and outdoor visits are subject to weather, local authority permissions and safety conditions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="other-packages-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label">Explore More</div>
+                <h2 class="section-heading">Other <span>Packages</span></h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-6 col-md-6">
+                    <div class="other-card">
+                        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Eastern Delight Package">
+                        <div class="other-card-body">
+                            <h4>Kerala — God's Own Country</h4>
+                            <p>Cultural and heritage India holiday with sightseeing and transfers.</p>
+                            <div class="other-price">Starting From ₹48,130</div>
+                            <a href="../packages/india-kerala.html">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="other-card">
+                        <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Heaven on Earth">
+                        <div class="other-card-body">
+                            <h4>Popular Goa Package
+</h4>
+                            <p>Beaches, churches, shacks, water sports and Goan nightlife.</p>
+                            <div class="other-price">Starting From ₹48,430</div>
+                            <a href="../packages/india-goa.html">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section class="cta-section">
+        <div class="container">
+            <h2>Ready for Your Eastern Delight Holiday?</h2>
+            <p>Send your travel dates and number of passengers. We will share the best available deal.</p>
+
+            <div class="package-actions">
+                <button class="enquiry-btn" onclick="openPromoModal()">Enquire Now <i class="fas fa-arrow-right"></i></button>
+                <a class="whatsapp-btn" href="https://wa.me/919642266675?text=Hi%20I%20want%20Eastern%20Delight%20Package%20details" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="promo-overlay" id="promoOverlay">
+        <div class="promo-modal">
+            <div class="modal-header-bar">
+                <button class="close-btn" onclick="closePromoModal()"><i class="fas fa-times"></i></button>
+                <h3>Kerala Package Enquiry</h3>
+                <p>Fill the details and our team will contact you shortly.</p>
+            </div>
+
+            <div class="modal-body-content">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="f7b00981-6f87-428e-84aa-0f1f6ac6f139">
+                    <input type="hidden" name="subject" value="Eastern Delight Package Enquiry - Paradise World Travels">
+
+                    <div class="promo-form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" class="promo-form-control" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="promo-form-group">
+                        <label>Mobile Number</label>
+                        <input type="tel" name="phone" class="promo-form-control" placeholder="Enter mobile number" required>
+                    </div>
+
+                    <div class="promo-form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" class="promo-form-control" placeholder="Enter email address">
+                    </div>
+
+                    <div class="promo-form-group">
+                        <label>Travel Date</label>
+                        <input type="date" name="travel_date" class="promo-form-control">
+                    </div>
+
+                    <div class="promo-form-group">
+                        <label>No. of Passengers</label>
+                        <input type="number" name="passengers" class="promo-form-control" placeholder="Example: 4">
+                    </div>
+
+                    <div class="promo-form-group">
+                        <label>Package Type</label>
+                        <select name="package_type" class="promo-form-control">
+                            <option>Eastern Delight Package</option>
+                            <option>Eastern Delight</option>
+                            <option>Heaven on Earth</option>
+                            <option>Customize My Package</option>
+                        </select>
+                    </div>
+
+                    <div class="promo-form-group">
+                        <label>Message</label>
+                        <textarea name="message" class="promo-form-control" rows="3" placeholder="Your message"></textarea>
+                    </div>
+
+                    <div class="terms-box">
+                        <input type="checkbox" id="termsCheck" required>
+                        <label for="termsCheck">
+                            I agree to the <a href="#terms-conditions" onclick="closePromoModal()">Terms & Conditions</a>, cancellation policy and package conditions.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="promo-submit-btn">
+                        Submit Enquiry <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+
+                <div class="modal-contact-row">
+                    <a href="tel:+919642266675" class="modal-contact-item"><i class="fas fa-phone"></i> 919642266675</a>
+                    <a href="mailto:pwtravco@gmail.com" class="modal-contact-item"><i class="fas fa-envelope"></i> pwtravco@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="promo-footer">
+        © 2026 <strong>Paradise World Travels</strong>. All Rights Reserved.
+    </footer>
+
+    <script>
+        function toggleMobile() {
+            document.getElementById("mobileMenu").classList.toggle("open");
+        }
+
+        function openPromoModal() {
+            document.getElementById('promoOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePromoModal() {
+            document.getElementById('promoOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('promoOverlay').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closePromoModal();
+            }
+        });
+    </script>
+</body>
+</html>
