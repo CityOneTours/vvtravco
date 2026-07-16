@@ -1712,39 +1712,86 @@
                     </div>
                 </div>
 
-                <form class="form-card reveal" onsubmit="return handleSubmit(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" name="name" placeholder="Your name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="tel" name="phone" placeholder="+91 00000 00000" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" name="email" placeholder="you@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Service Interested In</label>
-                        <select name="service">
-                            <option>Brand Strategy</option>
-                            <option>Web Design &amp; Development</option>
-                            <option>Digital Marketing</option>
-                            <option>Design Services</option>
-                            <option>Content Marketing</option>
-                            <option>Video Production</option>
-                            <option>SEO Services</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea name="message" placeholder="Tell us about your project..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-solid form-submit">Send Message →</button>
-                </form>
+                <!-- Contact Form -->
+<form
+    class="form-card reveal"
+    action="https://api.web3forms.com/submit"
+    method="POST"
+>
+
+    <!-- Web3Forms Access Key -->
+    <input
+        type="hidden"
+        name="access_key"
+        value="f7b00981-6f87-428e-84aa-0f1f6ac6f139"
+    >
+
+    <!-- Optional -->
+    <input type="hidden" name="subject" value="New Website Enquiry">
+    <input type="hidden" name="from_name" value="Your Website">
+    <input type="checkbox" name="botcheck" style="display:none;">
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Full Name</label>
+            <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input
+                type="tel"
+                name="phone"
+                placeholder="+91 00000 00000"
+                required
+            >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Email Address</label>
+        <input
+            type="email"
+            name="email"
+            placeholder="you@email.com"
+            required
+        >
+    </div>
+
+    <div class="form-group">
+        <label>Service Interested In</label>
+        <select name="service" required>
+            <option value="">Select a Service</option>
+            <option>Brand Strategy</option>
+            <option>Web Design & Development</option>
+            <option>Digital Marketing</option>
+            <option>Design Services</option>
+            <option>Content Marketing</option>
+            <option>Video Production</option>
+            <option>SEO Services</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Message</label>
+        <textarea
+            name="message"
+            rows="5"
+            placeholder="Tell us about your project..."
+            required
+        ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-solid form-submit">
+        Send Message →
+    </button>
+
+</form>
             </div>
         </div>
     </section>
